@@ -15,7 +15,7 @@ if(currentFile=="index.html"){
  }
 
 let head_section=`
-<div class="container-fluid sticky-top bg-body head mb-4">
+<div class="container-fluid sticky-top bg-body head mb-4 top-wrapper">
 		<div class="row profile setting text-center pt-2 align-items-center gx-3">
 			<div class="col-4 col-sm-4 col-md-3 col-xl-2 text-start logo">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" width="240" height="60">
@@ -66,14 +66,14 @@ let head_section=`
 		</div>
 		<div class="row menu">
 			<nav class="navbar navbar-expand-sm" data-bs-theme="light">
-				<div class="container-fluid text-primary justify-content-center align-items-top;">
+				<div class="container-fluid text-primary justify-content-center align-items-top">
 																		
 					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
 					</button>
 
 					<div class="collapse navbar-collapse flex-wrap" id="navbarSupportedContent">
-						<ul class="navbar-nav me-auto">
+						<ul class="navbar-nav me-auto column-gap-3">
 							<li class="nav-item">
 								<a class="nav-link" aria-current="page" href="${home_page}">Home</a>
 							</li>
