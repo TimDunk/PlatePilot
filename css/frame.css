@@ -28,7 +28,7 @@ div.head{
     transition: all 0.2s ease; /* Smooth transition */
 }
 
-/* Keep your branding pink */
+/* Keep the branding pink */
 .nav-item .nav-link.active {
     /* color: #f272b2 !important;  */
     color: var( --main-color);

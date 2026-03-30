@@ -90,6 +90,49 @@ var allVendorsData=`
 		"minDeliveryTotal": 10,
 		"ratedLevel": 4,
 		"deliveryFee": 3,
+		"toppings":{
+			"28789063": {
+				"id": 28789063,
+				"name": "Beverage - Sugar Level",
+				"description": "",
+				"quantity_minimum": 1,
+				"quantity_maximum": 1,
+				"options": [
+					{
+						"id": 195015008,
+						"product_id": 152794040,
+						"name": "Standard Sweetness",
+						"description": "",
+						"price": 0,
+						"remote_code": ""
+					},
+					{
+						"id": 195015009,
+						"product_id": 152794036,
+						"name": "Half Sweetness (Recommend)",
+						"description": "",
+						"price": 0,
+						"remote_code": "",
+						"variation_tag_map": {
+							"popular": [
+								153715809,
+								153715804,
+								153715823,
+								153715815,
+								153715811,
+								153715826,
+								153715799,
+								153715808,
+								153715838,
+								153715844,
+								153715843
+							]
+						}
+					}
+				],
+				"type": "choice-group"
+			}
+		},
 		"menuCategoryArr": [
 			{
 				"id": 1,
@@ -100,7 +143,8 @@ var allVendorsData=`
 						"name": "Pork",
 						"price": 20,
 						"isAvailable": true,
-						"description": "Good pork"
+						"description": "Good pork",
+						"varationsArr":[28789063,28789064]
 					}
 				]
 			},

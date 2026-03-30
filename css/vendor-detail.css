@@ -1,0 +1,98 @@
+/* vendor info */
+
+/* @media screen and (min-width:960px) {
+
+} */
+
+nav {
+    grid-area: breadcrumb;
+}
+.vendor-image {
+    grid-area: image;
+}
+.vendor-cuisines {
+    grid-area: cuisines;
+}
+.vendor-name {
+    grid-area: name;
+}
+.vendor-min-total, .vendor-delivery-fee {
+    grid-area: fee;
+}
+.vendor-rated-level, .vendor-favorite {
+    grid-area: rate;
+}
+
+.vendor-info {
+display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+    grid-template-rows: repeat(5,auto);
+    grid-template-areas: 
+        "breadcrumb breadcrumb breadcrumb"
+        "image cuisines cuisines"
+        "image name name"
+        "image fee fee"
+        "image rate rate";
+}
+
+/* .vendor-info div{
+    border: 1px solid black;
+} */
+
+.vendor-rated-level, .vendor-delivery-fee{
+    justify-self: start;
+}
+.vendor-favorite, .vendor-min-total{
+    justify-self: end;
+}
+
+/* menu-tabs */
+.tabs-container{
+    overflow-x: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
+}
+
+.tabs-container::-webkit-scrollbar{
+    display: none;
+}
+
+.tabs-list{
+    list-style: none;
+    width:fit-content;
+    position:relative;
+}
+
+.category-tabs  button, .menu-navigation{
+    border:none;
+    background-color: white;
+}
+
+.menu-navigation {
+    box-shadow:0 14px 28px -12px #0000001f;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 68px;
+}
+
+/*cart*/
+div.cart-summary{
+    border: 1px solid rgb(222, 222, 222);
+    border-radius: 12px;
+    padding: 3px 10px;
+    overflow-y:scroll;
+    position: -webkit-sticky; 
+    position: sticky;
+    top:168px;
+    height: calc(100vh - 172px);
+} 
+
+/* menu */
+div.menu {
+    height: 200vh;
+}
+
+.vendor-info, .menu-navigation{
+    z-index: 2;
+} 
+

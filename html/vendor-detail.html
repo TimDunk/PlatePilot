@@ -6,18 +6,140 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="../css/delivery.css">
 	<link rel="stylesheet" href="../css/frame.css"> <!-- should be the last css file included -->
+	<link rel="stylesheet" href="../css/vendor-detail.css">
 </head>
 
 <body>
-	
-	<!-- Do not delete div.head-placeholder -->
 	<div id="head-placeholder"></div>
 
-	<div class="container-fluid top-wrapper">
-		<main class="row">
-			<p>Vendor Details</p>
+	<div class="container-fluid top-wrapper px-0">
+		<main class="row gx-0">
+			<div class="px-5">
+				<div class="vendor-info">
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="delivery.html">Restaurant List</a></li>
+							<li class="breadcrumb-item active" aria-current="page">Replace The Vendor's Name</li>
+						</ol>
+					</nav>
+					<div class="vendor-image">
+						<img src="..." class="img-fluid rounded-start" alt="...">
+					</div>
+					<div class="vendor-cuisines">cuisines</div>
+					<div class="vendor-name">name</div>
+					<div class="vendor-delivery-fee">fee</div>
+					<div class="vendor-min-total">total</div>
+					<div class="vendor-rated-level">rated level</div>
+					<div class="vendor-favorite">vendor-favorite</div>
+				</div>	
+			</div>	
+			<div class="menu-wrapper px-5">
+				<section class="menu-navigation d-flex pt-4 pb-0 align-items-center text-center">
+					<div class="search flex-shrink-0 me-3">
+						Search Search Search
+					</div>
+					<div class="category-tabs d-flex px-4 flex-grow-1 overflow-hidden align-items-center">
+						<div class="pre-btn">
+							<button>Pre</button>
+						</div>
+						<div class="tabs-container">
+							<ul class="tabs-list d-flex column-gap-4 mb-0 align-items-center px-3">
+								<li>
+									<button><span>Popular1</span></button>
+								</li>
+								<li>
+									<button><span>Popular1</span></button>
+								</li>
+								<li>
+									<button><span>Popular1</span></button>
+								</li>
+								<li>
+									<button><span>Popular1</span></button>
+								</li>
+								<li>
+									<button><span>Popular1</span></button>
+								</li>
+								<li>
+									<button><span>Popular1</span></button>
+								</li>
+								<li>
+									<button><span>Popular1</span></button>
+								</li>
+								<li>
+									<button><span>Popular1</span></button>
+								</li>
+								<li>
+									<button><span>Popular1</span></button>
+								</li>
+								<li>
+									<button><span>Popular1</span></button>
+								</li>
+								<li>
+									<button><span>Popular1</span></button>
+								</li>
+								<li>
+									<button><span>Popular1</span></button>
+								</li>
+								<li>
+									<button><span>Popular1</span></button>
+								</li>
+								<li>
+									<button><span>Popular1</span></button>
+								</li>
+								<li>
+									<button><span>Popular1</span></button>
+								</li>
+								<li>
+									<button><span>Popular1</span></button>
+								</li>
+								<li>
+									<button><span>Popular1</span></button>
+								</li>
+								<li>
+									<button><span>Popular last</span></button>
+								</li>
+							</ul>
+						</div>
+						<div class="next-btn">
+							<button>Next</button>
+						</div>
+					</div>
+				</section>
+				<section class="menu-section d-flex py-4 justify-content-evenly column-gap-5">
+					<div class="col-8 menu">menu</div>
+					<aside class="cart-column flex-grow-1">
+						<div class="cart-summary">
+							<div class="cart-summary-items-wrapper">
+								<div class="cart-expedition-wrapper">
+									<div><button>Delivery</button></div>
+									<div><button>Pick-Up</button></div>
+								</div>
+								<div class="title-wrapper">
+									<h5>Your items<h5>
+								</div>
+								<div class="cart-summary-group-item"></div>
+								<div class="cart-summary-amounts-wrapper"></div>
+								<div class="culery-toggle-wrapper"></div>
+							</div>
+							<div class="cart-summary-footer">
+								<div class="cart-summary-checkout-button">
+									<div></div>
+									<div>
+										<div>
+											<div class="">Total</div>
+											<div class="">Fee Value</div>
+										</div>
+										<div>
+											<button><span>Review payment and address</span></button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</aside>
+				</section>
+			</div>
 		</main>
 	</div>
 	
@@ -32,8 +154,10 @@
 	<script type="text/javascript" src="../js/VendorData.js" ></script> 
 	<script type="text/javascript" src="../js/CuisineModel.js" ></script>
 	<script type="text/javascript" src="../js/VendorModel.js" ></script> 
-	<script type="text/javascript" src="../js/VendorListView.js" ></script> 
-	<script type="text/javascript" src="../js/VendorController.js" ></script>
+	<script type="text/javascript" src="../js/VendorDetailView.js" ></script> 
+	<!-- <script type="text/javascript" src="../js/VendorListView.js" ></script> 
+	<script type="text/javascript" src="../js/FilterView.js" ></script> 
+	<script type="text/javascript" src="../js/VendorController.js" ></script> -->
 </body>
 </html>
 

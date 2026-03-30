@@ -1,8 +1,8 @@
 class MenuCategory{
-    constructor(menuItem){
-        this.id=menuItem.id;
-        this.name=menuItem.name;
-        this.menuItemArr=menuItem.menuItemArr?menuItem.menuItemArr.map(item => new MenuItem(item)):[];
+    constructor(category){
+        this.id=category.id;
+        this.category=category.category;
+        this.menuItemArr=category.menuItemArr?category.menuItemArr.map(item => new MenuItem(item)):[];
     }
 }
 
@@ -14,6 +14,7 @@ class MenuItem{
         this.isAvailable=menuItem.isAvailable;
         this.description=menuItem.description;
         this.picture=menuItem.picture;
+        this.varationsArr=menuItem.varationsArr?menuItem.varationsArr:[];
     }
 }
 
@@ -45,6 +46,7 @@ class Vendor{
         this.id=data.id;
         this.name=data.name;
         this.menuCategoryArr = data.menuCategoryArr?data.menuCategoryArr.map(category => new MenuCategory(category)):[];
+        this.toppingsMap=data.toppings?new Map(Object.entries(data.toppings)):new Map();
         this.cuisines=data.cuisines?data.cuisines:[];
         this.primaryCuisineId=data.primaryCuisineId;
         this.minDeliveryTotal=data.minDeliveryTotal;
@@ -57,7 +59,6 @@ class Vendor{
         this.distance=d;
         this.minDeliveryTime=data.minDeliveryTime;
         this.maxDeliveryTime=this.caculateMaxDeliveryTime(data.minDeliveryTime,d);
-        
     }
     calculateDistance(vendorAddress){
         /*Use the Haversine formula to calculate the straigh-line distance between the customer's address and the venord's*/
