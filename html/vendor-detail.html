@@ -24,7 +24,7 @@
 						</ol>
 					</nav>
 					<div class="vendor-image">
-						<img src="..." class="img-fluid rounded-start" alt="...">
+						<img src="../images/vendor/cs2ym-listing.webp" class="img-fluid" alt="...">
 					</div>
 					<div class="vendor-cuisines">cuisines</div>
 					<div class="vendor-name">name</div>
@@ -34,103 +34,114 @@
 					<div class="vendor-favorite">vendor-favorite</div>
 				</div>	
 			</div>	
-			<div class="menu-wrapper px-5">
-				<section class="menu-navigation d-flex pt-4 pb-0 align-items-center text-center">
-					<div class="search flex-shrink-0 me-3">
-						Search Search Search
+			<div class="menu-wrapper">
+				<section class="menu-navigation d-flex align-items-center text-center px-5">
+					<div class="col-3 search d-flex me-3 justify-content-center align-items-center h-100">
+						Search Search
 					</div>
-					<div class="category-tabs d-flex px-4 flex-grow-1 overflow-hidden align-items-center">
-						<div class="pre-btn">
+					<div class="col-9 category-tabs d-flex px-3 overflow-hidden align-items-center column-gap-3 h-100">
+						<div class="pre-btn h-100">
 							<button>Pre</button>
 						</div>
-						<div class="tabs-container">
-							<ul class="tabs-list d-flex column-gap-4 mb-0 align-items-center px-3">
-								<li>
-									<button><span>Popular1</span></button>
-								</li>
-								<li>
-									<button><span>Popular1</span></button>
-								</li>
-								<li>
-									<button><span>Popular1</span></button>
-								</li>
-								<li>
-									<button><span>Popular1</span></button>
-								</li>
-								<li>
-									<button><span>Popular1</span></button>
-								</li>
-								<li>
-									<button><span>Popular1</span></button>
-								</li>
-								<li>
-									<button><span>Popular1</span></button>
-								</li>
-								<li>
-									<button><span>Popular1</span></button>
-								</li>
-								<li>
-									<button><span>Popular1</span></button>
-								</li>
-								<li>
-									<button><span>Popular1</span></button>
-								</li>
-								<li>
-									<button><span>Popular1</span></button>
-								</li>
-								<li>
-									<button><span>Popular1</span></button>
-								</li>
-								<li>
-									<button><span>Popular1</span></button>
-								</li>
-								<li>
-									<button><span>Popular1</span></button>
-								</li>
-								<li>
-									<button><span>Popular1</span></button>
-								</li>
-								<li>
-									<button><span>Popular1</span></button>
-								</li>
-								<li>
-									<button><span>Popular1</span></button>
-								</li>
-								<li>
-									<button><span>Popular last</span></button>
-								</li>
+						<div class="tabs-container  h-100">
+							<ul class="tabs-list d-flex column-gap-4 mb-0 px-3 h-100">
 							</ul>
 						</div>
-						<div class="next-btn">
+						<div class="next-btn h-100">
 							<button>Next</button>
 						</div>
 					</div>
 				</section>
-				<section class="menu-section d-flex py-4 justify-content-evenly column-gap-5">
-					<div class="col-8 menu">menu</div>
+				<section class="menu-section d-flex py-4 justify-content-evenly column-gap-5 px-5">
+					<div class="col-8" id="menu">
+						<div class="dish-category-section" id="menu_category-id-100">
+							<div class="category-title"><h3>This is a fake category</h3></div>
+							<ul class="dish-list-grid mt-3">
+								<li class="d-flex position-relative pt-2 pb-3 px-2 menu-item-card" data-menu-item-id="menu-item-id-1">
+									<button class="absolute-fill-parent"></button>
+									<div class="d-flex flex-grow-1">
+										<div>
+											<h5 class="item-name">Item Name</h5>
+											<div class="item-price"><span>Euros: 11</span></div>
+											<div class="item-description text-secondary"><span>For ref only</span></div>
+										</div>
+									</div>
+									<div class="d-flex flex-column flex-shrink-0">
+										<picture>
+											<img src="../images/vendor/cs2ym-listing.webp" class="img-fluid rounded-start" alt="dish-image">
+										</picture>
+										<div class="add-to-cart-wrapper">
+											<div class="">
+												<button type="button" class="btn rounded-circle add-to-cart-btn">
+													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+														<path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+													</svg>
+												</button>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
 					<aside class="cart-column flex-grow-1">
-						<div class="cart-summary">
+						<div class="cart-summary p-3 d-flex flex-column">
 							<div class="cart-summary-items-wrapper">
-								<div class="cart-expedition-wrapper">
-									<div><button>Delivery</button></div>
-									<div><button>Pick-Up</button></div>
+								<div class="cart-expedition-wrapper d-flex justify-content-center px-2">
+									<div class="position-relative w-50">
+										<button class="">
+											<span>
+												<div>Delivery</div>
+												<div>20 mins</div>
+											</span>
+										</button>
+									</div>
+									<div class="position-relative w-50">
+										<button class="">
+											<span>
+												<div>Pickup</div>
+												<div>10 mins</div>
+											</span>
+										</button>
+									</div>
 								</div>
 								<div class="title-wrapper">
 									<h5>Your items<h5>
 								</div>
-								<div class="cart-summary-group-item"></div>
-								<div class="cart-summary-amounts-wrapper"></div>
+								<div class="cart-summary-group-item">
+									<ul class="group-item-list px-0">
+										<li>
+											<section class="position-relative">
+												<button class="product-card absolute-fill-parent">bb</button>
+												<div class="product-card-attribute">hh</div>
+											</section>
+										</li>
+									</ul>
+								</div>
+								<div class="cart-summary-amounts-wrapper" id="summary-amounts">
+									<dl class="subtotal d-flex justify-content-between">
+										<dt>Subtotal</dt><dd>1</dd>
+									</dl>
+									<dl class="standard-delivery d-flex justify-content-between">
+										<dt>Standadr delivery</dt><dd>3</dd>
+									</dl>
+									<dl class="platform-fee d-flex justify-content-between">
+										<dt>Platfrom Fee</dt><dd>4</dd>
+									</dl>
+								</div>
 								<div class="culery-toggle-wrapper"></div>
 							</div>
 							<div class="cart-summary-footer">
 								<div class="cart-summary-checkout-button">
-									<div></div>
 									<div>
-										<div>
-											<div class="">Total</div>
+										<div class="d-flex justify-content-between">
+											<div class="">
+												<div>Total</div>
+												<div><a href="#summary-amounts">See summary</a></div>
+											</div>
 											<div class="">Fee Value</div>
 										</div>
-										<div>
+										<div class="d-flex justify-content-center mt-2">
 											<button><span>Review payment and address</span></button>
 										</div>
 									</div>
@@ -143,6 +154,55 @@
 		</main>
 	</div>
 	
+	<!-- Scrollable modal for managing menu items-->
+	<div id="manage-menuitems-modal" class="modal" tabindex="-1">
+		<!-- <div class="modal-dialog"> -->
+		<div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+			<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Modal title</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<p>Modal body text goes here.</p>
+				<p>Modal body text goes here.</p>
+				<p>Modal body text goes here.</p>
+				<p>Modal body text goes here.</p>
+				<p>Modal body text goes here.</p>
+				<p>Modal body text goes here.</p>
+				<p>Modal body text goes here.</p>
+				<p>Modal body text goes here.</p>
+				<p>Modal body text goes here.</p>
+				<p>Modal body text goes here.</p>
+				<p>Modal body text goes here.</p>
+				<p>Modal body text goes here.</p>
+				<p>Modal body text goes here.</p>
+				<p>Modal body text goes here.</p>
+				<p>Modal body text goes here.</p>
+				<p>Modal body text goes here.</p>
+				<p>Modal body text goes here.</p>
+				<p>Modal body text goes here.</p>
+				<p>Modal body text goes here.</p>
+				<p>Modal body text goes here.</p>
+				<p>Modal body text goes here.</p>
+				<p>Modal body text goes here.</p>
+				<p>Modal body text goes here.</p>
+				<p>Modal body text goes here.</p>
+				<p>Modal body text goes here.</p>
+				<p>Modal body text goes here.</p>
+				<p>Modal body text goes here.</p>
+				<p>Modal body text goes here.</p>
+				<p>Modal body text goes here.</p>
+				<p>Modal body text goes here.</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Save changes</button>
+			</div>
+			</div>
+		</div>
+	</div>
+
 	<div class="container-fluid footer top-wrapper">
 		<hr>
 		<footer class="row text-center">
@@ -150,14 +210,16 @@
 		</footer>
 	</div>
 	
-	<script type="text/javascript" src="../js/head-section.js" ></script> <!-- Do not delete this script link -->
+	<script type="text/javascript" src="../js/head-section.js" ></script>
 	<script type="text/javascript" src="../js/VendorData.js" ></script> 
 	<script type="text/javascript" src="../js/CuisineModel.js" ></script>
 	<script type="text/javascript" src="../js/VendorModel.js" ></script> 
+	<script type="text/javascript" src="../js/MenuCategoryData.js" ></script>
+	<script type="text/javascript" src="../js/MenuCategory.js" ></script>
+	<script type="text/javascript" src="../js/MenuItemData.js" ></script>
+	<script type="text/javascript" src="../js/MenuItem.js" ></script>
 	<script type="text/javascript" src="../js/VendorDetailView.js" ></script> 
-	<!-- <script type="text/javascript" src="../js/VendorListView.js" ></script> 
-	<script type="text/javascript" src="../js/FilterView.js" ></script> 
-	<script type="text/javascript" src="../js/VendorController.js" ></script> -->
+	<script type="text/javascript" src="../js/VendorDetailController.js" ></script>
 </body>
 </html>
 

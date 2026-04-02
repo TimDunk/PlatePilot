@@ -1,23 +1,3 @@
-class MenuCategory{
-    constructor(category){
-        this.id=category.id;
-        this.category=category.category;
-        this.menuItemArr=category.menuItemArr?category.menuItemArr.map(item => new MenuItem(item)):[];
-    }
-}
-
-class MenuItem{
-    constructor(menuItem){
-        this.id=menuItem.id;
-        this.name=menuItem.id;
-        this.price=menuItem.price;
-        this.isAvailable=menuItem.isAvailable;
-        this.description=menuItem.description;
-        this.picture=menuItem.picture;
-        this.varationsArr=menuItem.varationsArr?menuItem.varationsArr:[];
-    }
-}
-
 class CustomAddress{
     constructor(address){
         this.country=address.country;
@@ -45,14 +25,16 @@ class Vendor{
     constructor(data){
         this.id=data.id;
         this.name=data.name;
-        this.menuCategoryArr = data.menuCategoryArr?data.menuCategoryArr.map(category => new MenuCategory(category)):[];
-        this.toppingsMap=data.toppings?new Map(Object.entries(data.toppings)):new Map();
+
+        //this.menuCategoryArr = data.menuCategoryArr?data.menuCategoryArr.map(category => new MenuCategory(category)):[];
+        //this.toppingsMap=data.toppings?new Map(Object.entries(data.toppings)):new Map();
+
         this.cuisines=data.cuisines?data.cuisines:[];
         this.primaryCuisineId=data.primaryCuisineId;
         this.minDeliveryTotal=data.minDeliveryTotal;
         this.deliveryFee=data.deliveryFee;
         this.ratedLevel=data.ratedLevel;
-        this.isOpen=data.isOpen;
+        // this.isOpen=data.isOpen;
         this.picture=data.picture;
         this.address=new CustomAddress(data.address);
         let d=this.calculateDistance(data.address);
@@ -123,7 +105,15 @@ class VendorModel {
 
     //Find a specific vendor for the Detail Page
     getVendorById(id) {
-        return this.vendors.find(v => v.id === id);
+        if((typeof id)=="string"){
+            const numberId=Number(id);
+            return this.vendors.find(v => v.id === numberId);
+        }
+        else if((typeof id)=="number"){
+            return this.vendors.find(v => v.id === id);
+        }else{
+            return this.vendors[0];
+        }
     }
 
     // Search filter,just filter against vendor's name

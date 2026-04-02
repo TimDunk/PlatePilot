@@ -1,9 +1,10 @@
 /* vendor info */
+.vendor-info, .menu-navigation{
+    z-index: 3;
+} 
 
 /* @media screen and (min-width:960px) {
-
 } */
-
 nav {
     grid-area: breadcrumb;
 }
@@ -24,7 +25,7 @@ nav {
 }
 
 .vendor-info {
-display: grid;
+    display: grid;
     grid-template-columns: 1fr 2fr 2fr;
     grid-template-rows: repeat(5,auto);
     grid-template-areas: 
@@ -58,14 +59,51 @@ display: grid;
 }
 
 .tabs-list{
-    list-style: none;
-    width:fit-content;
     position:relative;
+}
+
+.menu-navigation button {
+    position: relative;
+    height: 100%;
+    width:fit-content !important;
+    white-space: nowrap;
+    line-height: 2;
+}
+
+.tabs-list li.active button::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%; 
+    height: 4px;
+    background-color: #000;
+    border-radius: 20px; 
+    margin:0 auto; 
+}
+
+.tabs-list li:not(.active) button:hover::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 25px; 
+    height: 3px;
+    background-color: #000;
+    border-radius: 20px; 
+    transform: translateX(-50%);
+}
+
+.tabs-list li:not(.active) button:hover {
+    background-color: #F0F0F0;
 }
 
 .category-tabs  button, .menu-navigation{
     border:none;
     background-color: white;
+}
+.category-tabs{
+    height: 100% !important;
 }
 
 .menu-navigation {
@@ -73,11 +111,12 @@ display: grid;
     position: -webkit-sticky;
     position: sticky;
     top: 68px;
+    height:54px;
 }
 
 /*cart*/
 div.cart-summary{
-    border: 1px solid rgb(222, 222, 222);
+    border: 1px solid var(--border-color) ;
     border-radius: 12px;
     padding: 3px 10px;
     overflow-y:scroll;
@@ -85,14 +124,74 @@ div.cart-summary{
     position: sticky;
     top:168px;
     height: calc(100vh - 172px);
+}  
+
+.cart-expedition-wrapper button {
+    width: 100%;
+    height: 68px;
+    border-radius: 9px;
+    inset:0;
 } 
 
-/* menu */
-div.menu {
-    height: 200vh;
+.cart-summary button {
+    border-radius: 8px;
+}
+#summary-amounts dl{
+    margin-bottom: 0;
 }
 
-.vendor-info, .menu-navigation{
-    z-index: 2;
-} 
+/* menu */
+#menu {
+    height: fit-content;
+}
+.dish-category-section{
+    height: 600px;
+    width: 100%; 
+    border:1px solid var(--border-color) ;
+    margin-top: 16px;
+    padding-top:8px;
+    scroll-margin-top: 125px;
+}
 
+.dish-list-grid{
+    display: grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px 20px;
+}
+
+.add-to-cart-btn{
+    border:1px solid var(--border-color) !important;
+    box-shadow:rgba(0, 0, 0, 0.16) 0px 0px 20px 0px;
+}
+picture{
+    height: 128px;
+    width: 128px;
+    display: block;
+}
+picture img{
+    object-fit: cover;
+    border-radius: 4px;
+    width: auto; 
+    max-height: 100%;
+    aspect-ratio: 1/1; 
+    object-position: center;
+}
+.add-to-cart-wrapper{
+    place-self: flex-end;
+    z-index: 3;
+}
+
+/* all */
+ul {
+    list-style-type: none;
+    padding:0;
+}
+.absolute-fill-parent{
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background-color: #00000000;
+    border-radius: 9px;
+}

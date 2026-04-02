@@ -1,5 +1,6 @@
 :root{
-    --main-color: #f272b2
+    --main-color: #f272b2;
+    --border-color:rgba(222,222,222,1.0);
 };
 
 body{
@@ -35,6 +36,16 @@ div.head{
     font-weight: 600;
 }
 
+.rounded-circle{
+    width:32px;
+    height:32px;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white !important;
+    padding: 0;
+}
 
 .top-wrapper{
     padding:0 45px;

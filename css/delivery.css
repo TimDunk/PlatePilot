@@ -87,11 +87,7 @@ aside legend{
     object-position: center;
 }
 
-.vendor-title-elment button{
-    width:32x;
-    height:32px;
-    aspect-ratio: 1 / 1;
-}
+
 
 
 @media screen and (max-width:992px) {
