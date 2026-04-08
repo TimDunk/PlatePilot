@@ -1,0 +1,67 @@
+:root{
+    --main-color: #f272b2
+};
+
+body{
+    background-color:white;
+    font-size: 1.2em;   
+}
+
+body footer{
+    font-style: italic;
+    font-size: 1rem;
+}
+
+div.head{
+    box-shadow:0 0 15px 1px rgb(211, 210, 210);
+}
+
+/* Style the active list item to let it looks like pressed-down */
+.nav-item:has(.active), .nav-item:active {
+    /* Parameters: x-offset, y-offset, blur, spread, color */
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2), 
+                inset -1px -1px 3px rgba(255, 255, 255, 0.5);
+    
+    background-color: #f9f9f9; 
+    border-radius: 6px;    
+    transform: translateY(1px);
+    transition: all 0.2s ease; /* Smooth transition */
+}
+
+/* Keep your branding pink */
+.nav-item .nav-link.active {
+    /* color: #f272b2 !important;  */
+    color: var( --main-color);
+    font-weight: 600;
+}
+
+
+.top-wrapper{
+    padding:0 45px;
+}
+
+@media screen and (max-width:1200px) {
+    .top-wrapper{
+        padding:0 35px;
+    }
+}
+
+@media screen and (max-width:960px) {
+    .top-wrapper{
+        padding:0 25px;
+    }
+}
+
+@media screen and (max-width:960px) {
+    .top-wrapper{
+        padding:0 12px;
+    }
+}
+
+@media screen and (max-width:760px) {
+    .top-wrapper{
+        padding:0 8px;
+    }
+}
+
+
