@@ -1,4 +1,4 @@
-/* ==================== 1. Root  ==================== */
+/* ==================== Root  ==================== */
 :root {
   --main-pink: #ff69b4;
   --light-pink: #fff5fa;
@@ -7,11 +7,16 @@
 .text-pink {
   color: var(--main-pink) !important;
 }
-.bg-pink {
-  background-color: var(--light-pink) !important;
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
-/* ==== background === */
+
 body {
   background-image: url("../images/index/pexels.com-introduction.jpg");
   background-size: cover;      
@@ -22,24 +27,36 @@ body {
   background-blend-mode: lighten;
 }
 
-/* ==================== 1. language button  ==================== */
+
+/* ==================== Language button  ==================== */
 .language-btn {
-  border: 1px solid var(--main-pink) !important;
+  border: 2px solid var(--main-pink) !important;
+  background: var(--light-pink) !important;
   color: var(--main-pink) !important;
-  background-color: #fff !important;
-}
-.language-btn:hover, .lang-btn.active {
-  background-color: var(--main-pink) !important;
-  color: #fff !important;
-  border-color: var(--main-pink) !important;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.4rem 1.2rem !important;
+  border-radius: 12px;
+  margin-left: 0.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-/* ==================== 2. introduction  ==================== */
+.language-btn:hover,
+.language-btn.active {
+  background: var(--main-pink) !important;
+  color: #fff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(255, 105, 180, 0.2);
+}
+
+
+/* ==================== introduction  ==================== */
 
 .introduction .card {
-  background: transparent !important; /* 透明 */
+  background: transparent !important; 
   border: none !important;
-  box-shadow: none !important; /* 去掉阴影 */
+  box-shadow: none !important; 
   padding: 0 !important;
 }
 
@@ -58,15 +75,12 @@ body {
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35) !important;
 }
 
-/* ==================== 3. Delivery  ==================== */
-
-
-/* ==================== 4. Best Items  ==================== */
+/* ==================== Best Items  ==================== */
 .bestItem h3{
 	color: white;
-	font-weight: 700 !important;  /* 加粗 */
-	opacity: 1 !important;        /* 强制不透明 */
-	text-shadow: 0 0 3px rgba(0,0,0,0.5); /* 加阴影更清晰 */
+	font-weight: 700 !important; 
+	opacity: 1 !important;       
+	text-shadow: 0 0 3px rgba(0,0,0,0.5); 
 }
 .bestItem .card {
   overflow: hidden;
@@ -85,37 +99,30 @@ body {
 .bestItem .card-img-top {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* 核心：居中裁剪，不变形，填满容器 */
-  object-position: center; /* 保证图片主体居中 */
+  object-fit: cover; 
+  object-position: center; 
   transition: transform 0.3s ease;
 }
 
-/* 响应式适配：小屏幕自动调整 */
+
 @media (max-width: 768px) {
   .bestItem .card-img-wrapper {
-    aspect-ratio: 4 / 3; /* 手机端用4:3，更适合竖屏 */
+    aspect-ratio: 4 / 3; 
   }
 }
 
 
-/* ==================== 5. Best Resturant  ==================== */
+/* ==================== Best Resturant  ==================== */
 .bestResturant h3{
 	color: white;
-	font-weight: 700 !important;  /* 加粗 */
-	opacity: 1 !important;        /* 强制不透明 */
-	text-shadow: 0 0 3px rgba(0,0,0,0.5); /* 加阴影更清晰 */
+	font-weight: 700 !important; 
+	opacity: 1 !important;       
+	text-shadow: 0 0 3px rgba(0,0,0,0.5);
 }
 
 
-/* ==================== 6. Order  ==================== */
 
 
-/* 所有卡片统一悬浮效果 */
-.card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-}
+
+
 

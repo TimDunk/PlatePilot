@@ -1,0 +1,74 @@
+/* ==================== Root  ==================== */
+:root {
+  --main-pink: #ff69b4;
+  --light-pink: #fff5fa;
+}
+
+/* ==================== Card  ==================== */
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* ==================== Body  ==================== */
+body {
+  background-image: url("../images/index/pexels.com-introduction.jpg");
+  background-size: cover;      
+  background-position: center; 
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: rgba(255, 255, 255, 0.5); 
+  background-blend-mode: lighten;
+}
+
+
+/* ==================== Main content ==================== */
+.about-container {
+  max-width: 1200px;
+}
+
+.about-container h1 {
+  font-size: 48px !important;
+  font-weight: 700 !important;
+  color: #fff !important;
+  margin-bottom: 20px !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* about card */
+.about-card {
+  border: 0;
+  border-radius: 12px;
+  background: var(--light-pink);  
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+.about-card h3,
+.about-card h5 {
+  color: var(--main-pink);  
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.about-card p {
+  font-size: 0.9rem; 
+  font-weight: 400;
+  line-height: 1.7;
+  color: #555;
+}
+
+/* submit button */
+.submit-btn {
+  background: var(--main-pink); 
+  color: #fff;
+  border-radius: 8px;
+  border: 1px solid #fff;
+  font-weight: 500;
+  transition: 0.3s;
+}
+.submit-btn:hover {
+  background: #e05a9f; 
+  color: #fff;
+}
