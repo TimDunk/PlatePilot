@@ -1,6 +1,4 @@
-// 语言切换核心逻辑
 function switchLanguage(targetLang, event) {
-  // 1. 切换按钮高亮（修复 event 报错）
   document.querySelectorAll('.language-btn').forEach(btn => {
     btn.classList.remove('active');
   });
@@ -8,7 +6,7 @@ function switchLanguage(targetLang, event) {
     event.currentTarget.classList.add('active');
   }
 
-  // 2. 切换所有文字（兼容 language-en + lang-en）
+  //Two languages
   const enElements = document.querySelectorAll('.language-en, .lang-en');
   const cnElements = document.querySelectorAll('.language-cn, .lang-cn');
   
@@ -23,11 +21,11 @@ function switchLanguage(targetLang, event) {
   }
 }
 
-// 页面加载默认英文
+//Set English
 window.onload = function() {
   switchLanguage('en');
   
-  // 默认高亮英文按钮
+  //Set English botton
   const defaultBtn = document.querySelector('.language-btn[onclick*="switchLanguage(\'en\')"]');
   if (defaultBtn) defaultBtn.classList.add('active');
 };
