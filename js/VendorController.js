@@ -6,29 +6,11 @@ class VendorController {
         this.displayedVendors = [];  // The "Filtered List"
         this.init();
         this.criteria = new FilterCriteria(); 
-		this.view.bindToggleFavorite( (id,isFavourite) => this.handleToggleFavorite(id,isFavourite) );
+        this.view.bindToggleFavorite(handleToggleFavorite.bind(this));
         this.filterView.bindFilterChange(this.handleFiltering.bind(this));
         this.filterView.bindSort(this.handleSort.bind(this));
         this.filterView.bindSearch(this.handleSearch.bind(this));
         this.sort="id";
-    }
-
-    handleToggleFavorite(id,isFavourite){
-        try {
-            let storedString=sessionStorage.getItem("FavouriteVendors");
-            const parsedArray = storedString ? JSON.parse(storedString) : [];
-            let fvSet=new Set(parsedArray);
-            if(isFavourite){ //remove from favourit 
-                fvSet.delete(Number(id))
-            }else{ //add to favourit
-                fvSet.add(Number(id));
-            }
-            const fvArray=[...fvSet];
-            sessionStorage.setItem("FavouriteVendors",JSON.stringify(fvArray));  
-        } catch (error) {
-            console.error(error);
-        } finally {
-        }        
     }
 
     async init() {
@@ -42,7 +24,7 @@ class VendorController {
     }
 	
 	renderList(vendors) {
-		const favorites = this.vendorModel.getFavoriteIds(); 
+		const favorites = getFavoriteIds(); 
 		this.view.render(vendors, favorites);
 	}
 
@@ -96,7 +78,7 @@ class VendorController {
 		const nextBatch = await this.vendorModel.getVendorsByPage(this.currentPage);
 
 		if (nextBatch.length > 0) {
-            const favorites = this.vendorModel.getFavoriteIds(); 
+            const favorites = getFavoriteIds(); 
 			this.view.appendVendors(nextBatch,favorites);
             this.isLoading = false;
 		} else {

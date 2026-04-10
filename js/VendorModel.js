@@ -92,8 +92,8 @@ class VendorModel {
         this.cuisineSet=new Set();
     }
 
-    async loadVendors() {
-        const rawData =await JSON.parse(allVendorsData);
+    loadVendors() {
+        const rawData =JSON.parse(allVendorsData);
         let vendors = rawData.map(item => new Vendor(item));
         this.unFilteredVendors=[...vendors];
         this.vendors =[...vendors];
@@ -144,12 +144,6 @@ class VendorModel {
 		const end = start + this.pageSize;
 		return this.vendors.slice(start, end);
 	}
-
-    getFavoriteIds(){
-        let storedString=sessionStorage.getItem("FavouriteVendors");
-        const parsedArray = storedString ? JSON.parse(storedString) : [];
-        return parsedArray;
-    }
 
     getCuisineSet(){
         this.vendors.forEach((vendor)=>{

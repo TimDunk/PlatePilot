@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>PlatePilot</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="../css/frame.css"> <!-- should be the last css file included -->
+	<link rel="stylesheet" href="../css/vendor-detail.css">
+	<link rel="stylesheet" href="../css/purchase-modal.css">
+</head>
+
+<body>
+	<div id="head-placeholder"></div>
+
+	<div class="container-fluid top-wrapper px-0">
+		<main class="row gx-0">
+			<div class="px-5">
+				<div class="vendor-info">
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="delivery.html">Restaurant List</a></li>
+							<li class="breadcrumb-item active" aria-current="page">Replace The Vendor's Name</li>
+						</ol>
+					</nav>
+					<div class="vendor-image">
+						<img src="../images/vendor/cs2ym-listing.webp" class="img-fluid" alt="...">
+					</div>
+					<div class="vendor-cuisines">cuisines</div>
+					<div class="vendor-name">name</div>
+					<div class="vendor-delivery-fee">fee</div>
+					<div class="vendor-min-total">total</div>
+					<div class="vendor-rated-level">rated level</div>
+					<div class="vendor-favorite">vendor-favorite</div>
+				</div>	
+			</div>	
+			<div class="menu-wrapper">
+				<section class="menu-navigation d-flex align-items-center text-center px-5">
+					<div class="col-3 search d-flex me-3 justify-content-center align-items-center h-100">
+						Search Search
+					</div>
+					<div class="col-9 category-tabs d-flex px-3 overflow-hidden align-items-center column-gap-3 h-100">
+						<div class="pre-btn h-100">
+							<button>Pre</button>
+						</div>
+						<div class="tabs-container  h-100">
+							<ul class="tabs-list d-flex column-gap-4 mb-0 px-3 h-100">
+							</ul>
+						</div>
+						<div class="next-btn h-100">
+							<button>Next</button>
+						</div>
+					</div>
+				</section>
+				<section class="menu-section d-flex py-4 justify-content-evenly column-gap-5 px-5">
+					<div class="col-8" id="menu">
+
+						<div class="dish-category-section" id="menu_category-id-100">
+							<div class="category-title"><h3>This is a fake category</h3></div>
+							<ul class="dish-list-grid mt-3">
+								<template id="menu-item-card-template">
+								<li class="d-flex position-relative p-3 pb-3 menu-item-card" data-menu-item-id="menu-item-id-1">
+									<button class="absolute-fill-parent item-card-button"></button>
+									<div class="d-flex flex-grow-1">
+										<div>
+											<h5 class="item-name">Item Name</h5>
+											<div class="item-price"><span>Euros: 11</span></div>
+											<div class="item-description text-secondary"><span>For ref only</span></div>
+										</div>
+									</div>
+									<div class="d-flex flex-column flex-shrink-0">
+										<picture>
+											<img src="../images/vendor/cs2ym-listing.webp" class="img-fluid rounded-start" alt="dish-image">
+										</picture>
+										<div class="add-to-cart-wrapper d-flex flex-row align-items-center justify-content-evenly text-center" data-quantity="zero" data-expanded="false">
+											<div class="delete-quantity">
+												<button type="button" class="btn remove-from-cart-btn d-flex justify-content-center align-items-center p-0">
+													<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+														<path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
+													</svg>
+													<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+														<path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+													</svg>
+												</button>
+											</div>
+											<div class="item-quantity text-center">0</div>
+											<div class="add-quantity">
+												<button type="button" class="btn add-to-cart-btn d-flex justify-content-center align-items-center p-0">
+													<!-- should be replace by div after adding -->
+													<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+														<path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+													</svg>
+												</button>
+											</div>
+										</div>
+									</div>
+								</li>
+								</template>
+							</ul>
+						</div>
+					</div>
+					<aside class="cart-column flex-grow-1">
+						<div class="cart-summary p-3 d-flex flex-column">
+							<div class="cart-summary-items-wrapper">
+								<div class="cart-expedition-wrapper d-flex justify-content-center px-2">
+									<div class="position-relative w-50">
+										<button class="">
+											<span>
+												<div>Delivery</div>
+												<div>20 mins</div>
+											</span>
+										</button>
+									</div>
+									<div class="position-relative w-50">
+										<button class="">
+											<span>
+												<div>Pickup</div>
+												<div>10 mins</div>
+											</span>
+										</button>
+									</div>
+								</div>
+								<div class="title-wrapper">
+									<h5>Your items<h5>
+								</div>
+								<div class="cart-summary-group-item">
+									<ul class="group-item-list px-0">
+										<li>
+											<section class="position-relative">
+												<button class="product-card absolute-fill-parent">bb</button>
+												<div class="product-card-attribute">hh</div>
+											</section>
+										</li>
+									</ul>
+								</div>
+								<div class="cart-summary-amounts-wrapper" id="summary-amounts">
+									<dl class="subtotal d-flex justify-content-between">
+										<dt>Subtotal</dt><dd>1</dd>
+									</dl>
+									<dl class="standard-delivery d-flex justify-content-between">
+										<dt>Standadr delivery</dt><dd>3</dd>
+									</dl>
+									<dl class="platform-fee d-flex justify-content-between">
+										<dt>Platfrom Fee</dt><dd>4</dd>
+									</dl>
+								</div>
+								<div class="culery-toggle-wrapper"></div>
+							</div>
+							<div class="cart-summary-footer">
+								<div class="cart-summary-checkout-button">
+									<div>
+										<div class="d-flex justify-content-between">
+											<div class="">
+												<div>Total</div>
+												<div><a href="#summary-amounts">See summary</a></div>
+											</div>
+											<div class="">Fee Value</div>
+										</div>
+										<div class="d-flex justify-content-center mt-2">
+											<button><span>Review payment and address</span></button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</aside>
+				</section>
+			</div>
+		</main>
+	</div>
+	
+	<div class="container-fluid footer top-wrapper">
+		<hr>
+		<footer class="row text-center">
+			<p>Author: Drill Group</p>
+		</footer>
+	</div>
+
+	<!-- Scrollable modal for managing menu items-->
+	<div id="manage-menuitems-modal" class="modal" tabindex="-1">
+		<div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Modal title</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body d-flex flex-column">
+					<picture>
+						<img src="../images/vendor/cs2ym-listing.webp" class="img-fluid" alt="dish-image">
+					</picture>
+					<div class="dish-info d-flex flex-column mt-4">
+						<div><span>Pan-fried Sirloin Steak with Tiger Prawn</span></div>
+						<div><span>Euros 10</span></div>
+						<p>招牌推介 | 配自家製餐包、精選餐湯、醬汁 (1款)及主食 (1款)</p>
+					</div>
+					
+					<div class="required-list d-flex flex-column">
+						<div>紅島鐵板 - 主食</div>
+						<p>Select 1</p>
+						<div class="selection-option-wrapper">
+							<div><span>Rice</span></div>
+							<div><span>Noodle</span></div>
+							<div><span>Baked Potatoes</span></div>
+						</div>
+					</div>
+
+					<div class="required-list d-flex flex-column">
+						<div>紅島鐵板 - 主食</div>
+						<p>Select 1</p>
+						<div class="selection-option-wrapper">
+							<div><span>Rice</span></div>
+							<div><span>Noodle</span></div>
+							<div><span>Baked Potatoes</span></div>
+						</div>
+					</div>
+					<div class="required-list d-flex flex-column">
+						<div>紅島鐵板 - 主食</div>
+						<p>Select 1</p>
+						<div class="selection-option-wrapper">
+							<div><span>Rice</span></div>
+							<div><span>Noodle</span></div>
+							<div><span>Baked Potatoes</span></div>
+						</div>
+					</div>
+					<div class="required-list d-flex flex-column">
+						<div>紅島鐵板 - 主食</div>
+						<p>Select 1</p>
+						<div class="selection-option-wrapper">
+							<div><span>Rice</span></div>
+							<div><span>Noodle</span></div>
+							<div><span>Baked Potatoes</span></div>
+						</div>
+					</div>
+					<div class="required-list d-flex flex-column">
+						<div>紅島鐵板 - 主食</div>
+						<p>Select 1</p>
+						<div class="selection-option-wrapper">
+							<div><span>Rice</span></div>
+							<div><span>Noodle</span></div>
+							<div><span>Baked Potatoes</span></div>
+						</div>
+					</div>
+					<div class="required-list d-flex flex-column">
+						<div>紅島鐵板 - 主食</div>
+						<p>Select 1</p>
+						<div class="selection-option-wrapper">
+							<div><span>Rice</span></div>
+							<div><span>Noodle</span></div>
+							<div><span>Baked Potatoes</span></div>
+						</div>
+					</div>
+					<div class="required-list d-flex flex-column">
+						<div>紅島鐵板 - 主食</div>
+						<p>Select 1</p>
+						<div class="selection-option-wrapper">
+							<div><span>Rice</span></div>
+							<div><span>Noodle</span></div>
+							<div><span>Baked Potatoes</span></div>
+						</div>
+					</div>
+					<div class="required-list d-flex flex-column">
+						<div>紅島鐵板 - 主食</div>
+						<p>Select 1</p>
+						<div class="selection-option-wrapper">
+							<div><span>Rice</span></div>
+							<div><span>Noodle</span></div>
+							<div><span>Baked Potatoes</span></div>
+						</div>
+					</div>
+					<div class="required-list d-flex flex-column">
+						<div>紅島鐵板 - 主食</div>
+						<p>Select 1</p>
+						<div class="selection-option-wrapper">
+							<div><span>Rice</span></div>
+							<div><span>Noodle</span></div>
+							<div><span>Baked Potatoes</span></div>
+						</div>
+					</div>
+					<div class="required-list d-flex flex-column">
+						<div>紅島鐵板 - 主食</div>
+						<p>Select 1</p>
+						<div class="selection-option-wrapper">
+							<div><span>Rice</span></div>
+							<div><span>Noodle</span></div>
+							<div><span>Baked Potatoes</span></div>
+						</div>
+					</div>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="../js/head-section.js" ></script>
+	<script type="text/javascript" src="../js/VendorData.js" ></script> 
+	<script type="text/javascript" src="../js/CuisineModel.js" ></script>
+	<script type="text/javascript" src="../js/VendorModel.js" ></script>
+	<script type="text/javascript" src="../js/MenuCategoryData.js" ></script>
+	<script type="text/javascript" src="../js/MenuCategory.js" ></script>
+	<script type="text/javascript" src="../js/MenuItemData.js" ></script>
+	<script type="text/javascript" src="../js/MenuItem.js" ></script>
+	<script type="text/javascript" src="../js/CartData.js"></script>
+	<script type="text/javascript" src="../js/CartItem.js"></script>
+	<script type="text/javascript" src="../js/VendorDetailView.js" ></script> 
+	<script type="text/javascript" src="../js/VendorDetailController.js" ></script>
+</body>
+</html>
+
