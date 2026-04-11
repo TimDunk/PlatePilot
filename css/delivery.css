@@ -87,11 +87,7 @@ aside legend{
     object-position: center;
 }
 
-.vendor-title-elment button{
-    width:32x;
-    height:32px;
-    aspect-ratio: 1 / 1;
-}
+
 
 
 @media screen and (max-width:992px) {
@@ -124,6 +120,10 @@ aside legend{
     stroke: var(--main-color);
 }
 
+.favourite-btn{
+    background-color: white;
+} 
+
 .vendor-card{
     text-decoration: none !important;
 }
@@ -131,3 +131,4 @@ aside legend{
 #the-end-hint{
     padding-top: 6em !important;
 }
+

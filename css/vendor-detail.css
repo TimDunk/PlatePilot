@@ -1,0 +1,441 @@
+/* vendor info ***********************************************************************************/
+.vendor-info, .menu-navigation{
+    z-index: 9;
+} 
+
+nav {
+    grid-area: breadcrumb;
+}
+.vendor-image {
+    grid-area: image;
+}
+.vendor-image img{
+    border-radius: 9px;
+}
+.vendor-cuisines {
+    grid-area: cuisines;
+}
+.vendor-name {
+    grid-area: name;
+}
+.vendor-fee-container{
+    grid-area: fee;
+    column-gap: 20px;
+}
+.vendor-rated-level, .vendor-favorite {
+    grid-area: rate;
+}
+
+.vendor-info {
+    display: grid;
+    grid-template-columns: minmax(100px,2fr) 3fr 3fr;
+    grid-template-rows: repeat(5,auto);
+    column-gap: 30px;
+    grid-template-areas: 
+        "breadcrumb breadcrumb breadcrumb"
+        "image cuisines cuisines"
+        "image name name"
+        "image fee fee"
+        "image rate rate";
+}
+
+.vendor-favorite{
+    justify-self: end;
+}
+
+.vendor-rated-level{
+    justify-self: start;
+}
+
+.vendor-cuisine-list .separator {
+    display: none !important;
+}
+
+.vendor-cuisine-list li+.separator {
+    display: inline-block !important;; /* This makes the dot reappear */
+    text-align: center;
+    width: 24px;
+    height: 2px;
+}
+
+.vendor-cuisine-list .separator::after {
+    content: "•" !important;;
+}
+
+/* add to favorites button */
+.favourite-btn svg{
+    fill: none;
+    stroke: currentColor; 
+    transition: fill 0.3s ease, transform 0.2s ease;
+}
+
+.is-favourite-vendor svg{
+    fill: var(--main-color);   
+    stroke: var(--main-color);
+}
+
+.favourite-btn{
+    background-color: white;
+} 
+.favourite-btn:hover{
+    transform: scale(1.1);
+    background-color: var(--hover-color-gray);
+} 
+
+
+
+
+
+/* menu-tabs ******************************************************************************/
+.tabs-container{
+    overflow-x: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
+    -webkit-overflow-scrolling: touch;
+}
+
+.tabs-container::-webkit-scrollbar{
+    display: none;
+}
+
+.tabs-list{
+    position:relative;
+}
+
+.menu-navigation button {
+    position: relative;
+    height: 100%;
+    width:fit-content !important;
+    white-space: nowrap;
+    line-height: 2;
+    font-weight: bold;
+}
+
+.tabs-list li.active button::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%; 
+    height: 4px;
+    background-color: #000;
+    border-radius: 20px; 
+    margin:0 auto; 
+}
+
+.tabs-list li:not(.active) button:hover::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 25px; 
+    height: 3px;
+    background-color: #000;
+    border-radius: 20px; 
+    transform: translateX(-50%);
+}
+
+.tabs-list li:not(.active) button:hover {
+    background-color: #F0F0F0;
+}
+
+.tabs-list button,
+.menu-navigation{
+    border:none;
+    background-color: white;
+}
+.category-tabs{
+    height: 100% !important;
+}
+
+.menu-navigation {
+    box-shadow:0 14px 28px -12px #0000001f;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 68px;
+    height:54px;
+}
+
+.menu-navigation .category-tabs div.pre-btn, 
+.menu-navigation .category-tabs div.next-btn{
+    display: none;
+}
+
+.menu-navigation .category-tabs.is-overflowing div.pre-btn.scroll-at-left-end, 
+.menu-navigation .category-tabs.is-overflowing div.next-btn.scroll-at-right-end{
+    pointer-events:none;
+    display: none;
+}
+
+.menu-navigation .category-tabs.is-overflowing div.pre-btn, 
+.menu-navigation .category-tabs.is-overflowing div.next-btn{
+    display: block;
+}
+
+/*cart *********************************************************************************/
+div.cart-summary{
+    padding: 3px 10px;
+    position: -webkit-sticky; 
+    position: sticky;
+    top:144px;
+    max-height: calc(100vh - 172px);
+}  
+
+.cart-summary-items-wrapper{
+    overflow-y:auto;
+}
+
+.cart-expedition-wrapper button {
+    width: 100%;
+    height: 68px;
+    inset:0;
+} 
+
+div.delivery-time{
+    font-size: small;
+}
+
+.cart-expedition-wrapper button:hover{
+    background-color: var(--secondary-main-color) !important;
+} 
+
+
+#summary-amounts dl{
+    margin-bottom: 0;
+}
+
+.cart-empty-block{
+    padding:3rem 3rem;
+}
+
+.cart-empty-block[not-display]{
+    display: none !important;
+}
+
+.cart-summary-items-wrapper *[data-cart-has-items]{
+    display: none;
+}
+.cart-summary-items-wrapper *[data-cart-has-items="1"]{
+    display: block;
+}
+
+.item-image-container{
+    width:48px;
+    height:48px;
+}
+.price-container{
+    line-height: 16px;
+}
+
+.validation-tips{
+    display:none
+}
+
+
+/* menu *********************************************************************************/
+#menu {
+    height: fit-content;
+}
+.dish-category-section{
+    /* height: 600px; */
+    width: 100%; 
+    margin-top: 16px;
+    padding-top:8px;
+    scroll-margin-top: 125px;
+}
+
+.dish-list-grid{
+    display: grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px 20px;
+}
+
+
+
+.dish-list-grid picture{
+    height: 128px;
+    width: 128px;
+    display: block;
+}
+.dish-list-grid picture img,
+.item-image-container img
+{
+    object-fit: cover;
+    border-radius: 9px;
+    width: auto; 
+    max-height: 100%;
+    aspect-ratio: 1/1; 
+    object-position: center;
+}
+/* add to cart or remove from cart */
+.add-to-cart-wrapper{
+    place-self: flex-end;
+    z-index: 3;
+    height: 32px;
+    width:  32px;
+    /* aspect-ratio: 1/1; */
+    border: 1px solid var(--border-color);
+    border-radius: 9999px;
+    overflow:hidden;
+    transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+.menu-item-card .add-to-cart-wrapper{
+    margin-top: 2px;
+    box-shadow:rgba(0, 0, 0, 0.16) 0px 0px 20px 0px;
+}
+
+.add-to-cart-wrapper[data-expanded="false"][data-quantity="multiple"] .add-to-cart-btn,
+.add-to-cart-wrapper[data-expanded="false"][data-quantity="single"] .add-to-cart-btn,
+button.add-to-cart-btn-in-modal,
+button.add-to-cart-btn-in-modal:hover,
+button.add-to-cart-btn-in-modal:focus,
+button.add-to-cart-btn-in-modal:active
+{
+    background-color: var(--main-color);
+}
+
+.add-to-cart-wrapper[data-expanded="true"]{
+    width:96px;
+}
+
+.item-quantity,.delete-quantity{
+    opacity:0;
+    transform:scale(0);
+    width:0;
+    flex:1;
+    transition:all 0.3s ease;
+    pointer-events:none;
+}
+
+.add-to-cart-wrapper[data-expanded="true"] .delete-quantity{
+    opacity: 1;
+    transform: scale(1);
+    width:100%;
+    flex:1;
+    pointer-events: auto;
+}
+
+.add-to-cart-wrapper[data-expanded="true"] .item-quantity {
+    opacity: 1;
+    transform: scale(1);
+    width:100%;
+    flex:1;
+    pointer-events: auto;
+    height:24px;
+    line-height: 24px;
+}
+
+.add-to-cart-wrapper button{
+    z-index:3;
+    height: 32px;
+    width: 32px;
+}
+
+/* Default: Hide the Dash, show the Trash */
+.bi-trash3 { display: inline-block; }
+.bi-dash { display: none; }
+/* If quantity is high, hide Trash and show Dash */
+.add-to-cart-wrapper[data-quantity="single"] .bi-trash3 { display: inline-block; }
+.add-to-cart-wrapper[data-quantity="siingle"] .bi-dash { display: none; }
+.add-to-cart-wrapper[data-quantity="multiple"] .bi-trash3 { display: none; }
+.add-to-cart-wrapper[data-quantity="multiple"] .bi-dash { display: inline-block; }
+
+ /* This removes the "pressed-down" shadow */
+.add-to-cart-wrapper button:focus, 
+.add-to-cart-wrapper button.active,
+.rounded-circle-block button.focus,
+.rounded-circle-block button.active{
+    box-shadow: none !important;
+    border-color: transparent !important;
+    outline: none !important;
+}
+
+.add-to-cart-wrapper button:hover{
+    background-color: var(--hover-color-gray);
+}
+
+.add-to-cart-wrapper button *{
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* all *********************************************************************************/
+ul {
+    list-style-type: none;
+    padding:0;
+}
+.absolute-fill-parent{
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background-color: #00000000;
+    border-radius: 9px;
+}
+
+.border-color-light-gray{
+    border:1px solid var(--border-color);
+}
+
+.item-in-cart{
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* on mobile device */
+@media (max-width: 768px) {
+    .dish-list-grid{
+        display: grid;
+        grid-template-columns:100%;
+        gap:15px 0px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+    .dish-list-grid{
+        display: grid;
+        grid-template-columns:100%;
+        gap:15px 0px;
+    }
+}
+
+@media (max-width: 576px) {
+    .vendor-rated-level{
+        grid-area: rate;
+    }
+    .vendor-favorite {
+        grid-area: favourite;
+        justify-self:start;
+        width:100%
+    }
+    .vendor-info {
+        display: grid;
+        max-width: 100%;
+        grid-template-columns: minmax(100px,2fr) minmax(100px,3fr);
+        grid-template-rows: repeat(6,auto);
+        gap:10px 10px;
+        grid-template-areas: 
+            "breadcrumb breadcrumb"
+            "image cuisines"
+            "image name"
+            "fee fee"
+            "rate rate"
+            "favourite favourite";
+    }
+    .favourite-btn{
+        width:100%;
+        white-space: normal;
+    }
+    .menu-navigation {
+        box-shadow:0 14px 28px -12px #0000001f;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 134px;
+        height:54px;
+    }
+}
+
+#offcanvasBottom{
+    height: fit-content !important;
+    max-height: 100vh !important;
+}

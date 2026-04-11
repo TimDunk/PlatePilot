@@ -1,22 +1,3 @@
-class MenuCategory{
-    constructor(menuItem){
-        this.id=menuItem.id;
-        this.name=menuItem.name;
-        this.menuItemArr=menuItem.menuItemArr?menuItem.menuItemArr.map(item => new MenuItem(item)):[];
-    }
-}
-
-class MenuItem{
-    constructor(menuItem){
-        this.id=menuItem.id;
-        this.name=menuItem.id;
-        this.price=menuItem.price;
-        this.isAvailable=menuItem.isAvailable;
-        this.description=menuItem.description;
-        this.picture=menuItem.picture;
-    }
-}
-
 class CustomAddress{
     constructor(address){
         this.country=address.country;
@@ -44,20 +25,22 @@ class Vendor{
     constructor(data){
         this.id=data.id;
         this.name=data.name;
-        this.menuCategoryArr = data.menuCategoryArr?data.menuCategoryArr.map(category => new MenuCategory(category)):[];
+
+        //this.menuCategoryArr = data.menuCategoryArr?data.menuCategoryArr.map(category => new MenuCategory(category)):[];
+        //this.toppingsMap=data.toppings?new Map(Object.entries(data.toppings)):new Map();
+
         this.cuisines=data.cuisines?data.cuisines:[];
         this.primaryCuisineId=data.primaryCuisineId;
         this.minDeliveryTotal=data.minDeliveryTotal;
         this.deliveryFee=data.deliveryFee;
         this.ratedLevel=data.ratedLevel;
-        this.isOpen=data.isOpen;
+        // this.isOpen=data.isOpen;
         this.picture=data.picture;
         this.address=new CustomAddress(data.address);
         let d=this.calculateDistance(data.address);
         this.distance=d;
         this.minDeliveryTime=data.minDeliveryTime;
         this.maxDeliveryTime=this.caculateMaxDeliveryTime(data.minDeliveryTime,d);
-        
     }
     calculateDistance(vendorAddress){
         /*Use the Haversine formula to calculate the straigh-line distance between the customer's address and the venord's*/
@@ -109,8 +92,8 @@ class VendorModel {
         this.cuisineSet=new Set();
     }
 
-    async loadVendors() {
-        const rawData =await JSON.parse(allVendorsData);
+    loadVendors() {
+        const rawData =JSON.parse(allVendorsData);
         let vendors = rawData.map(item => new Vendor(item));
         this.unFilteredVendors=[...vendors];
         this.vendors =[...vendors];
@@ -122,7 +105,15 @@ class VendorModel {
 
     //Find a specific vendor for the Detail Page
     getVendorById(id) {
-        return this.vendors.find(v => v.id === id);
+        if((typeof id)=="string"){
+            const numberId=Number(id);
+            return this.vendors.find(v => v.id === numberId);
+        }
+        else if((typeof id)=="number"){
+            return this.vendors.find(v => v.id === id);
+        }else{
+            return this.vendors[0];
+        }
     }
 
     // Search filter,just filter against vendor's name
@@ -153,12 +144,6 @@ class VendorModel {
 		const end = start + this.pageSize;
 		return this.vendors.slice(start, end);
 	}
-
-    getFavoriteIds(){
-        let storedString=sessionStorage.getItem("FavouriteVendors");
-        const parsedArray = storedString ? JSON.parse(storedString) : [];
-        return parsedArray;
-    }
 
     getCuisineSet(){
         this.vendors.forEach((vendor)=>{
