@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<meta charset="UTF-8">
 	<title>PlatePilot</title>
+	<!-- A. Bootstrap CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+	<!-- B.Bootstrap JS ---->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- C. My CSS -->
 	<link rel="stylesheet" href="css/frame.css">
-	<meta charset="UTF-8">
+    <link rel="stylesheet" href="css/index.css">
+    
 </head>
 
 <body>
@@ -15,7 +20,130 @@
 
 	<div class="container-fluid top-wrapper">
 		<main class="row">
-			<p>This is Home Page.Place your HTML in this main section.</p>
+			
+		     <!-- 1. Language Button -->
+		     <div class="text-end mb-1 mt-1">
+		       <button class="language-btn btn me-2 active " onclick="switchLanguage('en')">English</button>
+		       <button class="language-btn btn " onclick="switchLanguage('cn')">中文</button>
+		     </div>
+
+		     <!-- 2.Introduction -->
+		     <div class="container mb-5 introduction">
+		       <div class="card p-4">
+		         <h2 class="language-en">Welcome to PlatePilot</h2>
+		         <h2 class="language-cn" style="display: none;">欢迎来到PlatePilot</h2>
+		         <p class="mb-0 language-en">💗 Order with a tap, deliciousness at your door. 💗</p>
+		         <p class="mb-0 language-cn" style="display: none;">💗 指尖点餐，美味即刻达。 💗</p>
+		       </div>
+		     </div>
+  
+		    <!-- 3. Delivery / Pickup Card  -->
+		    <section class="container mb-4 delivery">
+		      <a href="html/delivery.html" class="text-decoration-none">
+		        <div class="card text-center py-3 px-4 shadow-sm border-0 bg-pink bg-opacity-10 rounded-pill">
+		          <div class="card-body">
+		            <h2 class="card-title text-pink fw-bold mb-1 language-en">Delivery or Pickup</h2>
+		            <h2 class="card-title text-pink fw-bold mb-1 language-cn" style="display: none;">送餐或自提</h2>
+		            <p class="card-text text-muted mb-0 language-en">🛍️ Please click here to filter restaurants by delivery or pickup</p>
+		            <p class="card-text text-muted mb-0 language-cn" style="display: none;">🛍️ 点击此处筛选送餐或自提餐厅</p>
+		          </div>
+		        </div>
+		      </a>
+		    </section>
+
+		    <!-- 4.Best Items -->
+		      <div class="container mb-5 bestItem">
+		        <h3 class="language-en mb-4">Monthly Top 3 Best Items</h3>
+		        <h3 class="language-cn mb-4" style="display: none;">本月最佳餐品前三名。</h3>
+		        <div class="row g-4">
+				  <!-- Barbecued Pork ------>
+				 <div class="col-md-4 col-sm-6">
+				      <div class="card h-100 shadow-sm border-0">
+				        <div class="card-img-wrapper">
+				          <img src="images/index/BarbecuedPork.JPG" class="card-img-top" alt="Barbecued Pork">
+				        </div>
+				        <div class="card-body text-center">
+				          <h5 class="language-en mb-0">Barbecued Pork</h5>
+				          <h5 class="language-cn mb-0" style="display: none;">叉烧</h5>
+				        </div>
+				      </div>
+				    </div>
+				  <!-- Bubble Tea ---------->
+				 <div class="col-md-4 col-sm-6">
+				       <div class="card h-100 shadow-sm border-0">
+				         <div class="card-img-wrapper">
+				           <img src="images/index/BubbleTea.jpg" class="card-img-top" alt="Bubble Tea">
+				         </div>
+				         <div class="card-body text-center">
+				           <h5 class="language-en mb-0">Bubble Tea</h5>
+				           <h5 class="language-cn mb-0" style="display: none;">奶茶</h5>
+				         </div>
+				       </div>
+				     </div>
+				  <!-- Wonton Noodles ---------->
+				  <div class="col-md-4 col-sm-6">
+				    <div class="card h-100 shadow-sm border-0">
+				       <div class="card-img-wrapper">
+				         <img src="images/index/WontonNoodles.jpg" class="card-img-top" alt="Wonton Noodles">
+				       </div>
+				         <div class="card-body text-center">
+				           <h5 class="language-en mb-0">Wonton Noodles</h5>
+				           <h5 class="language-cn mb-0" style="display: none;">云吞面</h5>
+				         </div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+			  
+			  <!-- 5. Monthly Top 3 Best Restaurants-->
+			  			<div class="container mb-5 bestResturant">
+			  				<h3 class="language-en mb-3">Monthly Top 3 Best Restaurants</h3>
+			  				<h3 class="language-cn mb-3" style="display: none;">本月最佳餐厅前三名。</h3>
+			  				<div class="row g-3">
+			  					<div class="col-md-4 col-sm-6">
+			  						<div class="card h-100">
+			  							<img src="https://via.placeholder.com/400x220/ffb6c1/333?text=Restaurant+1" class="card-img-top" alt="Top Restaurant">
+			  							<div class="card-body text-center">
+			  								<h5 class="lang-en">Golden Dragon</h5>
+			  								<h5 class="lang-cn" style="display: none;">金龙餐厅</h5>
+			  							</div>
+			  						</div>
+			  					</div>
+			  					<div class="col-md-4 col-sm-6">
+			  						<div class="card h-100">
+			  							<img src="https://via.placeholder.com/400x220/87ceeb/333?text=Restaurant+2" class="card-img-top" alt="Top Restaurant">
+			  							<div class="card-body text-center">
+			  								<h5 class="language-en">Pho King</h5>
+			  								<h5 class="language-cn" style="display: none;">越南粉王</h5>
+			  							</div>
+			  						</div>
+			  					</div>
+			  					<div class="col-md-4 col-sm-6">
+			  						<div class="card h-100">
+			  							<img src="https://via.placeholder.com/400x220/98fb98/333?text=Restaurant+3" class="card-img-top" alt="Top Restaurant">
+			  							<div class="card-body text-center">
+			  								<h5 class="language-en">Noodle House</h5>
+			  								<h5 class="language-cn" style="display: none;">面栈</h5>
+			  							</div>
+			  						</div>
+			  					</div>
+			  				</div>
+			  			</div>
+    
+		     <!-- 6. Order status -->
+		       <div class="container mb-5 order">
+		         <a href="html/order.html" class="text-decoration-none">
+		           <div class="card text-center p-4 shadow-sm border-0 bg-pink bg-opacity-10 rounded-pill">
+		             <div class="card-body">
+		               <h4 class="card-title text-pink fw-bold language-en">Order Status Preview</h4>
+		               <h4 class="card-title text-pink fw-bold language-cn" style="display: none;">订单状态预览</h4>
+		               <p class="card-text text-muted language-en">🚴 Click to view your order details</p>
+		               <p class="card-text text-muted language-cn" style="display: none;">🚴 点击查看订单详情</p>
+		             </div>
+		           </div>
+		         </a>
+		       </div>
+			
 		</main>
 	</div>
 	
@@ -25,7 +153,9 @@
 			<p>Author: Drill Group</p>
 		</footer>
 	</div>
-	<script src="js/head-section.js" ></script> <!-- Do not delete this script link -->
+	 <!-- D. My JS -->
+	<script src="js/head-section.js" ></script> <!-- Do not delete this script link -->   
+    <script src="js/index.js"></script>
+	
 </body>
 </html>
-
