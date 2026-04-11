@@ -54,6 +54,16 @@ class CartItemModel{
         if(cart)
             return cart.items; //get the first match data
     }
+    getCartItemsQuantity(vendorId){
+        const items=this.getCartItemsByVendorId(vendorId);
+        let quantity=0;
+        if(items){
+            items.forEach(
+                item => quantity=quantity+item.quantity
+            );
+        }
+        return quantity;
+    }
 
     getItem(vendorId,itemId){
         let items=this.getCartItemsByVendorId(vendorId);

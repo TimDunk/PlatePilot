@@ -5,6 +5,8 @@
     --border-color:rgb(210, 210, 210);
     --hover-color-gray:rgba(245, 245, 245, 0.8);
     --gray-background-color:rgba(223, 220, 220, 0.8);
+    --gray-color:rgb(127, 125, 125);
+    --lighter-gray-color:rgb(156, 155, 155);
 };
 
 body{
@@ -103,4 +105,12 @@ button.rounded-circle:hover,
 
 .block-main-color-background{
     background-color: var(--block-main-color);
+ }
+
+ .custom-gray-color{
+    color:var(--gray-color);
+ }
+
+ .lighter-gray-color{
+    color:var(--lighter-gray-color);
  }

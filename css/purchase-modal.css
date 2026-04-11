@@ -63,7 +63,11 @@
     display: block;
 }
 
-.required-tag{
+.selection-list .optional-tag{
+    background-color: var(--gray-background-color);
+}
+
+.selection-list .required-tag{
     background-color: var(--main-color);
 }
 

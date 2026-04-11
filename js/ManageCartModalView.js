@@ -222,6 +222,7 @@ class ManageCartModalView{
                     });
                     const instruction=document.getElementById("special-instruction").value;
                     handler(this.relatedTarget,this.currentItem,this.currentQuantity,variants,toppings,instruction);
+                    this.modal.hide();
                     event.stopPropagation();
                 }
         });

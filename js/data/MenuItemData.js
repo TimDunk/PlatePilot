@@ -61,19 +61,19 @@ var menuItemData=`
 		"description":"The best dish in Dublin",
 		"picture":"../images/vendor/cs2ym-listing.webp",
 		"vendorId":1,
-		"categoryId":1,
+		"categoryId":2,
 		"type":1,
 		"toppings":[{"required":false, "options":[4,5,6]}]
 	},
 	{
 		"id": 6,
 		"name": "6A Class Noodle",
-		"price":15,
+		"price":5,
 		"isAvailable":true,
 		"description":"The best dish in Dublin",
 		"picture":"../images/vendor/cs2ym-listing.webp",
 		"vendorId":1,
-		"categoryId":1,
+		"categoryId":2,
 		"type":1
 	},
 		{

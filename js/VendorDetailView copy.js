@@ -1,8 +1,9 @@
 class VendorDetailView{
+    // Copy at 18:00 04/10/2026
     constructor(vendor){
         this.vendorInfoView=document.querySelector(".vendor-info");
         this.menuView=document.getElementById("menu");
-        this.cartSummaryView=this.getCartSummaryView();
+        this.cartSummaryView=document.querySelector(".cart-summary");
         this.tabsContainer=document.querySelector('.tabs-container');
         this.addEventsToMenuNav();
         this.collapseTimer=null;
@@ -10,33 +11,18 @@ class VendorDetailView{
         this.activeQuantity=0;
         this.vendor=vendor;
     }
-    setMenuStickyTop(){
-        let top=document.querySelector(".head").offsetHeight;
-        document.querySelector(".menu-navigation").style.top=top+"px";
-    }
-    
-    getCartSummaryView(){
-        const views=document.querySelectorAll(".cart-summary");
-        if(views[0].checkVisibility())
-            return views[0];
-        else if(views[1].checkVisibility())
-            return views[1];
-    }
-
     setVendorInfo(){
-        
-        this.vendorInfoView.querySelector("nav .vendor-name-in-nav").innerText=this.vendor.name;
-        const imgSrc=`../images/vendor/${this.vendor.picture}`;
+        let imgSrc=`../images/vendor/${this.vendor.picture}`;
         this.vendorInfoView.querySelector(".vendor-image img").setAttribute("src",imgSrc);
 
 
         this.vendor.cuisines.forEach((cuisine=>{
-            const fragment=`<div class="d-inline-block separator"></div>
+            let fragment=`<div class="d-inline-block separator"></div>
 							<li class="d-inline m-0 p-0"><span>${cuisineModel.findCuisineTextById(cuisine)}</span></li>`;
             this.vendorInfoView.querySelector(".vendor-cuisine-list").appendChild(document.createRange().createContextualFragment(fragment));
         }));
 
-        this.vendorInfoView.querySelector(".vendor-name").children[0].innerText=this.vendor.name;
+        this.vendorInfoView.querySelector(".vendor-name").innerText=this.vendor.name;
         this.vendorInfoView.querySelector(".vendor-delivery-fee").children[2].innerText=this.vendor.deliveryFee;
         this.vendorInfoView.querySelector(".vendor-min-total").children[2].innerText=this.vendor.minDeliveryTotal;
         this.vendorInfoView.querySelector(".vendor-rated-level").children[1].innerText=this.vendor.ratedLevel;
@@ -49,7 +35,7 @@ class VendorDetailView{
         menuCategoryArr.forEach( element => {
             let child=`
             <li class="" id="tabs-tab-${element.id}">
-                <button><span class="custom-gray-color">${element.category}</span></button>
+                <button><span>${element.category}</span></button>
             </li>`;
             const fragment=document.createRange().createContextualFragment(child);
             tabList.appendChild(fragment);
@@ -62,7 +48,7 @@ class VendorDetailView{
         categories.forEach( cag => {
             let categorySection=`
             <div class="dish-category-section" id="menu_category-id-${cag.id}">
-                <div class="category-title fw-bold fs-4">${cag.category}</div>
+                <div class="category-title"><h3>${cag.category}</h3></div>
                 <ul class="dish-list-grid mt-3">
                 </ul>
             </div>
@@ -77,7 +63,6 @@ class VendorDetailView{
                 let card=clone.querySelector(".menu-item-card");
                 card.setAttribute("data-menu-item-id",`menu-item-id-${item.id}`);
                 clone.querySelector(".item-name").innerText=item.name;
-                clone.querySelector(".item-price").children[1].innerText=item.price;
                 clone.querySelector(".item-description").innerText=item.description;
                 clone.querySelector("picture img").setAttribute("src",item.picture);
                 // let quantityInCart=cartItemModel.getQuantityInCart(this.vendor.id,item.id);  //it is ok for the previous version
@@ -89,9 +74,7 @@ class VendorDetailView{
             });
 
             this.menuView.appendChild(fragment);
-            
         });
-        this.setMenuStickyTop();
     }
 
     bindMenu(handler){
@@ -119,9 +102,8 @@ class VendorDetailView{
 
             let targetCategoryId=tab.getAttribute('id').split("-").pop();
             let targetCategory=this.menuView.querySelector(`#menu_category-id-${targetCategoryId}`);
-            if(targetCategory){
+            if(targetCategory)
                 targetCategory.scrollIntoView({ behavior: 'smooth', block: 'start',container: 'nearest' });            
-            }
         });
         
     }
@@ -282,9 +264,6 @@ class VendorDetailView{
                 this.setItemToCart(itemList,cartItemTemplate,item);
             }
         );
-        this.cartSummaryView.querySelector(".delivery-btn .delivery-time").children[0].innerText=this.vendor.minDeliveryTime;
-        this.cartSummaryView.querySelector(".delivery-btn .delivery-time").children[1].innerText=this.vendor.maxDeliveryTime;
-        this.cartSummaryView.querySelector(".pickup-btn .delivery-time").children[0].innerText=this.vendor.minDeliveryTime;
         this.updateCartValue(cart);
     }
 
@@ -343,7 +322,7 @@ class VendorDetailView{
         }
         else if(quantity>0 && itemInCart){
             itemInCart.querySelector(".item-quantity").innerText=quantity;
-            itemInCart.querySelector(".price-container").children[0].innerText="€ "+totalPrice;
+            itemInCart.querySelector(".price-container").children[0].innerText="€ "+quantity*item.price;
             this.controlSvg(itemInCart,quantity);
         }else{
             let itemList=this.cartSummaryView.querySelector(".group-item-list");
@@ -355,35 +334,8 @@ class VendorDetailView{
     }
 
     bindCheckout(handler){
-        const reviewBtn=this.cartSummaryView.querySelector("button.instant-review-cart-btn");
-        reviewBtn.addEventListener(
-            "click",
-            ()=>{
-                let [number,subTotal]=handler();
-                if(number > 0 && subTotal >=this.vendor.minDeliveryTotal){
-                    window.location.href = `checkout.html?vendorId=${this.vendor.id}`;
-                    return;
-                }
-                const tipsElement=reviewBtn.parentElement.previousElementSibling;
-                const showTips=(content)=>{
-                    tipsElement.children[0].innerText=content;
-                    tipsElement.style.display="block";
-                    setTimeout(
-                        ()=>{
-                            tipsElement.style.display="none";
-                        },
-                        3000
-                    );
-                }
-                if (number <= 0 ){
-                    showTips("Please add dishes.");
-                }else if(subTotal < this.vendor.minDeliveryTotal){
-                    showTips("Restaurant require subtotal above € " + this.vendor.minDeliveryTotal);
-                }
-            }
-        );
-    }
 
+    }
     bindDeliveryApproach(handler){
         this.cartSummaryView.querySelector(".cart-expedition-wrapper").addEventListener(
             "click",

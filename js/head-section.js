@@ -15,7 +15,7 @@ if(currentFile=="index.html"){
  }
 
 let head_section=`
-<div class="container-fluid sticky-top bg-body head mb-4 top-wrapper">
+<div class="container-fluid sticky-top bg-body head mb-4 top-wrapper overflow-hidden">
 		<div class="row profile setting text-center pt-2 align-items-center gx-3">
 			<div class="col-4 col-sm-4 col-md-3 col-xl-2 text-start logo">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" width="240" height="60">
@@ -112,7 +112,7 @@ if(currentFile=="delivery.html"){
     form.setAttribute("class","d-flex search d-block") //d-block class to let form element for search to dispaly
 }
 
-if(currentFile=="vendor-detail.html"){
+if(currentFile=="vendor-detail.html" || currentFile=="vendor-detail-copy.html"){
 	let menu=fragment.querySelector("div.menu");
 	menu.classList.add("d-none");
 }

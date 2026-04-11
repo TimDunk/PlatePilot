@@ -20,6 +20,7 @@ class VendorDetailController{
         this.detailView.bindToggleFavorite(handleToggleFavorite.bind(this));
         this.detailView.bindDeliveryApproach(this.handleDeliveryApproach.bind(this));
         this.modalView.bindAdding(this.handlerAddingInModal.bind(this));
+        this.detailView.bindCheckout(this.getCartSizeAndSubTotal.bind(this));
         this.setupObserver();
     }
 
@@ -120,24 +121,23 @@ class VendorDetailController{
     }
 
     setupObserver(){
-        //TODO: the target -sections - should be adjusted
         const sections = this.detailView.menuView.querySelectorAll('.dish-category-section');
         const tabs = this.detailView.tabsContainer.querySelectorAll('li');
 
-        let rootMarginBottom= (window.innerHeight-122-150); //TODO: test when it fails
-        let rootMargin=`-122px 0px -${rootMarginBottom}px 0px`;
-
+        let rootTop=document.querySelector(".head").offsetHeight+54;
+        let rootButtom=window.innerHeight - rootTop - 50;
+        let rootM=`-${rootTop}px 0px -${rootButtom}px 0px`;
         const observerOptions = {
-            root: null, // use the viewport
-            rootMargin: rootMargin, // triggers when section is at this
+            root: null,             // use the viewport
+            rootMargin: rootM,      // triggers when section is at this
             threshold: 0.0
         };
 
         const observer = new IntersectionObserver(
             (entries) => {
-                let entry=entries[0];
-                if (entry.isIntersecting) {
-                    console.info("Intersecting is true.");
+                const entry = entries.find(e => e.isIntersecting);
+                if (entry) {
+                    console.info("Intersecting is with "+ entry);
                     
                     tabs.forEach(link => link.classList.remove('active'));
                     const id = entry.target.getAttribute('id');
@@ -145,11 +145,40 @@ class VendorDetailController{
                     const activeLink = this.detailView.tabsContainer.querySelector(`#tabs-tab-${idInedx}`);
                     if (activeLink) {
                         activeLink.classList.add('active');
-                        activeLink.scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
+                        const container = this.detailView.tabsContainer;
+                        const scrollLeft = activeLink.offsetLeft - (container.offsetWidth / 2) + (activeLink.offsetWidth / 2);
+                        container.scrollTo({
+                            left: scrollLeft,
+                            behavior: 'smooth'
+                        });
                     }
                 }else{
                     console.info("Intersecting is false.");
                 }
+
+                // entries.forEach(
+                //     entry => {
+                //         if (entry.isIntersecting) {
+                //             console.info("Intersecting is with "+ entry);
+                            
+                //             tabs.forEach(link => link.classList.remove('active'));
+                //             const id = entry.target.getAttribute('id');
+                //             const idInedx=id.split("-").pop();
+                //             const activeLink = this.detailView.tabsContainer.querySelector(`#tabs-tab-${idInedx}`);
+                //             if (activeLink) {
+                //                 activeLink.classList.add('active');
+                //                 const container = this.detailView.tabsContainer;
+                //                 const scrollLeft = activeLink.offsetLeft - (container.offsetWidth / 2) + (activeLink.offsetWidth / 2);
+                //                 container.scrollTo({
+                //                     left: scrollLeft,
+                //                     behavior: 'smooth'
+                //                 });
+                //             }
+                //         }else{
+                //             console.info("Intersecting is false.");
+                //         }
+                //     }
+                // );
             }, 
             observerOptions );
 
@@ -160,8 +189,12 @@ class VendorDetailController{
 
     }
 
-    checkout(){
-
+    getCartSizeAndSubTotal(){
+        const cart=this.cartItemModel.getCartByVendorId(this.vendor.id);
+        if(cart)
+            return [this.cartItemModel.getCartItemsQuantity(this.vendor.id),cart.subTotal];
+        else
+            return [0,0]
     }
 }
 
