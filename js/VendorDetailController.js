@@ -156,29 +156,6 @@ class VendorDetailController{
                     console.info("Intersecting is false.");
                 }
 
-                // entries.forEach(
-                //     entry => {
-                //         if (entry.isIntersecting) {
-                //             console.info("Intersecting is with "+ entry);
-                            
-                //             tabs.forEach(link => link.classList.remove('active'));
-                //             const id = entry.target.getAttribute('id');
-                //             const idInedx=id.split("-").pop();
-                //             const activeLink = this.detailView.tabsContainer.querySelector(`#tabs-tab-${idInedx}`);
-                //             if (activeLink) {
-                //                 activeLink.classList.add('active');
-                //                 const container = this.detailView.tabsContainer;
-                //                 const scrollLeft = activeLink.offsetLeft - (container.offsetWidth / 2) + (activeLink.offsetWidth / 2);
-                //                 container.scrollTo({
-                //                     left: scrollLeft,
-                //                     behavior: 'smooth'
-                //                 });
-                //             }
-                //         }else{
-                //             console.info("Intersecting is false.");
-                //         }
-                //     }
-                // );
             }, 
             observerOptions );
 
@@ -186,7 +163,7 @@ class VendorDetailController{
     }
 
     handleDeliveryApproach(approach){
-
+        sessionStorage.setItem("delivery-approach",approach);
     }
 
     getCartSizeAndSubTotal(){

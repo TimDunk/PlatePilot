@@ -269,7 +269,54 @@ class VendorDetailView{
         
     }
 
+    setDeliveryApproach(approach){
+        let deliveryButton=this.cartSummaryView.querySelector(".cart-expedition-wrapper button.delivery-btn");
+        let pickupButton=this.cartSummaryView.querySelector(".cart-expedition-wrapper button.pickup-btn");
+        if(approach=="pickup"){
+                deliveryButton.classList.add("bg-light");
+                deliveryButton.classList.add("border-0");
+                deliveryButton.classList.remove("active");
+                deliveryButton.classList.remove("bg-white");
+                deliveryButton.classList.remove("border-color-light-gray");
+
+                pickupButton.classList.remove("bg-light");
+                pickupButton.classList.remove("border-0");
+                pickupButton.classList.add("active");
+                pickupButton.classList.add("bg-white");
+                pickupButton.classList.add("border-color-light-gray");
+            }   
+            else{
+                pickupButton.classList.add("bg-light");
+                pickupButton.classList.add("border-0");
+                pickupButton.classList.remove("active");
+                pickupButton.classList.remove("bg-white");
+                pickupButton.classList.remove("border-color-light-gray");
+
+                deliveryButton.classList.remove("bg-light");
+                deliveryButton.classList.remove("border-0");
+                deliveryButton.classList.add("active");
+                deliveryButton.classList.add("bg-white");
+                deliveryButton.classList.add("border-color-light-gray");
+
+                sessionStorage.setItem("delivery-approach","delivery")
+            }
+
+                
+    }
+
+    initDeliveryApproach(){
+        let approach=sessionStorage.getItem("delivery-approach");
+        if(approach){
+            this.setDeliveryApproach(approach);
+        }else{
+            this.cartSummaryView.querySelector(".cart-expedition-wrapper button.delivery-btn").classList.add("active");
+            this.cartSummaryView.querySelector(".cart-expedition-wrapper button.pickup-btn").classList.remove("active");
+            sessionStorage.setItem("delivery-approach","delivery")
+        }
+    }
+
     initCartView(cart){
+        this.initDeliveryApproach();
         if(cart==undefined||cart.items==undefined || cart.items.length==0)
             return;
 
@@ -361,7 +408,8 @@ class VendorDetailView{
             ()=>{
                 let [number,subTotal]=handler();
                 if(number > 0 && subTotal >=this.vendor.minDeliveryTotal){
-                    window.location.href = `checkout.html?vendorId=${this.vendor.id}`;
+                    const approach=sessionStorage.getItem("delivery-approach");
+                    window.location.href = `checkout.html?vendorId=${this.vendor.id}&approach=${approach}`;
                     return;
                 }
                 const tipsElement=reviewBtn.parentElement.previousElementSibling;

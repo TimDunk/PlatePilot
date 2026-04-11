@@ -112,7 +112,7 @@ if(currentFile=="delivery.html"){
     form.setAttribute("class","d-flex search d-block") //d-block class to let form element for search to dispaly
 }
 
-if(currentFile=="vendor-detail.html" || currentFile=="vendor-detail-copy.html"){
+if(currentFile=="vendor-detail.html"){
 	let menu=fragment.querySelector("div.menu");
 	menu.classList.add("d-none");
 }
