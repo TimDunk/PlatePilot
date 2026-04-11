@@ -83,9 +83,6 @@ let head_section=`
 							<li class="nav-item">
 								<a class="nav-link" href="${order_page}">Order</a>
 							</li>
-                            <li class="nav-item">
-								<a class="nav-link" href="${vouchers_page}">Voucher</a>
-							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="${about_page}">About</a>
 							</li>
