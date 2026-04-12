@@ -79,7 +79,7 @@ class VendorDetailView{
                 clone.querySelector(".item-name").innerText=item.name;
                 clone.querySelector(".item-price").children[1].innerText=item.price;
                 clone.querySelector(".item-description").innerText=item.description;
-                clone.querySelector("picture img").setAttribute("src",item.picture);
+                clone.querySelector("picture img").setAttribute("src",`../images/item/${item.picture}`);
                 // let quantityInCart=cartItemModel.getQuantityInCart(this.vendor.id,item.id);  //it is ok for the previous version
                 let quantityInCart=cartItemModel.getQuantityInCartNew(this.vendor.id,item.id);
                 clone.querySelector(".item-quantity").innerText=quantityInCart;
@@ -316,6 +316,9 @@ class VendorDetailView{
     }
 
     initCartView(cart){
+        this.cartSummaryView.querySelector(".delivery-btn .delivery-time").children[0].innerText=this.vendor.minDeliveryTime;
+        this.cartSummaryView.querySelector(".delivery-btn .delivery-time").children[1].innerText=this.vendor.maxDeliveryTime;
+        this.cartSummaryView.querySelector(".pickup-btn .delivery-time").children[0].innerText=this.vendor.minDeliveryTime;
         this.initDeliveryApproach();
         if(cart==undefined||cart.items==undefined || cart.items.length==0)
             return;
@@ -329,9 +332,7 @@ class VendorDetailView{
                 this.setItemToCart(itemList,cartItemTemplate,item);
             }
         );
-        this.cartSummaryView.querySelector(".delivery-btn .delivery-time").children[0].innerText=this.vendor.minDeliveryTime;
-        this.cartSummaryView.querySelector(".delivery-btn .delivery-time").children[1].innerText=this.vendor.maxDeliveryTime;
-        this.cartSummaryView.querySelector(".pickup-btn .delivery-time").children[0].innerText=this.vendor.minDeliveryTime;
+        
         this.updateCartValue(cart);
     }
 
@@ -352,7 +353,7 @@ class VendorDetailView{
         clone.querySelector(".item-instruction").children[0].innerText=instruction;
         clone.querySelector(".price-container").children[0].innerText="€ "+totalPrice;
         clone.querySelector(".item-quantity").innerText=quantity;
-        clone.querySelector(".item-image-container img").setAttribute("src",item.picture);
+        clone.querySelector(".item-image-container img").setAttribute("src",`../images/item/${item.picture}`);
         this.controlSvg(clone,quantity);
         parent.prepend(clone);
     }
