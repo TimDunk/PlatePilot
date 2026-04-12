@@ -78,6 +78,7 @@ class ManageCartModalView{
                     const template=this.modalElement.querySelector("#selection-item-template");
                     const optionWrapperTemplate=this.modalElement.querySelector("#option-wrapper-template");
                     let clone=document.importNode(template.content,true);
+                    clone.querySelector(".course_type").innerText="Topping";
                     toppings[i].options.forEach(
                         toppingId =>{
                             const td=toppingData.find(t=>t.id==toppingId);
@@ -131,7 +132,7 @@ class ManageCartModalView{
         this.relatedTarget=relatedTarget;
         this.currentItem=currentItem;
         this.modalElement.querySelector(".modal-title").innerText=currentItem.name;
-        this.modalElement.querySelector(".modal-body picture img").setAttribute("src",currentItem.picture);
+        this.modalElement.querySelector(".modal-body picture img").setAttribute("src",`../images/item/${currentItem.picture}`);
         this.modalElement.querySelector(".dish-info").children[0].children[0].innerText=currentItem.name;
         this.modalElement.querySelector(".dish-info").children[1].children[0].innerText="€ "+currentItem.price;
         this.modalElement.querySelector(".dish-info").children[2].innerText=currentItem.description;

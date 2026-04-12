@@ -174,16 +174,18 @@ class CartItemModel{
     }
 
     setFee(cart,vendor){
-        cart["subTotal"]=0;
+        let subtotal=0
 
         cart.items.forEach(
             item => {
-                cart["subTotal"]=cart["subTotal"] + item.totalPrice;
+                subtotal=subtotal + item.totalPrice;
             }
         );
+        cart["subTotal"]=Number(subtotal.toFixed(2));
         cart["standardDelivery"]=vendor.deliveryFee;
         cart["platformFee"]=vendor.platformFee?vendor.platformFee:1;
-        cart.total= cart["subTotal"]+cart["standardDelivery"]+cart["platformFee"];
+        let total=cart["subTotal"]+cart["standardDelivery"]+cart["platformFee"];
+        cart.total= Number(total.toFixed(2));
     }
 
     caculateTotalPrice(vendor,item,quantity,selectedVariants,SelectedToppings){
@@ -191,7 +193,7 @@ class CartItemModel{
         SelectedToppings.forEach( t=>{
             const topping=this.toppingModel.getTopping(vendor.id,t);
             if(topping){
-                toppingFee=toppingFee + topping.price * quantity
+                toppingFee=toppingFee + topping.price * quantity;
             }
         }); 
             
@@ -204,7 +206,7 @@ class CartItemModel{
             }
         }); 
 
-        return variantFee+toppingFee+quantity*item.price;
+        return Number((variantFee+toppingFee+quantity*item.price).toFixed(2));
         
     }
 
