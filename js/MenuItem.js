@@ -1,3 +1,4 @@
+// Author： Xuquan Deng
 class MenuItem{
     constructor(menuItem){
         this.id=menuItem.id;

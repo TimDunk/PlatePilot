@@ -1,3 +1,4 @@
+// Author： Xuquan Deng
 class VendorListView {
     constructor(containerId) {
         this.container = document.getElementById(containerId);

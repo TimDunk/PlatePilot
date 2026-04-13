@@ -1,3 +1,4 @@
+// Author： Xuquan Deng
 class VendorDetailView{
     constructor(vendor){
         this.vendorInfoView=document.querySelector(".vendor-info");

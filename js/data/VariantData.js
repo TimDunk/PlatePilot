@@ -1,3 +1,5 @@
+// Author： Xuquan Deng
+
 var variantData=`
 [
   {

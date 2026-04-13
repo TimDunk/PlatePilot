@@ -1,3 +1,4 @@
+// Author： Xuquan Deng
 class MenuCategory{
     constructor(category){
         this.id=category.id;

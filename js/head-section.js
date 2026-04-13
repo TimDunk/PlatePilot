@@ -1,3 +1,4 @@
+// Author： Xuquan Deng
 const currentFile = window.location.pathname.split("/").pop() || "index.html";
 if(currentFile=="index.html"){
     var home_page="index.html";

@@ -1,3 +1,4 @@
+// Author： Xuquan Deng
 class CartItem{
     constructor(data){
         this.cartId=data.cartId;

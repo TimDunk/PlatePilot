@@ -1,3 +1,4 @@
+// Author： Xuquan Deng
 class ManageCartModalView{
     constructor(){
         this.modalElement=document.getElementById("manage-menuitems-modal");

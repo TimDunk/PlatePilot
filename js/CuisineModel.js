@@ -1,3 +1,4 @@
+// Author： Xuquan Deng
 class Cuisine{
     constructor(data){
         this.id=data.id;

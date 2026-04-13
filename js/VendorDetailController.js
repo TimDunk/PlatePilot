@@ -1,3 +1,4 @@
+// Author： Xuquan Deng
 class VendorDetailController{
     constructor(vendor,categories,menuItems,detailView,modalView){
         this.detailView=detailView;

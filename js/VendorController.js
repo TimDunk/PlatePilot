@@ -1,3 +1,4 @@
+// Author： Xuquan Deng
 class VendorController {
     constructor(vendorModel, view, filterView) {
         this.vendorModel = vendorModel; // Instance of VendorModel
