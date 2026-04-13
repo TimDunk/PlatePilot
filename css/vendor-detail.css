@@ -259,16 +259,21 @@ div.delivery-time{
     display: grid;
     grid-template-columns:1fr 1fr;
     gap:20px 20px;
+
+    & picture{
+        height: 128px;
+        width: 128px;
+        display: block;
+        & img {
+            height: 128px;
+            width: 128px;
+            object-fit: cover;
+            border-radius: 9px;
+            object-position: center;
+        }
+    }   
 }
 
-
-
-.dish-list-grid picture{
-    height: 128px;
-    width: 128px;
-    display: block;
-}
-.dish-list-grid picture img,
 .item-image-container img
 {
     object-fit: cover;
