@@ -1,3 +1,5 @@
+// Author： Xuquan Deng
+
 var currentCustomerData=`
 {
 	"id":25163329,

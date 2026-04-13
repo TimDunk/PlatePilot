@@ -39,14 +39,14 @@ let head_section=`
 				</p>
 			</div>
 			<div class="col-1 col-sm-1  py-2 favourite">
-				<a href="#">
+				// <a href="#">
 					<svg aria-hidden="true" focusable="false" class="fl-interaction-primary" width="24" height="24" viewBox="0 0 16 16" data-testid="favorite-entry-not-active">
 						<path xmlns="http://www.w3.org/2000/svg" d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
 					</svg>
-				</a>
+				// </a>
 			</div>
 			<div class="col-2 col-sm-1  cart">
-				<button type="button" class="btn py-2">
+				<button type="button" class="btn py-2" aria-label="cart">
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-bag-check" viewBox="0 0 16 16">
 					<path fill-rule="evenodd" d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0"/>
 					<path d="M8 1 a2.5 2.5 0 0 1 2.5 2.5 V4 h-5 v-.5 A2.5 2.5 0 0 1 8 1 m3.5 3 v-.5 a3.5 3.5 0 1 0-7 0 V4 H1 v10 a2 2 0 0 0 2 2 h10 a2 2 0 0 0 2-2 V4 z M2 5 h12 v9 a1 1 0 0 1-1 1 H3 a1 1 0 0 1-1-1 z"/>
@@ -90,7 +90,7 @@ let head_section=`
 						</ul>
 						<form class="d-flex search d-none" role="search">
 							<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-							<button class="btn" type="submit">
+							<button class="btn" type="submit" aria-label="Search">
 								<svg aria-hidden="true" focusable="false" class="fl-none" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 									<path fill-rule="evenodd" clip-rule="evenodd" d="M10.5 2C15.1944 2 19 5.80558 19 10.5C19 12.4076 18.3716 14.1684 17.3106 15.5867C17.2902 15.614 17.2661 15.6455 17.2383 15.6811C17.1139 15.8403 17.1279 16.0674 17.2708 16.2102L20.8386 19.7747C21.1316 20.0675 21.1318 20.5424 20.839 20.8354C20.5728 21.1018 20.1562 21.1261 19.8625 20.9084L19.7783 20.8358L16.2103 17.2705C16.0675 17.1279 15.8408 17.114 15.6817 17.2381C15.655 17.2588 15.6311 17.2772 15.6099 17.2932C14.1876 18.3648 12.418 19 10.5 19C5.80558 19 2 15.1944 2 10.5C2 5.80558 5.80558 2 10.5 2ZM10.5 3.5C6.63401 3.5 3.5 6.63401 3.5 10.5C3.5 14.366 6.63401 17.5 10.5 17.5C14.366 17.5 17.5 14.366 17.5 10.5C17.5 6.63401 14.366 3.5 10.5 3.5Z">
 									</path>

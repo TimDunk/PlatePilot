@@ -2,20 +2,17 @@
     max-width: 640px !important;
 }
 
-.modal-body {
-    padding: 0px;
-}
-
 .dish-info{
     border-bottom:1px solid var(--border-color);
 }
-.modal-dialog .dish-info,
-.modal-dialog .selection-list,
+
+.dish-info,
+.selection-list,
 .special-instruction{
     margin: 0 1rem;
 }
 
-.modal-dialog .selection-list,
+.selection-list,
 .special-instruction{
     padding: 1rem 0.5rem;
 }
@@ -23,19 +20,17 @@
 #manage-menuitems-modal picture{
     height: 100%;
     width: 100%;
-    /* min-height: 100px; */
     display: block;
     overflow: hidden;
-    flex-shrink: 0
-}
+    flex-shrink: 0;
 
-#manage-menuitems-modal picture img{
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
+    & > img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
 }
-
 
 .selection-option-wrapper label {
     cursor: pointer !important;
@@ -79,16 +74,4 @@
     bottom: 3px;
     width:fit-content;
     font-weight: lighter;
-}
-
- button>svg{
-    pointer-events: none;
- }
-
-.item-instruction p, 
-.item-detail p {
-    white-space: normal;    /* Standard wrapping */
-    word-break: break-word; /* Prevents long words from breaking the layout */
-    overflow-wrap: break-word; 
-    width: 100%;            /* Forces the paragraph to respect the div width */
 }

@@ -87,9 +87,6 @@ aside legend{
     object-position: center;
 }
 
-
-
-
 @media screen and (max-width:992px) {
     .grid_container{
         display: grid;

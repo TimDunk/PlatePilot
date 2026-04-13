@@ -8,10 +8,16 @@ nav {
 }
 .vendor-image {
     grid-area: image;
+    & > img{
+            object-fit: cover;
+            border-radius: 15px;
+            width: 100%; 
+            height: auto;
+            aspect-ratio: 16 / 9;
+            object-position: center;
+    }
 }
-.vendor-image img{
-    border-radius: 9px;
-}
+
 .vendor-cuisines {
     grid-area: cuisines;
 }
@@ -173,6 +179,17 @@ nav {
 }
 
 /*cart *********************************************************************************/
+ button>svg{
+    pointer-events: none;
+ }
+
+.item-instruction p, 
+.item-detail p {
+    white-space: normal;    /* Standard wrapping */
+    word-break: break-word; /* Prevents long words from breaking the layout */
+    overflow-wrap: break-word; 
+}
+
 div.cart-summary{
     padding: 3px 10px;
     position: -webkit-sticky; 
