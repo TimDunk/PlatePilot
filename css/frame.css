@@ -5,7 +5,8 @@
     --border-color:rgb(210, 210, 210);
     --hover-color-gray:rgba(245, 245, 245, 0.8);
     --gray-background-color:rgba(223, 220, 220, 0.8);
-    --gray-color:rgb(127, 125, 125);
+    /* --gray-color:rgb(127, 125, 125); */
+    --gray-color:#6E6E6E;
     --lighter-gray-color:rgb(156, 155, 155);
 };
 

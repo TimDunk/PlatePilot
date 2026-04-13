@@ -53,28 +53,22 @@ nav {
     justify-self: start;
 }
 
-.vendor-cuisine-list .separator {
-    display: none !important;
-}
+.vendor-cuisine-list{
+     &>:first-child .separator{
+        display: none !important;
+    } 
 
-.vendor-cuisine-list li+.separator {
-    display: inline-block !important;; /* This makes the dot reappear */
-    text-align: center;
-    width: 24px;
-    height: 2px;
+    & .separator {
+        display: inline-block !important;  /* This makes the dot reappear */
+        text-align: center;
+        width: 24px;
+        height: 2px;
+        &::after {
+        content: "•" !important;
+        }
+    }
 }
-
-.vendor-cuisine-list .separator::after {
-    content: "•" !important;;
-}
-
 /* add to favorites button */
-.favourite-btn svg{
-    fill: none;
-    stroke: currentColor; 
-    transition: fill 0.3s ease, transform 0.2s ease;
-}
-
 .is-favourite-vendor svg{
     fill: var(--main-color);   
     stroke: var(--main-color);
@@ -82,15 +76,16 @@ nav {
 
 .favourite-btn{
     background-color: white;
-} 
-.favourite-btn:hover{
-    transform: scale(1.1);
-    background-color: var(--hover-color-gray);
-} 
-
-
-
-
+    &:hover{
+        transform: scale(1.1);
+        background-color: var(--hover-color-gray);
+    } 
+    & svg{
+        fill: none;
+        stroke: currentColor; 
+        transition: fill 0.3s ease, transform 0.2s ease;
+    }
+}
 
 /* menu-tabs ******************************************************************************/
 .tabs-container{
@@ -98,10 +93,9 @@ nav {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;     /* Firefox */
     -webkit-overflow-scrolling: touch;
-}
-
-.tabs-container::-webkit-scrollbar{
-    display: none;
+    &::-webkit-scrollbar{
+        display: none;
+    }
 }
 
 .tabs-list{

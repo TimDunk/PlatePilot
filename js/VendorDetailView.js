@@ -32,8 +32,9 @@ class VendorDetailView{
 
 
         this.vendor.cuisines.forEach((cuisine=>{
-            const fragment=`<div class="d-inline-block separator"></div>
-							<li class="d-inline m-0 p-0"><span>${cuisineModel.findCuisineTextById(cuisine)}</span></li>`;
+            const fragment=`<li class="d-inline m-0 p-0">
+                            <div class="d-inline-block separator"></div>
+                            <span>${cuisineModel.findCuisineTextById(cuisine)}</span></li>`;
             this.vendorInfoView.querySelector(".vendor-cuisine-list").appendChild(document.createRange().createContextualFragment(fragment));
         }));
 
