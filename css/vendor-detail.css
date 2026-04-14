@@ -251,7 +251,7 @@ div.delivery-time{
 
 /* menu *********************************************************************************/
 .menu-wrapper{
-    min-width: 100vh;
+    min-height: 100vh;
 }
 #menu {
     height: fit-content;
