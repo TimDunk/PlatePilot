@@ -16,8 +16,16 @@ class CartItemModel{
         this.cartArr=[];
         this.loadData();  //TODO:delete this line
         this.maxCartId=0;
-        this.toppingModel=new ToppingModel();
-        this.variantModel=new VariantModel();
+        this.toppingModel=this.getToppingModel();
+        this.variantModel=this.getVariantModel();
+    }
+
+    getToppingModel(){
+        return new ToppingModel();
+    }
+
+    getVariantModel(){
+        return new VariantModel();
     }
 
     loadData(){

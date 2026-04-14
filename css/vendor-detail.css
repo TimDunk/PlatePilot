@@ -11,7 +11,7 @@ nav {
     & > img{
             object-fit: cover;
             border-radius: 15px;
-            width: 100%; 
+            max-width:100%;
             height: auto;
             aspect-ratio: 16 / 9;
             object-position: center;
