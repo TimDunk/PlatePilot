@@ -8,6 +8,8 @@ nav {
 }
 .vendor-image {
     grid-area: image;
+    max-width:324px;
+    max-height:182px;
     & > img{
             object-fit: cover;
             border-radius: 15px;
@@ -38,6 +40,7 @@ nav {
     grid-template-columns: minmax(100px,2fr) 3fr 3fr;
     grid-template-rows: repeat(5,auto);
     column-gap: 30px;
+    min-height: 222px;
     grid-template-areas: 
         "breadcrumb breadcrumb breadcrumb"
         "image cuisines cuisines"
@@ -433,6 +436,7 @@ ul {
         grid-template-columns: minmax(100px,2fr) minmax(100px,3fr);
         grid-template-rows: repeat(6,auto);
         gap:10px 10px;
+        min-height: 272px;
         grid-template-areas: 
             "breadcrumb breadcrumb"
             "image cuisines"

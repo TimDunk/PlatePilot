@@ -180,6 +180,7 @@ if ('history' in window && 'scrollRestoration' in history) {
     window.history.scrollRestoration = 'manual';
 }
 
+
 window.addEventListener('DOMContentLoaded', () => {
     // const view = new VendorDetailView();
     const urlParams = new URLSearchParams(window.location.search);
@@ -196,5 +197,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const modalView=new ManageCartModalView();
     const controller = new VendorDetailController(vendor,categories,menuItems, view,modalView);
 });
+
+
 
 
