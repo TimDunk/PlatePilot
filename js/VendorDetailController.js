@@ -188,11 +188,21 @@ window.addEventListener('DOMContentLoaded', () => {
     if(vendorId){
         console.log(`vendorId=${vendorId}`);
     }
+
     const categories=new MenuCategoryModel().getCategoriesByKeyValue("vendorId",vendorId);
     const menuItems=(new MenuItemModel()).getItemsByKeyNumberValue("vendorId",vendorId);
     const vendorModel = new VendorModel();
     vendorModel.loadVendors();
     let vendor=vendorModel.getVendorById(vendorId);
+
+    const imagePath = `../images/330W/${vendor.picture}`;
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.as = 'image';
+    link.href = imagePath;
+    link.setAttribute('fetchpriority', 'high');
+    document.head.appendChild(link);
+
     const view = new VendorDetailView(vendor);
     const modalView=new ManageCartModalView();
     const controller = new VendorDetailController(vendor,categories,menuItems, view,modalView);
