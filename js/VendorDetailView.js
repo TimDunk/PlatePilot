@@ -27,7 +27,8 @@ class VendorDetailView{
     setVendorInfo(){
         
         this.vendorInfoView.querySelector("nav .vendor-name-in-nav").innerText=this.vendor.name;
-        const imgSrc=`../images/vendor/${this.vendor.picture}`;
+        // const imgSrc=`../images/vendor/${this.vendor.picture}`;
+        const imgSrc=`../images/330W/${this.vendor.picture}`
         this.vendorInfoView.querySelector(".vendor-image img").setAttribute("src",imgSrc);
 
 
@@ -81,7 +82,7 @@ class VendorDetailView{
                 clone.querySelector(".item-name").innerText=item.name;
                 clone.querySelector(".item-price").children[1].innerText=item.price;
                 clone.querySelector(".item-description").innerText=item.description;
-                clone.querySelector("picture img").setAttribute("src",`../images/item/${item.picture}`);
+                clone.querySelector("picture img").setAttribute("src",`../images/thumbnail/${item.picture}`);
                 // let quantityInCart=cartItemModel.getQuantityInCart(this.vendor.id,item.id);  //it is ok for the previous version
                 let quantityInCart=cartItemModel.getQuantityInCartNew(this.vendor.id,item.id);
                 clone.querySelector(".item-quantity").innerText=quantityInCart;
@@ -355,7 +356,7 @@ class VendorDetailView{
         clone.querySelector(".item-instruction").children[0].innerText=instruction;
         clone.querySelector(".price-container").children[0].innerText="€ "+totalPrice;
         clone.querySelector(".item-quantity").innerText=quantity;
-        clone.querySelector(".item-image-container img").setAttribute("src",`../images/item/${item.picture}`);
+        clone.querySelector(".item-image-container img").setAttribute("src",`../images/thumbnail/${item.picture}`);
         this.controlSvg(clone,quantity);
         parent.prepend(clone);
     }

@@ -41,7 +41,8 @@ class VendorListView {
         let clone=document.importNode(cardTemplate.content,true);
         clone.querySelector(".vendor-name").textContent=vendor.name;
         clone.querySelector(".vendor-rating-label").textContent=vendor.ratedLevel;
-        let imgSrc=`../images/vendor/${vendor.picture}`;
+        // let imgSrc=`../images/vendor/${vendor.picture}`;
+        let imgSrc=`../images/330W/${vendor.picture}`;
         clone.querySelector(".vendor-img-container img").setAttribute("src",imgSrc);
         let durationNode=clone.querySelector(".delivey-duration");
         durationNode.children[0].textContent=vendor.minDeliveryTime;

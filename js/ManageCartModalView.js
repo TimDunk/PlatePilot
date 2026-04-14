@@ -133,7 +133,7 @@ class ManageCartModalView{
         this.relatedTarget=relatedTarget;
         this.currentItem=currentItem;
         this.modalElement.querySelector(".modal-title").innerText=currentItem.name;
-        this.modalElement.querySelector(".modal-body picture img").setAttribute("src",`../images/item/${currentItem.picture}`);
+        this.modalElement.querySelector(".modal-body picture img").setAttribute("src",`../images/624W/${currentItem.picture}`);
         this.modalElement.querySelector(".dish-info").children[0].children[0].innerText=currentItem.name;
         this.modalElement.querySelector(".dish-info").children[1].children[0].innerText="€ "+currentItem.price;
         this.modalElement.querySelector(".dish-info").children[2].innerText=currentItem.description;
