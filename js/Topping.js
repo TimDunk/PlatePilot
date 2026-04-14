@@ -13,8 +13,8 @@ class ToppingModel{
         this.toppingsArr=[];
         this.loadData();
     }
-    loadData(){
-        const rawData=JSON.parse(toppingsArr);
+    async loadData(){
+        const rawData=await JSON.parse(toppingsArr);
         if(rawData)
             this.toppingsArr=rawData.map(item => new Topping(item));
     }
@@ -37,8 +37,8 @@ class VariantModel{
         this.variantArr=[];
         this.loadData();
     }
-    loadData(){
-        const rawData=JSON.parse(variantData);
+    async loadData(){
+        const rawData=await JSON.parse(variantData);
         if(rawData)
             this.variantArr=rawData.map(item => new Variant(item));
     }
