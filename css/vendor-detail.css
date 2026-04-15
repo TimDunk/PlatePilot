@@ -217,7 +217,7 @@ div.delivery-time{
 } 
 
 
-#summary-amounts dl{
+.cart-summary-amounts-wrapper dl{
     margin-bottom: 0;
 }
 

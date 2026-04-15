@@ -54,8 +54,8 @@ class VendorDetailController{
     }
 
     handleItemCardAdding(itemCard,target,itemId,variants=[],toppings=[],instruction=""){
-        console.info("itemId="+itemId);
-        console.log(itemCard);
+        // console.info("itemId="+itemId);
+        // console.log(itemCard);
         const currentItem=this.menuItems.find(item=>item.id==itemId);  
         const requiredSelection=this.hasRequriedSelection(currentItem);
         let quantityOfItem=this.cartItemModel.getQuantityInCartNew(this.vendor.id,itemId);
@@ -138,7 +138,7 @@ class VendorDetailController{
             (entries) => {
                 const entry = entries.find(e => e.isIntersecting);
                 if (entry) {
-                    console.info("Intersecting is with "+ entry);
+                    // console.info("Intersecting is with "+ entry);
                     
                     tabs.forEach(link => link.classList.remove('active'));
                     const id = entry.target.getAttribute('id');
@@ -154,7 +154,7 @@ class VendorDetailController{
                         });
                     }
                 }else{
-                    console.info("Intersecting is false.");
+                    // console.info("Intersecting is false.");
                 }
 
             }, 
@@ -185,10 +185,7 @@ window.addEventListener('DOMContentLoaded', () => {
     // const view = new VendorDetailView();
     const urlParams = new URLSearchParams(window.location.search);
     const vendorId= urlParams.get('id');
-    if(vendorId){
-        console.log(`vendorId=${vendorId}`);
-    }
-
+    
     const categories=new MenuCategoryModel().getCategoriesByKeyValue("vendorId",vendorId);
     const menuItems=(new MenuItemModel()).getItemsByKeyNumberValue("vendorId",vendorId);
     const vendorModel = new VendorModel();

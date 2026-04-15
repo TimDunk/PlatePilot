@@ -74,7 +74,6 @@ class VendorListView {
                 else
                     vendorCard.classList.remove("is-favourite-vendor");
                 handler(vendorId,isFavourite);
-                console.log("bindToggleFavorite");
             }
         });
     }

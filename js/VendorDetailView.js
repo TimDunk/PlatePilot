@@ -31,12 +31,13 @@ class VendorDetailView{
         const imgSrc=`../images/330W/${this.vendor.picture}`
         this.vendorInfoView.querySelector(".vendor-image img").setAttribute("src",imgSrc);
 
-
+        const cuisineList=this.vendorInfoView.querySelector(".vendor-cuisine-list");
+        cuisineList.innerHTML="";
         this.vendor.cuisines.forEach((cuisine=>{
             const fragment=`<li class="d-inline m-0 p-0">
                             <div class="d-inline-block separator"></div>
                             <span>${cuisineModel.findCuisineTextById(cuisine)}</span></li>`;
-            this.vendorInfoView.querySelector(".vendor-cuisine-list").appendChild(document.createRange().createContextualFragment(fragment));
+            cuisineList.appendChild(document.createRange().createContextualFragment(fragment));
         }));
 
         this.vendorInfoView.querySelector(".vendor-name").children[0].innerText=this.vendor.name;
@@ -139,7 +140,6 @@ class VendorDetailView{
     }
 
     addToCart(itemCard,quantity){
-        console.info("The quantity added to cart is "+quantity);
         itemCard.querySelector(".item-quantity").innerText=quantity;
         this.controlSvg(itemCard,quantity);
         let btnWrapper=itemCard.querySelector(".add-to-cart-wrapper");
@@ -149,7 +149,6 @@ class VendorDetailView{
     }
     
     removeFromCart(itemCard,quantity){
-        console.info("Remove from cart");
         itemCard.querySelector(".item-quantity").innerText=quantity;
         let btnWrapper=itemCard.querySelector(".add-to-cart-wrapper");       
         if(quantity>=1){
@@ -169,7 +168,6 @@ class VendorDetailView{
     }
 
     startAutoCollapse(btnWrapper,quantity){
-        console.info("startAutoCollapse()");
         if(this.activeWrapper && this.activeWrapper!==btnWrapper){
             this.activeWrapper.setAttribute("data-expanded","false");
             this.updateButtonContent(this.activeWrapper,this.activeQuantity);
@@ -210,7 +208,6 @@ class VendorDetailView{
     }
 
     expandTheAddingBtn(itemCard,quantity){
-        console.info("expandTheAddingBtn()");
         const btnWrapper=itemCard.querySelector(".add-to-cart-wrapper");
         const isExpanded=btnWrapper.dataset.expanded;
         if(!isExpanded||isExpanded!=="true"){
@@ -329,7 +326,7 @@ class VendorDetailView{
         this.controlEmptyCart(cart);
 
         let itemList=this.cartSummaryView.querySelector(".group-item-list");
-        let cartItemTemplate=this.cartSummaryView.querySelector("#item-in-cart-template");
+        let cartItemTemplate=document.querySelector("#item-in-cart-template");
         cart.items.forEach(
             item => {
                 this.setItemToCart(itemList,cartItemTemplate,item);
@@ -398,7 +395,7 @@ class VendorDetailView{
             this.controlSvg(itemInCart,quantity);
         }else{
             let itemList=this.cartSummaryView.querySelector(".group-item-list");
-            let cartItemTemplate=this.cartSummaryView.querySelector("#item-in-cart-template");
+            let cartItemTemplate=document.querySelector("#item-in-cart-template");
             this.preendItem(itemList,cartItemTemplate,item,quantity,variantsString,toppingsString,totalPrice,detail,instruction);
         }
         this.controlEmptyCart(cart);
@@ -486,7 +483,6 @@ class VendorDetailView{
     handleTabsScroll(){
         const buffer=10;
         const { scrollLeft, scrollWidth, clientWidth}=this.tabsContainer;
-        console.log("At first, scrollLeft="+scrollLeft);
         
         if(scrollWidth > clientWidth){
             document.querySelector("div.category-tabs").classList.add("is-overflowing");
@@ -507,7 +503,6 @@ class VendorDetailView{
             "scroll",
             () => {
                 const { scrollLeft, scrollWidth, clientWidth}=this.tabsContainer;
-                console.log("scrollLeft="+scrollLeft);
                 if(scrollLeft < buffer)
                     document.querySelector("div.category-tabs .pre-btn").classList.add("scroll-at-left-end");
                 else
@@ -523,3 +518,4 @@ class VendorDetailView{
 
     }
 }
+

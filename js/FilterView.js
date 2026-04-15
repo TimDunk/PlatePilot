@@ -46,7 +46,6 @@ class FilterView {
             const btn = event.target;    
             if (btn) {
                 event.stopPropagation(); // Stops the click from moving up the DOM
-                console.info("FilterView.bindFilterChange()");
                 let filter=this.getFilterCirteira();
                 handler(filter);
             }
@@ -58,8 +57,6 @@ class FilterView {
             const btn = event.target;    
             if (btn) {
                 event.stopPropagation(); // Stops the click from moving up the DOM
-                console.info("FilterView.bindSort()");
-                console.info(event.target.toString());
                 // let sort_filter=this.container.querySelectorAll(".sort-filter input.form-check-input");
                 handler(btn.value);
             }

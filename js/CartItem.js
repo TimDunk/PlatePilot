@@ -220,7 +220,6 @@ class CartItemModel{
     }
 
     update(vendor,item,quantity,selectedVariants=[],SelectedToppings=[],instruction){
-        console.info("Update to session storage");
         let cart=this.getCartByVendorId(vendor.id);
         if(cart){
             let cartIndex=this.cartArr.findIndex(i => i.vendorId==vendor.id);

@@ -17,7 +17,7 @@
 	<div id="head-placeholder"></div>
 
 	<div class="container-fluid top-wrapper px-0">
-		<main class="row gx-0" tab>
+		<main class="row gx-0">
 			<div class="px-2 px-lg-5">
 				<div class="vendor-info">
 					<nav aria-label="breadcrumb">
@@ -31,6 +31,7 @@
 					</div>
 					<div class="vendor-cuisines">
 						<ul class="vendor-cuisine-list m-0 p-0 fw-lighter fs-6">
+							<li>The Cuisine List</li>
 						</ul>
 					</div>
 					<div class="vendor-name"><h1>name</h1></div>
@@ -58,7 +59,7 @@
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
 								<path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/>
 							</svg>
-							<span class="fw-semibold">Add to Favourites<span>
+							<span class="fw-semibold">Add to Favourites</span>
 						</button>
 					</div>
 				</div>	
@@ -97,14 +98,14 @@
 									<button class="absolute-fill-parent item-card-button border-color-light-gray" aria-label="Dish item"></button>
 									<div class="d-flex flex-grow-1">
 										<div>
-											<h5 class="item-name">Item Name</h5>
+											<div class="item-name fw-semibold fs-5">Item Name</div>
 											<div class="item-price"><span>&euro;:&nbsp;</span><span>0</span></div>
 											<div class="item-description text-secondary"><span>For ref only</span></div>
 										</div>
 									</div>
 									<div class="d-flex flex-column flex-shrink-0">
 										<picture>
-											<img src="" class="img-fluid rounded-start" alt="dish-image">
+											<img src="../images/thumbnail/Untitled-thumbnail.webp" class="img-fluid rounded-start" alt="dish-image">
 										</picture>
 										<div class="add-to-cart-wrapper border-color-light-gray d-flex flex-row align-items-center justify-content-evenly text-center" data-quantity="zero" data-expanded="false">
 											<div class="delete-quantity">
@@ -136,18 +137,18 @@
 								<div class="cart-expedition-wrapper d-flex justify-content-center px-2">
 									<div class="position-relative w-50">
 										<button class="delivery-btn border-color-light-gray bg-white rounded-3 active" aria-label="Delivery">
-											<span>
+											<div>
 												<div class="delivery-approach fw-semibold">Delivery</div>
 												<div class="delivery-time fw-light">Standard( <span></span> - <span></span>mins )</div>
-											</span>
+											</div>
 										</button>
 									</div>
 									<div class="position-relative w-50">
 										<button class="pickup-btn bg-light rounded-3 border-0" aria-label="Pickup">
-											<span>
+											<div>
 												<div class="delivery-approach fw-semibold">Pickup</div>
 												<div class="delivery-time fw-light">Standard( <span></span>mins )</div>
-											</span>
+											</div>
 										</button>
 									</div>
 								</div>
@@ -167,49 +168,10 @@
 								</div>
 								<div class="cart-summary-group-item" data-cart-has-items="0">
 									<ul class="group-item-list px-3">
-										<template id="item-in-cart-template">
-										<li class="d-flex flex-column item-in-cart" data-menu-item-id="item-in-cart-id-0" data-variants="" data-toppings="">
-											<section class="position-relative py-3">
-												<button class="product-card absolute-fill-parent border-0" aria-label="Dish item in cart"></button>
-												<div class="product-card-attribute d-flex gap-3">
-													<div class="item-image-container d-flex">
-														<img src=""></img>
-													</div>
-													<div class="item-detail-container d-flex flex-column flex-grow-1">
-														<div class="item-name d-flex"><p class="text-center m-0 fw-semibold"></p></div>
-														<div class="item-detail d-flex"><p class="text-start m-0"></p></div>
-														<div class="item-instruction d-flex my-1"><p class="text-start fst-italic fs-6 custom-gray-color m-0"></p></div>
-														<div class="price-quantity-container d-flex align-items-center justify-content-between">
-															<div class="price-container d-flex"><p class="text-center m-0"></p></div>
-															<div class="cart-manage-container add-to-cart-wrapper border-color-light-gray d-flex align-items-center" data-quantity="zero" data-expanded="true">
-																<div class="delete-quantity">
-																	<button type="button" class="btn remove-from-cart-btn d-flex justify-content-center align-items-center p-0" aria-label="decrease">
-																		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
-																			<path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
-																		</svg>
-																		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
-																			<path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
-																		</svg>
-																	</button>
-																</div>
-																<div class="item-quantity text-center">0</div>
-																<div class="add-quantity">
-																	<button type="button" class="btn add-to-cart-btn btn-in-cart d-flex justify-content-center align-items-center p-0" aria-label="Increase">
-																		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
-																			<path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
-																		</svg>
-																	</button>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</section>
-										</li>
-										</template>
+										
 									</ul>
 								</div>
-								<div class="cart-summary-amounts-wrapper px-3" id="summary-amounts" data-cart-has-items="0">
+								<div class="cart-summary-amounts-wrapper px-3" data-cart-has-items="0">
 									<dl class="subtotal d-flex justify-content-between">
 										<dt>Subtotal</dt><dd>0</dd>
 									</dl>
@@ -269,10 +231,10 @@
 		</footer>
 	</div>
 
-	<div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+	<div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom">
 		<div class="offcanvas-header">
 			<h5 class="offcanvas-title" id="offcanvasBottomLabel">Cart</h5>
-			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" aria-label="Close cart"></button>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 		</div>
 		<div class="offcanvas-body small">
 			<div class="d-flex d-lg-none cart-summary mobile-cart-view rounded-3 p-3 d-flex flex-column border-color-light-gray justify-content-between">
@@ -280,18 +242,18 @@
 					<div class="cart-expedition-wrapper d-flex justify-content-center px-2">
 						<div class="position-relative w-50">
 							<button class="delivery-btn border-color-light-gray bg-white rounded-3 active" aria-label="Delivery">
-								<span>
+								<div>
 									<div class="delivery-approach fw-semibold">Delivery</div>
 									<div class="delivery-time fw-light">Standard( <span></span> - <span></span>mins )</div>
-								</span>
+								</div>
 							</button>
 						</div>
 						<div class="position-relative w-50">
 							<button class="pickup-btn bg-light rounded-3 border-0" aria-label="Pickup">
-								<span>
+								<div>
 									<div class="delivery-approach fw-semibold">Pickup</div>
 									<div class="delivery-time fw-light">Standard( <span></span>mins )</div>
-								</span>
+								</div>
 							</button>
 						</div>
 					</div>
@@ -307,53 +269,14 @@
 						</div>
 					</div>
 					<div class="title-wrapper pb-2 px-3" data-cart-has-items="0">
-						<h5 class="mt-3">Your items<h5>
+						<h5 class="mt-3">Your items</h5>
 					</div>
 					<div class="cart-summary-group-item" data-cart-has-items="0">
 						<ul class="group-item-list px-3">
-							<template id="item-in-cart-template">
-							<li class="d-flex flex-column item-in-cart" data-menu-item-id="item-in-cart-id-0" data-variants="" data-toppings="">
-								<section class="position-relative py-3">
-									<button class="product-card absolute-fill-parent border-0" aria-label="Dish item in cart"></button>
-									<div class="product-card-attribute d-flex gap-3">
-										<div class="item-image-container d-flex">
-											<img src=""></img>
-										</div>
-										<div class="item-detail-container d-flex flex-column flex-grow-1">
-											<div class="item-name d-flex"><p class="text-center m-0 fw-semibold"></p></div>
-											<div class="item-detail d-flex"><p class="text-start m-0"></p></div>
-											<div class="item-instruction d-flex my-1"><p class="text-start fst-italic fs-6  custom-gray-color m-0"></p></div>
-											<div class="price-quantity-container d-flex align-items-center justify-content-between">
-												<div class="price-container d-flex"><p class="text-center m-0"></p></div>
-												<div class="cart-manage-container add-to-cart-wrapper border-color-light-gray d-flex align-items-center" data-quantity="zero" data-expanded="true">
-													<div class="delete-quantity">
-														<button type="button" class="btn remove-from-cart-btn d-flex justify-content-center align-items-center p-0" aria-label="Decrease">
-															<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
-																<path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
-															</svg>
-															<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
-																<path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
-															</svg>
-														</button>
-													</div>
-													<div class="item-quantity text-center">0</div>
-													<div class="add-quantity">
-														<button type="button" class="btn add-to-cart-btn btn-in-cart d-flex justify-content-center align-items-center p-0" aria-label="Increase">
-															<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
-																<path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
-															</svg>
-														</button>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</section>
-							</li>
-							</template>
+							
 						</ul>
 					</div>
-					<div class="cart-summary-amounts-wrapper px-3" id="summary-amounts" data-cart-has-items="0">
+					<div class="cart-summary-amounts-wrapper px-3" data-cart-has-items="0">
 						<dl class="subtotal d-flex justify-content-between">
 							<dt>Subtotal</dt><dd>0</dd>
 						</dl>
@@ -393,12 +316,12 @@
 		<div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title"></h5>
+					<h5 class="modal-title">Item name</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body d-flex flex-column p-0">
 					<picture>
-						<img src="" class="img-fluid" alt="dish-image">
+						<img src="" class="img-fluid" alt="dish-image"/>
 					</picture>
 					<div class="dish-info d-flex flex-column mt-4">
 						<div class="fw-semibold fs-5"><span></span></div>
@@ -477,22 +400,63 @@
 		</div>
 	</div>
 
-	<script type="text/javascript" src="../js/commonfunctionality.js" ></script>
-	<script type="text/javascript" src="../js/head-section.js" ></script>
-	<script type="text/javascript" src="../js/data/VendorData.js" ></script> 
-	<script type="text/javascript" src="../js/CuisineModel.js" ></script>
-	<script type="text/javascript" src="../js/VendorModel.js" ></script>
-	<script type="text/javascript" src="../js/data/MenuCategoryData.js" ></script>
-	<script type="text/javascript" src="../js/MenuCategory.js" ></script>
-	<script type="text/javascript" src="../js/data/VariantData.js" ></script>
-	<script type="text/javascript" src="../js/data/ToppingData.js" ></script>
-	<script type="text/javascript" src="../js/Topping.js" ></script>
-	<script type="text/javascript" src="../js/data/MenuItemData.js" ></script>
-	<script type="text/javascript" src="../js/MenuItem.js" ></script>
-	<script type="text/javascript" src="../js/CartItem.js"></script>
-	<script type="text/javascript" src="../js/VendorDetailController.js" ></script>
-	<script type="text/javascript" src="../js/VendorDetailView.js"></script> 
-	<script type="text/javascript" src="../js/ManageCartModalView.js" defer></script>
+	<template id="item-in-cart-template">
+		<li class="d-flex flex-column item-in-cart" data-menu-item-id="item-in-cart-id-0" data-variants="" data-toppings="">
+			<section class="position-relative py-3">
+				<button class="product-card absolute-fill-parent border-0" aria-label="Dish item in cart"></button>
+				<div class="product-card-attribute d-flex gap-3">
+					<div class="item-image-container d-flex">
+						<img src=""/>
+					</div>
+					<div class="item-detail-container d-flex flex-column flex-grow-1">
+						<div class="item-name d-flex"><p class="text-center m-0 fw-semibold"></p></div>
+						<div class="item-detail d-flex"><p class="text-start m-0"></p></div>
+						<div class="item-instruction d-flex my-1"><p class="text-start fst-italic fs-6 custom-gray-color m-0"></p></div>
+						<div class="price-quantity-container d-flex align-items-center justify-content-between">
+							<div class="price-container d-flex"><p class="text-center m-0"></p></div>
+							<div class="cart-manage-container add-to-cart-wrapper border-color-light-gray d-flex align-items-center" data-quantity="zero" data-expanded="true">
+								<div class="delete-quantity">
+									<button type="button" class="btn remove-from-cart-btn d-flex justify-content-center align-items-center p-0" aria-label="decrease">
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+											<path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
+										</svg>
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+											<path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+										</svg>
+									</button>
+								</div>
+								<div class="item-quantity text-center">0</div>
+								<div class="add-quantity">
+									<button type="button" class="btn add-to-cart-btn btn-in-cart d-flex justify-content-center align-items-center p-0" aria-label="Increase">
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+											<path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+										</svg>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</li>
+	</template>
+
+	<script src="../js/commonfunctionality.js" ></script>
+	<script src="../js/head-section.js" ></script>
+	<script src="../js/data/VendorData.js" ></script> 
+	<script src="../js/CuisineModel.js" ></script>
+	<script src="../js/VendorModel.js" ></script>
+	<script src="../js/data/MenuCategoryData.js" ></script>
+	<script src="../js/MenuCategory.js" ></script>
+	<script src="../js/data/VariantData.js" ></script>
+	<script src="../js/data/ToppingData.js" ></script>
+	<script src="../js/Topping.js" ></script>
+	<script src="../js/data/MenuItemData.js" ></script>
+	<script src="../js/MenuItem.js" ></script>
+	<script src="../js/CartItem.js"></script>
+	<script src="../js/VendorDetailController.js" ></script>
+	<script src="../js/VendorDetailView.js"></script> 
+	<script src="../js/ManageCartModalView.js" defer></script>
 </body>
 </html>
 

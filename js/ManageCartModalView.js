@@ -184,7 +184,8 @@ class ManageCartModalView{
         let inputTextCounter=document.getElementsByClassName("length_instrument");
         let inputText=document.getElementById("special-instruction");
         if(!inputTextCounter|| !inputText){
-            console.log("Can not find the inputed text counter element.");
+            // console.log("Can not find the inputed text counter element.");
+            return;
         }else{
             inputText.addEventListener("input",(e)=>{
                 let len=inputText.value.length;
@@ -213,7 +214,7 @@ class ManageCartModalView{
         const addBtn=this.modalElement.querySelector(".add-to-cart-btn-in-modal");
         addBtn.addEventListener("click",
             event =>{
-                console.log("Required Selection are selected? "+ this.validateRequiredSelction());
+                // console.log("Required Selection are selected? "+ this.validateRequiredSelction());
                 if(this.validateRequiredSelction()){
                     const selectedVariant=this.modalElement.querySelector("div.variants-list input:checked");
                     const variants=selectedVariant ? [Number(selectedVariant.value)] : [];
