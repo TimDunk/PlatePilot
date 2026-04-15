@@ -1,82 +1,188 @@
 (function() {
-  // DOM elements
+
   const scheduledTrigger = document.getElementById('scheduledTrigger');
   const dateTimePickerContainer = document.getElementById('dateTimePickerContainer');
   const selectedDateTimeDisplay = document.getElementById('selectedDateTimeDisplay');
-  const editEmailLink = document.getElementById('editEmailLink');
-  const userEmailSpan = document.getElementById('userEmail');
   const addMoreItemsBtn = document.getElementById('addMoreItemsBtn');
   const placeOrderBtn = document.getElementById('placePickupOrderBtn');
-  const finalTotalSpan = document.getElementById('finalTotal');
   const originalPriceSpan = document.getElementById('originalPriceSpan');
   const savedAmountSpan = document.getElementById('savedAmountBadge');
   const orderItemsTableBody = document.getElementById('orderItemsTableBody');
-
-  // Base order items
-  const baseOrderItems = [
-    { name: "Grilled Salmon", price: 30.4 },
-    { name: "Lee Kum Kee J x Scaldling Lettuce", price: 16 },
-    { name: "Gyumeshi + M", price: 36 }
-  ];
-
-  // Additional items added by user
-  let addedItems = [];
+  const fullNameInput = document.getElementById('fullNameInput');
+  const addressInput = document.getElementById('addressInput');
+  const emailInput = document.getElementById('emailInput');
   
-  // Constants for pricing
+
+  const subtotalDisplay = document.getElementById('subtotalValue');
+  const platformFeeDisplay = document.getElementById('platformFeeValue');
+  const gstDisplay = document.getElementById('gstValue');
+  const finalTotalDisplay = document.getElementById('finalTotalValue');
+  const vendorNameDisplay = document.getElementById('vendorName');
+  const vendorAddressDisplay = document.getElementById('vendorAddress');
+  const orderVendorNameDisplay = document.getElementById('orderVendorName');
+
+
+  let cartData = null;
+  let currentVendor = null;
+  let currentApproach = 'delivery';
+  
+
   const SERVICE_FEE = 2.6;
-  const PROMO_DISCOUNT = 20.6; // Difference between crossed price and final price
+  const GST_RATE = 0.05; // 5% GST
+  const PROMO_DISCOUNT = 20.6;
+  
 
-  // Scheduled pick-up state
   let scheduledDate = null;
+  let selectedPickupType = 'standard';
 
-  /**
-   * Calculate current subtotal from all items
-   */
-  function calculateSubtotal() {
-    let itemsSum = baseOrderItems.reduce((sum, item) => sum + item.price, 0);
-    for (let extra of addedItems) {
-      itemsSum += extra.price;
+
+  function loadCartData() {
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const vendorId = urlParams.get('vendorId');
+      currentApproach = urlParams.get('approach') || 'delivery';
+
+
+      let storedString = sessionStorage.getItem("CartData");
+      const parsedArray = storedString ? JSON.parse(storedString) : [];
+      
+      if (vendorId && parsedArray.length > 0) {
+        cartData = parsedArray.find(cart => cart.vendorId == vendorId);
+      }
+      
+      if (!cartData || !cartData.items || cartData.items.length === 0) {
+        showEmptyCartMessage();
+        return false;
+      }
+      
+
+      if (typeof allVendorsData !== 'undefined') {
+        const vendors = JSON.parse(allVendorsData);
+        currentVendor = vendors.find(v => v.id == cartData.vendorId);
+      }
+      
+
+      updateVendorInfo();
+      
+      return true;
+    } catch (error) {
+      console.error("Error loading cart data:", error);
+      return false;
     }
-    return itemsSum;
   }
 
-  /**
-   * Get final total including service fee
-   */
+
+  function showEmptyCartMessage() {
+    if (orderItemsTableBody) {
+      orderItemsTableBody.innerHTML = `
+        <tr>
+          <td colspan="2" class="text-center text-muted py-4">
+            Your cart is empty. Please add items before checkout.
+          </td>
+        </tr>
+      `;
+    }
+    if (placeOrderBtn) {
+      placeOrderBtn.disabled = true;
+      placeOrderBtn.style.opacity = '0.5';
+      placeOrderBtn.style.cursor = 'not-allowed';
+    }
+    updateTotalsUI();
+  }
+
+
+  function updateVendorInfo() {
+    if (!currentVendor) return;
+    
+    if (vendorNameDisplay) vendorNameDisplay.innerText = currentVendor.name;
+    if (orderVendorNameDisplay) orderVendorNameDisplay.innerText = currentVendor.name;
+  }
+
+
+  function calculateSubtotal() {
+    if (!cartData || !cartData.items || cartData.items.length === 0) return 0;
+    
+    let subtotal = 0;
+    cartData.items.forEach(item => {
+      subtotal += item.totalPrice;
+    });
+    return subtotal;
+  }
+
+
+  function calculateGST() {
+    const subtotal = calculateSubtotal();
+    return subtotal * GST_RATE;
+  }
+
+
+  function getPlatformFee() {
+    return SERVICE_FEE;
+  }
+
+
   function getTotalWithFees() {
-    return calculateSubtotal() + SERVICE_FEE;
+    const subtotal = calculateSubtotal();
+    const gst = calculateGST();
+    const platformFee = getPlatformFee();
+    return subtotal + gst + platformFee;
   }
 
-  /**
-   * Get original crossed price (before promotion)
-   */
+
   function getOriginalCrossPrice() {
-    return calculateSubtotal() + SERVICE_FEE + PROMO_DISCOUNT;
+    return getTotalWithFees() + PROMO_DISCOUNT;
   }
 
-  /**
-   * Update all total displays
-   */
+
+  function getSavedAmount() {
+    return getOriginalCrossPrice() - getTotalWithFees();
+  }
+
+
   function updateTotalsUI() {
+    const subtotal = calculateSubtotal();
+    const gst = calculateGST();
+    const platformFee = getPlatformFee();
     const finalVal = getTotalWithFees();
     const originalCross = getOriginalCrossPrice();
-    const saved = originalCross - finalVal;
+    const saved = getSavedAmount();
     
-    finalTotalSpan.innerText = `HK$ ${finalVal.toFixed(1)}`;
-    originalPriceSpan.innerText = `HK$ ${originalCross.toFixed(1)}`;
+    // Update subtotal display
+    if (subtotalDisplay) {
+      subtotalDisplay.innerText = `HK$ ${subtotal.toFixed(1)}`;
+    }
     
-    if (saved > 0.01) {
+
+    if (platformFeeDisplay) {
+      platformFeeDisplay.innerText = `HK$ ${platformFee.toFixed(1)}`;
+    }
+    
+
+    if (gstDisplay) {
+      gstDisplay.innerText = `HK$ ${gst.toFixed(1)}`;
+    }
+    
+
+    if (finalTotalDisplay) {
+      finalTotalDisplay.innerText = `HK$ ${finalVal.toFixed(1)}`;
+    }
+    
+
+    if (originalPriceSpan) {
+      originalPriceSpan.innerText = `HK$ ${originalCross.toFixed(1)}`;
+    }
+    
+
+    if (savedAmountSpan && saved > 0.01) {
       savedAmountSpan.innerHTML = `(You save HK$ ${saved.toFixed(1)})`;
       savedAmountSpan.style.color = "#2e7d64";
       savedAmountSpan.style.fontSize = "0.7rem";
-    } else {
+    } else if (savedAmountSpan) {
       savedAmountSpan.innerHTML = "";
     }
   }
 
-  /**
-   * Escape HTML special characters
-   */
+
   function escapeHtml(str) {
     if (!str) return '';
     return str.replace(/[&<>]/g, function(m) {
@@ -87,110 +193,151 @@
     });
   }
 
-  /**
-   * Rebuild the order items table
-   */
+
   function rebuildOrderTable() {
     if (!orderItemsTableBody) return;
+    if (!cartData || !cartData.items || cartData.items.length === 0) {
+      orderItemsTableBody.innerHTML = `
+        <tr>
+          <td colspan="2" class="text-center text-muted py-4">
+            No items in cart
+          </td>
+        </tr>
+      `;
+      return;
+    }
     
     let html = '';
     
-    // Base items
-    baseOrderItems.forEach(item => {
+    cartData.items.forEach(item => {
+      const itemTotal = item.totalPrice;
+      const displayName = item.detail ? `${item.name} (${item.detail})` : item.name;
+      
       html += `
         <tr>
-          <td class="item-name">${escapeHtml(item.name)}</td>
-          <td class="item-price">HK$ ${item.price.toFixed(1)}</td>
-        </tr>
-      `;
-    });
-    
-    // Added items
-    addedItems.forEach((item, idx) => {
-      html += `
-        <tr data-added-idx="${idx}">
-          <td class="item-name">
-            ${escapeHtml(item.name)} 
-            <span class="badge bg-light text-dark ms-1" style="font-size: 0.65rem;">added</span>
+          <td class="item-info">
+            <span>${item.quantity}</span>
+            <span>x</span>
+            <span>${escapeHtml(displayName)}</span>
+            ${item.instruction ? `<br><small class="text-muted" style="font-size: 0.7rem;">Note: ${escapeHtml(item.instruction)}</small>` : ''}
           </td>
-          <td class="item-price">HK$ ${item.price.toFixed(1)}</td>
+          <td class="item-price">HK$ ${itemTotal.toFixed(1)}</td>
         </tr>
       `;
     });
     
     orderItemsTableBody.innerHTML = html;
-    
-    // Show/hide clear button for added items
-    updateClearButtonVisibility();
   }
 
-  /**
-   * Show/hide the clear added items button
-   */
-  function updateClearButtonVisibility() {
-    let clearBtn = document.getElementById('clearExtraItemsBtn');
-    const addMoreContainer = document.querySelector('.add-more-link');
+
+  function saveOrderToHistory(email, fullName, address, pickupType, scheduledDateTime) {
+    const subtotal = calculateSubtotal();
+    const gst = calculateGST();
+    const platformFee = getPlatformFee();
+    const totalAmount = getTotalWithFees();
     
-    if (addedItems.length > 0 && !clearBtn && addMoreContainer) {
-      const btnDiv = document.createElement('div');
-      btnDiv.className = 'mt-2';
-      btnDiv.innerHTML = `
-        <a href="#" id="clearExtraItemsBtn" class="small text-danger" style="text-decoration:none;">
-          <i class="bi bi-arrow-counterclockwise"></i> Reset added items
-        </a>
-      `;
-      addMoreContainer.insertAdjacentElement('afterend', btnDiv);
-      
-      document.getElementById('clearExtraItemsBtn').addEventListener('click', (e) => {
-        e.preventDefault();
-        addedItems = [];
-        rebuildOrderTable();
-        updateTotalsUI();
-        const btn = document.getElementById('clearExtraItemsBtn');
-        if (btn) btn.remove();
-      });
-    } else if (addedItems.length === 0 && clearBtn) {
-      clearBtn.remove();
+
+    const order = {
+      id: `ORD-${Date.now()}`,
+      vendorName: currentVendor ? currentVendor.name : "Restaurant",
+      vendorAddress: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      pickupType: pickupType,
+      scheduledDateTime: scheduledDateTime,
+      orderDate: new Date().toISOString(),
+      status: "preparing",
+      items: cartData.items.map(item => ({
+        name: item.name,
+        price: item.totalPrice / item.quantity,
+        quantity: item.quantity,
+        detail: item.detail || '',
+        instruction: item.instruction || ''
+      })),
+      extraItems: [],
+      email: email,
+      customerName: fullName,
+      customerAddress: address,
+      deliveryApproach: currentApproach,
+      totalAmount: totalAmount,
+      subtotal: subtotal,
+      gst: gst,
+      serviceFee: platformFee
+    };
+    
+
+    let orders = [];
+    const storedOrders = localStorage.getItem("OrderHistory");
+    if (storedOrders) {
+      try {
+        orders = JSON.parse(storedOrders);
+      } catch (e) {
+        orders = [];
+      }
+    }
+    
+
+    orders.unshift(order);
+    
+
+    localStorage.setItem("OrderHistory", JSON.stringify(orders));
+    
+    return order;
+  }
+
+
+  function clearCart() {
+    try {
+      let storedString = sessionStorage.getItem("CartData");
+      if (storedString) {
+        let cartArray = JSON.parse(storedString);
+        // Remove current vendor's cart
+        cartArray = cartArray.filter(cart => cart.vendorId != cartData.vendorId);
+        sessionStorage.setItem("CartData", JSON.stringify(cartArray));
+      }
+    } catch (error) {
+      console.error("Error clearing cart:", error);
     }
   }
 
-  /**
-   * Add a sample item (for demo purposes)
-   */
-  function addSampleItem() {
-    const newItem = { name: "Extra Edamame", price: 18.0 };
-    addedItems.push(newItem);
-    rebuildOrderTable();
-    updateTotalsUI();
-    
-    // Show feedback
-    showTemporaryFeedback('✓ Extra Edamame added (HK$18.0)', 'success');
-  }
 
-
-  function showTemporaryFeedback(message, type = 'success') {
-    const feedback = document.createElement('div');
-    feedback.className = `small mt-1 ${type === 'success' ? 'text-success' : 'text-danger'}`;
-    feedback.innerText = message;
-    addMoreItemsBtn.parentNode.appendChild(feedback);
-    setTimeout(() => feedback.remove(), 2000);
-  }
-
-  /**
-   * Initialize scheduled pick-up picker
-   */
   function initScheduledPicker() {
     if (!scheduledTrigger) return;
+    
+
+    const standardRadio = document.querySelector('input[name="pickupType"][value="standard"]');
+    if (standardRadio) {
+      standardRadio.addEventListener('change', () => {
+        if (standardRadio.checked) {
+          selectedPickupType = 'standard';
+          scheduledDate = null;
+          if (selectedDateTimeDisplay) selectedDateTimeDisplay.innerText = '';
+          if (dateTimePickerContainer) dateTimePickerContainer.style.display = 'none';
+        }
+      });
+    }
+    
+    const scheduledRadio = document.querySelector('input[name="pickupType"][value="scheduled"]');
+    if (scheduledRadio) {
+      scheduledRadio.addEventListener('change', () => {
+        if (scheduledRadio.checked) {
+          selectedPickupType = 'scheduled';
+        }
+      });
+    }
     
     scheduledTrigger.addEventListener('click', (e) => {
       e.preventDefault();
       
+      if (scheduledRadio) {
+        scheduledRadio.checked = true;
+        selectedPickupType = 'scheduled';
+      }
+      
       if (dateTimePickerContainer.style.display === 'none') {
         if (!document.getElementById('dynamicDateTimePicker')) {
           const pickerWrapper = document.createElement('div');
-          pickerWrapper.className = 'p-3 bg-light rounded-3';
+          pickerWrapper.className = 'p-3 bg-light rounded-3 mt-2';
           pickerWrapper.style.border = '1px solid #f0eef2';
-          pickerWrapper.style.width= '100%';
+          pickerWrapper.style.width = '100%';
           pickerWrapper.innerHTML = `
             <label class="small fw-semibold mb-1">Select date & time for pick-up:</label>
             <input type="datetime-local" id="dynamicDateTimePicker" class="form-control form-control-sm mt-1">
@@ -213,7 +360,7 @@
                 dateStyle: 'medium', 
                 timeStyle: 'short' 
               });
-              selectedDateTimeDisplay.innerText = formatted;
+              if (selectedDateTimeDisplay) selectedDateTimeDisplay.innerText = formatted;
               scheduledDate = val;
               dateTimePickerContainer.style.display = 'none';
               showTemporaryFeedback(`Pick-up scheduled for ${formatted}`, 'success');
@@ -224,6 +371,11 @@
           
           cancelBtn.addEventListener('click', () => {
             dateTimePickerContainer.style.display = 'none';
+            if (standardRadio) standardRadio.checked = true;
+            if (scheduledRadio) scheduledRadio.checked = false;
+            selectedPickupType = 'standard';
+            scheduledDate = null;
+            if (selectedDateTimeDisplay) selectedDateTimeDisplay.innerText = '';
           });
         }
         dateTimePickerContainer.style.display = 'block';
@@ -233,96 +385,147 @@
     });
   }
 
-  /**
-   * Initialize email editing functionality
-   */
-  function initEmailEdit() {
-    if (!editEmailLink) return;
-    
-    editEmailLink.addEventListener('click', (e) => {
-      e.preventDefault();
-      const newEmail = prompt('Enter your email address for order confirmation:', userEmailSpan.innerText);
-      if (newEmail && newEmail.includes('@') && newEmail.includes('.')) {
-        userEmailSpan.innerText = newEmail.trim();
-        showTemporaryFeedback('Email updated successfully', 'success');
-      } else if (newEmail && newEmail !== "") {
-        alert('Please provide a valid email address');
-      }
-    });
+
+  function initUserData() {
+    const savedUser = localStorage.getItem("LastOrderUser");
+    if (savedUser) {
+      try {
+        const user = JSON.parse(savedUser);
+        if (emailInput && user.email) emailInput.value = user.email;
+        if (fullNameInput && user.fullName) fullNameInput.value = user.fullName;
+        if (addressInput && user.address) addressInput.value = user.address;
+      } catch(e) {}
+    }
   }
 
-  /**
-   * Initialize add more items functionality
-   */
-  function initAddMoreItems() {
-    if (!addMoreItemsBtn) return;
-    
-    addMoreItemsBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      addSampleItem();
-    });
+  function showTemporaryFeedback(message, type = 'success') {
+    const feedback = document.createElement('div');
+    feedback.className = `small mt-1 ${type === 'success' ? 'text-success' : type === 'info' ? 'text-info' : 'text-danger'}`;
+    feedback.innerText = message;
+    if (addMoreItemsBtn && addMoreItemsBtn.parentNode) {
+      addMoreItemsBtn.parentNode.appendChild(feedback);
+      setTimeout(() => feedback.remove(), 2000);
+    }
   }
 
-  /**
-   * Place order - show confirmation and reset state
-   */
+
+  function addMoreItems() {
+    if (currentVendor && currentVendor.id) {
+      sessionStorage.setItem("delivery-approach", currentApproach);
+      window.location.href = `vendor-detail.html?id=${currentVendor.id}`;
+    } else if (cartData && cartData.vendorId) {
+      sessionStorage.setItem("delivery-approach", currentApproach);
+      window.location.href = `vendor-detail.html?id=${cartData.vendorId}`;
+    } else {
+      window.location.href = 'delivery.html';
+    }
+  }
+
+
   function placeOrder() {
-    // Determine pick-up type
+    // Get form values
+    const email = emailInput ? emailInput.value.trim() : '';
+    const fullName = fullNameInput ? fullNameInput.value.trim() : '';
+    const address = addressInput ? addressInput.value.trim() : '';
+    
+    // Validate
+    if (!email) {
+      alert('Please enter your email address');
+      return;
+    }
+    if (!email.includes('@') || !email.includes('.')) {
+      alert('Please enter a valid email address');
+      return;
+    }
+    if (!fullName) {
+      alert('Please enter your full name');
+      return;
+    }
+    if (currentApproach === 'delivery' && !address) {
+      alert('Please enter your delivery address');
+      return;
+    }
+    
+    if (!cartData || !cartData.items || cartData.items.length === 0) {
+      alert('Your cart is empty. Please add items before placing order.');
+      return;
+    }
+    
+
+    const subtotal = calculateSubtotal();
+    if (currentVendor && subtotal < currentVendor.minDeliveryTotal) {
+      alert(`Minimum order total is €${currentVendor.minDeliveryTotal}. Your subtotal is €${subtotal.toFixed(2)}`);
+      return;
+    }
+    
+
     let pickupType = 'Standard 10 mins';
     let scheduledMsg = '';
-    if (scheduledDate && selectedDateTimeDisplay.innerText !== 'Select a date and time') {
+    if (selectedPickupType === 'scheduled' && scheduledDate && selectedDateTimeDisplay && selectedDateTimeDisplay.innerText !== '') {
       pickupType = 'Scheduled pick-up';
       scheduledMsg = ` at ${selectedDateTimeDisplay.innerText}`;
     }
     
-    const email = userEmailSpan.innerText;
-    const finalTotalVal = finalTotalSpan.innerText;
+    const finalTotalVal = getTotalWithFees();
     
-    // Build items list
+    // Save user info for next time
+    const userInfo = {
+      email: email,
+      fullName: fullName,
+      address: address
+    };
+    localStorage.setItem("LastOrderUser", JSON.stringify(userInfo));
+    
+
+    const order = saveOrderToHistory(email, fullName, address, pickupType, scheduledDate);
+    
+
     const itemsList = [];
-    baseOrderItems.forEach(i => itemsList.push(`${i.name} (HK$${i.price.toFixed(1)})`));
-    addedItems.forEach(i => itemsList.push(`${i.name} (HK$${i.price.toFixed(1)})`));
+    cartData.items.forEach(item => {
+      const displayName = item.detail ? `${item.name} (${item.detail})` : item.name;
+      itemsList.push(`${item.quantity}x ${displayName} (HK$${item.totalPrice.toFixed(1)})`);
+    });
     
-    // Build confirmation message
-    const confirmMessage = `RDER PLACED SUCCESSFULLY!\n\n` +
-      `━━━━━━━━━━━━━━━━━━━━\n` +
-      `Pick-up: ${pickupType}${scheduledMsg}\n` +
-      `Location: Matsuya (Tsim Sha Tsui)\n` +
-      `Shop G06-09, G/F, Chuang's London Plaza\n` +
-      `219 Nathan Road, Jordan Hong Kong\n\n` +
-      `Items:\n- ${itemsList.join('\n- ')}\n\n` +
-      `Total: ${finalTotalVal} (incl. fees & tax)\n` +
-      `Confirmation sent to: ${email}\n\n` +
-      `━━━━━━━━━━━━━━━━━━━━\n` +
-      `Thank you for ordering with PlatePilot! 🍱\n` +
-      `Your order will be ready for pick-up shortly.`;
+    const subtotalDisplayValue = calculateSubtotal();
+    const gstDisplayValue = calculateGST();
+    const platformFeeValue = getPlatformFee();
+    
+
+    const confirmMessage = `ORDER PLACED SUCCESSFULLY!`;
     
     alert(confirmMessage);
     
-    // Optional: Reset scheduled state after order (but keep cart items for demo)
-    // Uncomment below if you want to reset after order
-    // scheduledDate = null;
-    // selectedDateTimeDisplay.innerText = 'Select a date and time';
-    // addedItems = [];
-    // rebuildOrderTable();
-    // updateTotalsUI();
+
+    clearCart();
+    
+
+    window.location.href = 'order.html';
   }
 
-  /**
-   * Initialize all components
-   */
+
   function init() {
+
+    const hasCart = loadCartData();
+    
+    if (hasCart) {
+      rebuildOrderTable();
+      updateTotalsUI();
+    }
+    
     initScheduledPicker();
-    initEmailEdit();
-    initAddMoreItems();
+    initUserData();
+    
+    // Setup add more items button
+    if (addMoreItemsBtn) {
+      addMoreItemsBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        addMoreItems();
+      });
+    }
     
     if (placeOrderBtn) {
       placeOrderBtn.addEventListener('click', placeOrder);
     }
-    
-    // Initial UI updates
-    updateTotalsUI();
-    rebuildOrderTable();
   }
 
   // Start when DOM is ready
