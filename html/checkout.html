@@ -29,8 +29,8 @@
   <div class="card">
 <div class="card-content">
       <div class="section-label"><i class="bi bi-geo-alt"></i>PICKUP AT</div>
-      <div class="vendor-name-large">Matsuya (Tsim Sha Tsui)</div>
-      <div class="vendor-address">
+      <div class="vendor-name-large" id="vendorName">Matsuya (Tsim Sha Tsui)</div>
+      <div class="vendor-address" id="vendorAddress">
         Shop G06-09, G/F, Chuang's London Plaza, 219 Nathan Road, Jordan Hong Kong
       </div>
 
@@ -42,16 +42,14 @@
       <div class="section-label">PICK-UP OPTIONS</div>
       <div class="pickup-options">
         <div class="option-card"><label>
-          <input type="radio"/>
+          <input type="radio" name="pickupType" value="standard" checked/>
           <span>Standard time</span>
         </label></div>
         <div  class="option-card" id="scheduledTrigger"> 
 <label>
-          <input type="radio"/>
-          <span>Standard time</span>
+          <input type="radio" name="pickupType" value="scheduled"/>
+          <span>Scheduled pick-up</span>
         </label>
-      <!--   <span id="selectedDateTimeDisplay">Select a date and time</span>-->
-       
       </div>
                <div  id="selectedDateTimeDisplay"></div>
       <div id="dateTimePickerContainer" style="display: none;"></div>
@@ -64,24 +62,16 @@
       <div class="section-label">PERSONAL DETAILS</div>
       <div class="field">
         <label>Email</label>
-        <input type="email" placeholder="Johndoe@gmail.com"/>
-<!--         <span class="info-value" id="userEmail"></span> -->
+        <input type="email" id="emailInput" placeholder="Johndoe@gmail.com"/>
       </div>
       <div class="field">
         <label>Full name</label>
-        <input type="text" placeholder="John doe"/>
-<!--         <span class="info-value" id="userEmail"></span> -->
+        <input type="text" id="fullNameInput" placeholder="John doe"/>
       </div>
       <div class="field">
         <label>Address</label>
-        <input type="text" placeholder="Irelanf"/>
-<!--         <span class="info-value" id="userEmail"></span> -->
+        <input type="text" id="addressInput" placeholder="Ireland"/>
       </div>
-<!--       <div class="mt-1">
-  <a href="#" id="editEmailLink" class="text-decoration-none small" style="color:#f272b2;">
-    <i class="bi bi-pencil-square"></i> Edit email
-  </a>
-</div> -->
     </div></div>
 
 
@@ -95,26 +85,10 @@
   <div class="card">   
     <div class="card-content">
       <div class="section-label">YOUR ORDER FROM</div>
-      <div class="vendor-name-large mb-2">Matsuya (Tsim Sha Tsui)</div>
+      <div class="vendor-name-large mb-2" id="orderVendorName">Matsuya (Tsim Sha Tsui)</div>
       <table class="items-table">
         <tbody id="orderItemsTableBody">
-          <tr>
-            <td class="item-info">
-         <span>2</span>     
-         <span>x</span>     
-         <span>              Grilled Salmon</span>     
-</td>
-            <td class="item-price">HK$ 30.4</td>
-          </tr>
-          <tr>
-            <td class="item-info">
-                       <span>2</span>     
-         <span>x</span>     
-         <span>                            Lee Kum Kee J x Scaldling Lettuce</span>     
-</td>
-            <td class="item-price">HK$ 16</td>
-          </tr>
-
+          <!-- Items will be populated by JavaScript -->
         </tbody>
       </table>
       
@@ -133,44 +107,44 @@
       <div class="fee-breakdown" >
         Subtotal
       </div>
-      <div class="fee-breakdown"  id="finalTotal">
-      HK$ 85.0
+      <div class="fee-breakdown" id="subtotalValue">
+      HK$ 0.00
       </div>
       </div>
         <div class="info-row" style="margin-bottom: 0.25rem;">
       <div class="fee-breakdown" >
         Platform fee
       </div>
-      <div class="fee-breakdown" id="feeBreakdownText">
-      HK$ 0
+      <div class="fee-breakdown" id="platformFeeValue">
+      HK$ 0.00
       </div>
       </div>
         <div class="info-row" style="margin-bottom: 0.25rem;">
       <div class="fee-breakdown" >
         +GST
       </div>
-      <div class="fee-breakdown" id="feeBreakdownText">
-      HK$ 0
+      <div class="fee-breakdown" id="gstValue">
+      HK$ 0.00
       </div>
       </div>
 </div>
      
       <div class="info-row" style="margin-bottom: 0.25rem;">
         <span class="info-label total-main">Total</span>
-        <span class="info-value total-main" id="finalTotal">HK$ 85.0</span>
+        <span class="info-value total-main" id="finalTotalValue">HK$ 0.00</span>
       </div>
       <div class="info-row" style="margin-bottom: 0.25rem;">
-      <div class="fee-breakdown" id="feeBreakdownText">
+      <div class="fee-breakdown">
         (incl. fees and tax)
       </div>
-        <span class="original-price" id="originalPriceSpan">HK$ 105.6</span>
+        <span class="original-price" id="originalPriceSpan">HK$ 0.00</span>
       </div>
-   <!--  <div class="fee-breakdown mt-1">
-      <!-- <span class="ms-1" id="savedAmountBadge"></span>
-      </div>-->
+    <div class="fee-breakdown mt-1">
+      <span class="ms-1" id="savedAmountBadge"></span>
+      </div>
         <div >
       <button class="btn-place-order" id="placePickupOrderBtn">
-        <i class="bi bi-bag-check fs-5"></i> Place pick-up order
+        <i class="bi bi-bag-check fs-5"></i> Checkout
       </button>
     </div>
     </div>
