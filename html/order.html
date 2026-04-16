@@ -1,25 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>PlatePilot</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="../css/frame.css">
+	  <title>PlatePilot - Order History</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../css/order.css">
 </head>
-
 <body>
 	<!-- Do not delete div.head-placeholder -->
 	<div id="head-placeholder"></div>
 
-	<div class="container-fluid top-wrapper">
-		<main class="row">
-			<p>This is Order History Page. Place your HTML in this main section.</p>
-			<h2>Note: The navigtion tab "Order" is linked with order.html file.</h2>
-		</main>
-	</div>
-	
+
+  <div class="container-fluid top-wrapper">
+    <main class="row">
+      <div class="order-history-wrapper">
+        <!-- Page header with filter dropdown -->
+        <div class="page-header d-flex flex-wrap justify-content-between align-items-center">
+          <div>
+            <h1>
+              
+ Order history</h1>
+            <p>Track your past pick-ups </p>
+          </div>
+          <div class="filter-container mt-2 mt-sm-0">
+            <label for="orderFilterSelect" class="filter-label">
+        Filter by
+            </label>
+            <select id="orderFilterSelect" class="filter-select">
+              <option value="all">All orders</option>
+              <option value="completed">Completed</option>
+              <option value="preparing">Preparing</option>
+              <option value="ready">Ready for pick-up</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Order history dynamic grid -->
+        <div id="historyListContainer" class="history-grid">
+          <!-- Orders will be injected here by JavaScript -->
+        </div>
+      </div>
+    </main>
+  </div>
 	<div class="container-fluid footer top-wrapper">
 		<hr>
 		<footer class="row text-center">
@@ -27,6 +52,6 @@
 		</footer>
 	</div>
 	<script src="../js/head-section.js" ></script> <!-- Do not delete this script link -->
+	  <script src="../js/order.js"></script>
 </body>
 </html>
-
