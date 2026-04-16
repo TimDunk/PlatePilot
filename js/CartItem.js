@@ -13,9 +13,9 @@ class CartItem{
 
 class CartItemModel{
     constructor(){
+        this.maxCartId=0;
         this.cartArr=[];
         this.loadData();  //TODO:delete this line
-        this.maxCartId=0;
         this.toppingModel=this.getToppingModel();
         this.variantModel=this.getVariantModel();
     }
@@ -37,8 +37,8 @@ class CartItemModel{
                 this.cartArr=parsedArray.map(data => new CartItem(data));
             this.cartArr.forEach(
                 cart => {
-                    if(cart.id > this.maxCartId)
-                        this.maxCartId=cart.id;
+                    if(cart.cartId > this.maxCartId)
+                        this.maxCartId=cart.cartId;
                 }
             );
         } catch (error) {
@@ -268,9 +268,18 @@ class CartItemModel{
                 let newCart=this.newCart(vendor,item,quantity,selectedVariants,SelectedToppings,instruction);
                 this.setFee(newCart,vendor);
                 this.cartArr.push(newCart);
+                this.maxCartId=this.maxCartId+1;
             }
         }
         sessionStorage.setItem("CartData",JSON.stringify(this.cartArr));
+    }
+
+    removeCart(cartId){
+        const cartIndex=this.cartArr.findIndex(i => i.cartId==cartId);
+        if( cartIndex!=undefined && cartIndex>=0){
+            this.cartArr.splice(cartIndex,1); 
+            sessionStorage.setItem("CartData",JSON.stringify(this.cartArr));
+        }
     }
 
 }
