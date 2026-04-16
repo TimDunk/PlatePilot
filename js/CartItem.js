@@ -208,7 +208,7 @@ class CartItemModel{
             
         let variantFee=0;
         selectedVariants.forEach( t=>{
-            const variant=this.variantModel.getVariant(vendor,t);
+            const variant=this.variantModel.getVariant(vendor.id,t);
             if(variant){
             variantFee = variantFee + variant.extraFee * quantity;
 
