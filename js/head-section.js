@@ -46,7 +46,7 @@ let head_section=`
 				</a>
 			</div>
 			<div class="col-2 col-sm-1  cart">
-				<button type="button" class="btn py-2" aria-label="cart">
+				<button type="button" class="btn py-2" aria-label="all carts" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-bag-check" viewBox="0 0 16 16">
 					<path fill-rule="evenodd" d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0"/>
 					<path d="M8 1 a2.5 2.5 0 0 1 2.5 2.5 V4 h-5 v-.5 A2.5 2.5 0 0 1 8 1 m3.5 3 v-.5 a3.5 3.5 0 1 0-7 0 V4 H1 v10 a2 2 0 0 0 2 2 h10 a2 2 0 0 0 2-2 V4 z M2 5 h12 v9 a1 1 0 0 1-1 1 H3 a1 1 0 0 1-1-1 z"/>
@@ -110,7 +110,7 @@ if(currentFile=="delivery.html"){
     form.setAttribute("class","d-flex search d-block") //d-block class to let form element for search to dispaly
 }
 
-if(currentFile=="vendor-detail.html"){
+if(currentFile=="vendor-detail.html"){   // detail page does not need to show tabs
 	let menu=fragment.querySelector("div.menu");
 	menu.classList.add("d-none");
 }
@@ -128,3 +128,85 @@ links.forEach(link => {
     }
 });
 
+let allCarts=`
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight">
+		<div class="offcanvas-header">
+			<p class="offcanvas-title fw-semibold fs-5" id="offcanvasRightLabel">All Carts</p>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+		</div>
+		<div class="offcanvas-body small">
+			<div class="d-flex d-lg-none cart-summary mobile-cart-view rounded-3 p-3 d-flex flex-column border-color-light-gray justify-content-between">
+				<div class="cart-summary-items-wrapper">
+					<div class="cart-expedition-wrapper d-flex justify-content-center px-2">
+						<div class="position-relative w-50">
+							<button class="delivery-btn border-color-light-gray bg-white rounded-3 active" aria-label="Delivery">
+								<span class="d-block">
+									<span class="delivery-approach fw-semibold d-block">Delivery</span>
+									<span class="delivery-time fw-light d-block">Standard( <span></span> - <span></span>mins )</span>
+								</span>
+							</button>
+						</div>
+						<div class="position-relative w-50">
+							<button class="pickup-btn bg-light rounded-3 border-0" aria-label="Pickup">
+								<span class="d-block">
+									<span class="delivery-approach fw-semibold d-block">Pickup</span>
+									<span class="delivery-time fw-light d-block">Standard( <span></span>mins )</span>
+								</span>
+							</button>
+						</div>
+					</div>
+					<div class="cart-empty-block p-3 text-center d-flex">
+						<div class="align-self-center w-100 h-100">
+							<div>
+								<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" fill="currentColor" class="bi bi-basket-fill" viewBox="0 0 16 16">
+								<path d="M5.071 1.243a.5.5 0 0 1 .858.514L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 6h1.717zM3.5 10.5a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0z"/>
+								</svg>
+							</div>
+							<h2>Hungry?</h2>
+							<p>You have not added anything to your cart!</p>
+						</div>
+					</div>
+					<div class="title-wrapper pb-2 px-3" data-cart-has-items="0">
+						<p class="mt-3 fs-5 fw-semibold">Your items</p>
+					</div>
+					<div class="cart-summary-group-item" data-cart-has-items="0">
+						<ul class="group-item-list px-3">
+							
+						</ul>
+					</div>
+					<div class="cart-summary-amounts-wrapper px-3" data-cart-has-items="0">
+						<dl class="subtotal d-flex justify-content-between">
+							<dt>Subtotal</dt><dd>0</dd>
+						</dl>
+						<dl class="standard-delivery d-flex justify-content-between">
+							<dt>Standard delivery</dt><dd>0</dd>
+						</dl>
+						<dl class="platform-fee d-flex justify-content-between">
+							<dt>Platfrom Fee</dt><dd>0</dd>
+						</dl>
+					</div>
+					<div class="culery-toggle-wrapper" data-cart-has-items="0"></div>
+				</div>
+				<div class="cart-summary-footer px-3">
+					<div class="cart-summary-checkout-button">
+						<div>
+							<div class="d-flex justify-content-between">
+								<div class="">
+									<div class="fs-5 fw-bold"><p>Total</p></div>
+								</div>
+								<div class="cart-total-fee me-3 fs-5 fw-bold"><span>0</span></div>
+							</div>
+							<div class="validation-tips text-danger"><span>Validation Fails</span></div>
+							<div class="d-flex justify-content-center mt-2">
+								<button class="instant-review-cart-btn border-color-light-gray rounded-3 p-2 w-100 main-color-background" aria-label="Review and check out">
+									<span>Review payment and address</span>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>`;
+let carts_fragment=document.createRange().createContextualFragment(allCarts);
+document.body.appendChild(carts_fragment);

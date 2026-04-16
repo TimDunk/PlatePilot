@@ -4,6 +4,17 @@ class VendorListView {
         this.container = document.getElementById(containerId);
     }
 
+    showFavoriteText(isFavPage){
+        if(isFavPage){
+            document.querySelector(".favourite-vendors").classList.add("d-block");
+            document.querySelector(".favourite-vendors").classList.remove("d-none");
+        }
+        else{
+            document.querySelector(".favourite-vendors").classList.remove("d-block");
+            document.querySelector(".favourite-vendors").classList.add("d-none");
+        }
+    }
+
     render(vendors,favoriteIds) {
         this.container.innerHTML = ""; // Clear old list
 

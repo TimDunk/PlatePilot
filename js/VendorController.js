@@ -16,6 +16,7 @@ class VendorController {
 
     async init(isFavPage) {
         await this.vendorModel.loadVendors(isFavPage);
+        this.view.showFavoriteText(isFavPage);
         this.currentPage=1;
 		const initialData = await this.vendorModel.getVendorsByPage(this.currentPage);
         this.displayedVendors = [...initialData];
