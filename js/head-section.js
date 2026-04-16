@@ -2,17 +2,17 @@
 const currentFile = window.location.pathname.split("/").pop() || "index.html";
 if(currentFile=="index.html"){
     var home_page="index.html";
-    var delivery_page="html/delivery.html";
+    var delivery_page="html/delivery.html?favorite";
     var order_page="html/order.html";
     var about_page="html/about.html";
-    var vouchers_page="html/voucher.html";
+    var favorite_page="html/voucher.html";
  }
  else{
     var home_page="../index.html";
     var delivery_page="delivery.html";
     var order_page="order.html";
     var about_page="about.html";
-    var vouchers_page="voucher.html";
+    var favorite_page="delivery.html?favorite";
  }
 
 let head_section=`
@@ -39,11 +39,11 @@ let head_section=`
 				</p>
 			</div>
 			<div class="col-1 col-sm-1  py-2 favourite">
-				<!-- <a href="#"> -->
+				<a href="${favorite_page}">
 					<svg aria-hidden="true" focusable="false" class="fl-interaction-primary" width="24" height="24" viewBox="0 0 16 16" data-testid="favorite-entry-not-active">
 						<path xmlns="http://www.w3.org/2000/svg" d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
 					</svg>
-				<!-- </a> -->
+				</a>
 			</div>
 			<div class="col-2 col-sm-1  cart">
 				<button type="button" class="btn py-2" aria-label="cart">

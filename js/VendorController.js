@@ -1,11 +1,11 @@
 // Author： Xuquan Deng
 class VendorController {
-    constructor(vendorModel, view, filterView) {
+    constructor(vendorModel, view, filterView,isFavPage) {
         this.vendorModel = vendorModel; // Instance of VendorModel
         this.view = view;   // Instance of VendorListView
         this.filterView = filterView;
         this.displayedVendors = [];  // The "Filtered List"
-        this.init();
+        this.init(isFavPage);
         this.criteria = new FilterCriteria(); 
         this.view.bindToggleFavorite(handleToggleFavorite.bind(this));
         this.filterView.bindFilterChange(this.handleFiltering.bind(this));
@@ -14,8 +14,8 @@ class VendorController {
         this.sort="id";
     }
 
-    async init() {
-        await this.vendorModel.loadVendors();
+    async init(isFavPage) {
+        await this.vendorModel.loadVendors(isFavPage);
         this.currentPage=1;
 		const initialData = await this.vendorModel.getVendorsByPage(this.currentPage);
         this.displayedVendors = [...initialData];
@@ -103,8 +103,12 @@ class VendorController {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
+    const urlParams=new URLSearchParams(window.location.search);
+    const favoriteParam=urlParams.get("favorite");
+    const isFavPage=favoriteParam!=undefined ? true:false;
+
     const vendorModel = new VendorModel();
     const view = new VendorListView('vendor-list');
     const filterView= new FilterView("filter-panel");
-    const controller = new VendorController(vendorModel, view, filterView);
+    const controller = new VendorController(vendorModel, view, filterView, isFavPage);
 });
