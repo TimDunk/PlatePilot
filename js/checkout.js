@@ -55,14 +55,11 @@
         return false;
       }
       
-
+      // Load vendor data from allVendorsData (defined in VendorData.js)
       if (typeof allVendorsData !== 'undefined') {
         const vendors = JSON.parse(allVendorsData);
         currentVendor = vendors.find(v => v.id == cartData.vendorId);
       }
-      
-
-      updateVendorInfo();
       
       return true;
     } catch (error) {
@@ -78,8 +75,8 @@
         <tr>
           <td colspan="2" class="text-center text-muted py-4">
             Your cart is empty. Please add items before checkout.
-          </td>
-        </tr>
+           </td>
+         </tr>
       `;
     }
     if (placeOrderBtn) {
@@ -92,10 +89,20 @@
 
 
   function updateVendorInfo() {
-    if (!currentVendor) return;
+    let vendorName = "Restaurant";
+    let vendorAddress = "Address not available";
     
-    if (vendorNameDisplay) vendorNameDisplay.innerText = currentVendor.name;
-    if (orderVendorNameDisplay) orderVendorNameDisplay.innerText = currentVendor.name;
+    if (currentVendor) {
+      vendorName = currentVendor.name;
+      if (currentVendor.address) {
+        vendorAddress = `${currentVendor.address.detailAddress}, ${currentVendor.address.city}, ${currentVendor.address.country}`;
+      }
+    }
+    
+    // Update all vendor name displays
+    if (vendorNameDisplay) vendorNameDisplay.innerText = vendorName;
+    if (orderVendorNameDisplay) orderVendorNameDisplay.innerText = vendorName;
+    if (vendorAddressDisplay) vendorAddressDisplay.innerText = vendorAddress;
   }
 
 
@@ -147,32 +154,26 @@
     const originalCross = getOriginalCrossPrice();
     const saved = getSavedAmount();
     
-    // Update subtotal display
     if (subtotalDisplay) {
       subtotalDisplay.innerText = `HK$ ${subtotal.toFixed(1)}`;
     }
     
-
     if (platformFeeDisplay) {
       platformFeeDisplay.innerText = `HK$ ${platformFee.toFixed(1)}`;
     }
     
-
     if (gstDisplay) {
       gstDisplay.innerText = `HK$ ${gst.toFixed(1)}`;
     }
     
-
     if (finalTotalDisplay) {
       finalTotalDisplay.innerText = `HK$ ${finalVal.toFixed(1)}`;
     }
     
-
     if (originalPriceSpan) {
       originalPriceSpan.innerText = `HK$ ${originalCross.toFixed(1)}`;
     }
     
-
     if (savedAmountSpan && saved > 0.01) {
       savedAmountSpan.innerHTML = `(You save HK$ ${saved.toFixed(1)})`;
       savedAmountSpan.style.color = "#2e7d64";
@@ -201,8 +202,8 @@
         <tr>
           <td colspan="2" class="text-center text-muted py-4">
             No items in cart
-          </td>
-        </tr>
+           </td>
+         </tr>
       `;
       return;
     }
@@ -220,7 +221,7 @@
             <span>x</span>
             <span>${escapeHtml(displayName)}</span>
             ${item.instruction ? `<br><small class="text-muted" style="font-size: 0.7rem;">Note: ${escapeHtml(item.instruction)}</small>` : ''}
-          </td>
+           </td>
           <td class="item-price">HK$ ${itemTotal.toFixed(1)}</td>
         </tr>
       `;
@@ -236,11 +237,15 @@
     const platformFee = getPlatformFee();
     const totalAmount = getTotalWithFees();
     
+    const vendorName = currentVendor ? currentVendor.name : "Restaurant";
+    const vendorAddress = currentVendor && currentVendor.address 
+      ? `${currentVendor.address.detailAddress}, ${currentVendor.address.city}, ${currentVendor.address.country}`
+      : "Address not available";
 
     const order = {
       id: `ORD-${Date.now()}`,
-      vendorName: currentVendor ? currentVendor.name : "Restaurant",
-      vendorAddress: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      vendorName: vendorName,
+      vendorAddress: vendorAddress,
       pickupType: pickupType,
       scheduledDateTime: scheduledDateTime,
       orderDate: new Date().toISOString(),
@@ -263,7 +268,6 @@
       serviceFee: platformFee
     };
     
-
     let orders = [];
     const storedOrders = localStorage.getItem("OrderHistory");
     if (storedOrders) {
@@ -274,10 +278,7 @@
       }
     }
     
-
     orders.unshift(order);
-    
-
     localStorage.setItem("OrderHistory", JSON.stringify(orders));
     
     return order;
@@ -289,7 +290,6 @@
       let storedString = sessionStorage.getItem("CartData");
       if (storedString) {
         let cartArray = JSON.parse(storedString);
-        // Remove current vendor's cart
         cartArray = cartArray.filter(cart => cart.vendorId != cartData.vendorId);
         sessionStorage.setItem("CartData", JSON.stringify(cartArray));
       }
@@ -302,7 +302,6 @@
   function initScheduledPicker() {
     if (!scheduledTrigger) return;
     
-
     const standardRadio = document.querySelector('input[name="pickupType"][value="standard"]');
     if (standardRadio) {
       standardRadio.addEventListener('change', () => {
@@ -423,12 +422,10 @@
 
 
   function placeOrder() {
-    // Get form values
     const email = emailInput ? emailInput.value.trim() : '';
     const fullName = fullNameInput ? fullNameInput.value.trim() : '';
     const address = addressInput ? addressInput.value.trim() : '';
     
-    // Validate
     if (!email) {
       alert('Please enter your email address');
       return;
@@ -451,24 +448,19 @@
       return;
     }
     
-
     const subtotal = calculateSubtotal();
     if (currentVendor && subtotal < currentVendor.minDeliveryTotal) {
       alert(`Minimum order total is €${currentVendor.minDeliveryTotal}. Your subtotal is €${subtotal.toFixed(2)}`);
       return;
     }
     
-
     let pickupType = 'Standard 10 mins';
-    let scheduledMsg = '';
     if (selectedPickupType === 'scheduled' && scheduledDate && selectedDateTimeDisplay && selectedDateTimeDisplay.innerText !== '') {
       pickupType = 'Scheduled pick-up';
-      scheduledMsg = ` at ${selectedDateTimeDisplay.innerText}`;
     }
     
     const finalTotalVal = getTotalWithFees();
     
-    // Save user info for next time
     const userInfo = {
       email: email,
       fullName: fullName,
@@ -476,38 +468,23 @@
     };
     localStorage.setItem("LastOrderUser", JSON.stringify(userInfo));
     
-
-    const order = saveOrderToHistory(email, fullName, address, pickupType, scheduledDate);
+    saveOrderToHistory(email, fullName, address, pickupType, scheduledDate);
     
-
-    const itemsList = [];
-    cartData.items.forEach(item => {
-      const displayName = item.detail ? `${item.name} (${item.detail})` : item.name;
-      itemsList.push(`${item.quantity}x ${displayName} (HK$${item.totalPrice.toFixed(1)})`);
-    });
-    
-    const subtotalDisplayValue = calculateSubtotal();
-    const gstDisplayValue = calculateGST();
-    const platformFeeValue = getPlatformFee();
-    
-
+    const vendorNameForMessage = currentVendor ? currentVendor.name : 'Restaurant';
     const confirmMessage = `ORDER PLACED SUCCESSFULLY!`;
     
     alert(confirmMessage);
     
-
     clearCart();
-    
-
     window.location.href = 'order.html';
   }
 
 
   function init() {
-
     const hasCart = loadCartData();
     
     if (hasCart) {
+      updateVendorInfo();
       rebuildOrderTable();
       updateTotalsUI();
     }
@@ -515,7 +492,6 @@
     initScheduledPicker();
     initUserData();
     
-    // Setup add more items button
     if (addMoreItemsBtn) {
       addMoreItemsBtn.addEventListener('click', (e) => {
         e.preventDefault();
@@ -528,7 +504,6 @@
     }
   }
 
-  // Start when DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {

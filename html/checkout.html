@@ -9,7 +9,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="../css/frame.css">
-	  <link rel="stylesheet" href="../css/checkout.css">
+	<link rel="stylesheet" href="../css/checkout.css">
 </head>
 
 <body>
@@ -18,142 +18,112 @@
 
 	<div class="container-fluid top-wrapper">
 		<main class="row">
-<div class="review-order-wrapper">
- <div
-    <div class="page-header">
-      <h1> Review and place your order</h1>
-    </div>
-    
-    <div class="card-container">
-      <div class="container-item">   <!-- PICKUP AT SECTION (Matsuya) -->
-  <div class="card">
-<div class="card-content">
-      <div class="section-label"><i class="bi bi-geo-alt"></i>PICKUP AT</div>
-      <div class="vendor-name-large" id="vendorName">Matsuya (Tsim Sha Tsui)</div>
-      <div class="vendor-address" id="vendorAddress">
-        Shop G06-09, G/F, Chuang's London Plaza, 219 Nathan Road, Jordan Hong Kong
-      </div>
+			<div class="review-order-wrapper">
+				<div class="page-header">
+					<h1>Review and place your order</h1>
+				</div>
+				
+				<div class="card-container">
+					<div class="container-item">
+						<div class="card">
+							<div class="card-content">
+								<div class="section-label"><i class="bi bi-geo-alt"></i>PICKUP AT</div>
+								<div class="vendor-name-large" id="vendorName">Loading...</div>
+								<div class="vendor-address" id="vendorAddress">Loading address...</div>
+							</div>
+						</div>
+						
+						<div class="card">    
+							<div class="card-content">
+								<div class="section-label">PICK-UP OPTIONS</div>
+								<div class="pickup-options">
+									<div class="option-card"><label>
+										<input type="radio" name="pickupType" value="standard" checked/>
+										<span>Standard time</span>
+									</label></div>
+									<div class="option-card" id="scheduledTrigger"> 
+										<label>
+											<input type="radio" name="pickupType" value="scheduled"/>
+											<span>Scheduled pick-up</span>
+										</label>
+									</div>
+									<div id="selectedDateTimeDisplay"></div>
+									<div id="dateTimePickerContainer" style="display: none;"></div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="card">
+							<div class="card-content">
+								<div class="section-label">PERSONAL DETAILS</div>
+								<div class="field">
+									<label>Email</label>
+									<input type="email" id="emailInput" placeholder="Johndoe@gmail.com"/>
+								</div>
+								<div class="field">
+									<label>Full name</label>
+									<input type="text" id="fullNameInput" placeholder="John doe"/>
+								</div>
+								<div class="field">
+									<label>Address</label>
+									<input type="text" id="addressInput" placeholder="Ireland"/>
+								</div>
+							</div>
+						</div>
+					</div>
 
-    </div>
-  </div>
-<!-- PICK-UP OPTIONS -->
-  <div class="card">    
-    <div class="card-content">
-      <div class="section-label">PICK-UP OPTIONS</div>
-      <div class="pickup-options">
-        <div class="option-card"><label>
-          <input type="radio" name="pickupType" value="standard" checked/>
-          <span>Standard time</span>
-        </label></div>
-        <div  class="option-card" id="scheduledTrigger"> 
-<label>
-          <input type="radio" name="pickupType" value="scheduled"/>
-          <span>Scheduled pick-up</span>
-        </label>
-      </div>
-               <div  id="selectedDateTimeDisplay"></div>
-      <div id="dateTimePickerContainer" style="display: none;"></div>
-    </div>
-</div>
-     <!--PERSONAL DETAILS -->
-</div>
-
-  <div class="card">    <div class="card-content">
-      <div class="section-label">PERSONAL DETAILS</div>
-      <div class="field">
-        <label>Email</label>
-        <input type="email" id="emailInput" placeholder="Johndoe@gmail.com"/>
-      </div>
-      <div class="field">
-        <label>Full name</label>
-        <input type="text" id="fullNameInput" placeholder="John doe"/>
-      </div>
-      <div class="field">
-        <label>Address</label>
-        <input type="text" id="addressInput" placeholder="Ireland"/>
-      </div>
-    </div></div>
-
-
-
-
-</div>
-
-      <div class="container-item"> 
-      
-      <!-- YOUR ORDER FROM Matsuya + items -->
-  <div class="card">   
-    <div class="card-content">
-      <div class="section-label">YOUR ORDER FROM</div>
-      <div class="vendor-name-large mb-2" id="orderVendorName">Matsuya (Tsim Sha Tsui)</div>
-      <table class="items-table">
-        <tbody id="orderItemsTableBody">
-          <!-- Items will be populated by JavaScript -->
-        </tbody>
-      </table>
-      
-      <a href="#" class="add-more-link" id="addMoreItemsBtn"><i class="bi bi-plus"></i>
- Add more items
-      </a>
-    </div>
-    
-    <div class="section-divider"></div>
-      <div class="card-content">
-              <p href="#" class="add-more-link" >
-<i class="bi bi-ticket"></i>  Apply a voucher
-      </p>
-<div class="summary">
-        <div class="info-row" style="margin-bottom: 0.25rem;">
-      <div class="fee-breakdown" >
-        Subtotal
-      </div>
-      <div class="fee-breakdown" id="subtotalValue">
-      HK$ 0.00
-      </div>
-      </div>
-        <div class="info-row" style="margin-bottom: 0.25rem;">
-      <div class="fee-breakdown" >
-        Platform fee
-      </div>
-      <div class="fee-breakdown" id="platformFeeValue">
-      HK$ 0.00
-      </div>
-      </div>
-        <div class="info-row" style="margin-bottom: 0.25rem;">
-      <div class="fee-breakdown" >
-        +GST
-      </div>
-      <div class="fee-breakdown" id="gstValue">
-      HK$ 0.00
-      </div>
-      </div>
-</div>
-     
-      <div class="info-row" style="margin-bottom: 0.25rem;">
-        <span class="info-label total-main">Total</span>
-        <span class="info-value total-main" id="finalTotalValue">HK$ 0.00</span>
-      </div>
-      <div class="info-row" style="margin-bottom: 0.25rem;">
-      <div class="fee-breakdown">
-        (incl. fees and tax)
-      </div>
-        <span class="original-price" id="originalPriceSpan">HK$ 0.00</span>
-      </div>
-    <div class="fee-breakdown mt-1">
-      <span class="ms-1" id="savedAmountBadge"></span>
-      </div>
-        <div >
-      <button class="btn-place-order" id="placePickupOrderBtn">
-        <i class="bi bi-bag-check fs-5"></i> Checkout
-      </button>
-    </div>
-    </div>
-    </div>
-            <div class="text-center mt-2">
-    <p class="text-muted small"><i class="bi bi-shield-check"></i> Secure payment & easy pick-up</p>
-  </div>
-    </div>
-    </div>
+					<div class="container-item"> 
+						<div class="card">   
+							<div class="card-content">
+								<div class="section-label">YOUR ORDER FROM</div>
+								<div class="vendor-name-large mb-2" id="orderVendorName">Loading...</div>
+								<table class="items-table">
+									<tbody id="orderItemsTableBody"></tbody>
+								</table>
+								<a href="#" class="add-more-link" id="addMoreItemsBtn"><i class="bi bi-plus"></i> Add more items</a>
+							</div>
+							
+							<div class="section-divider"></div>
+							<div class="card-content">
+								<p href="#" class="add-more-link"><i class="bi bi-ticket"></i> Apply a voucher</p>
+								<div class="summary">
+									<div class="info-row" style="margin-bottom: 0.25rem;">
+										<div class="fee-breakdown">Subtotal</div>
+										<div class="fee-breakdown" id="subtotalValue">HK$ 0.00</div>
+									</div>
+									<div class="info-row" style="margin-bottom: 0.25rem;">
+										<div class="fee-breakdown">Platform fee</div>
+										<div class="fee-breakdown" id="platformFeeValue">HK$ 0.00</div>
+									</div>
+									<div class="info-row" style="margin-bottom: 0.25rem;">
+										<div class="fee-breakdown">+GST</div>
+										<div class="fee-breakdown" id="gstValue">HK$ 0.00</div>
+									</div>
+								</div>
+								<div class="info-row" style="margin-bottom: 0.25rem;">
+									<span class="info-label total-main">Total</span>
+									<span class="info-value total-main" id="finalTotalValue">HK$ 0.00</span>
+								</div>
+								<div class="info-row" style="margin-bottom: 0.25rem;">
+									<div class="fee-breakdown">(incl. fees and tax)</div>
+									<span class="original-price" id="originalPriceSpan">HK$ 0.00</span>
+								</div>
+								<div class="fee-breakdown mt-1">
+									<span class="ms-1" id="savedAmountBadge"></span>
+								</div>
+								<div>
+									<button class="btn-place-order" id="placePickupOrderBtn">
+										<i class="bi bi-bag-check fs-5"></i> Checkout
+									</button>
+								</div>
+							</div>
+						</div>
+						<div class="text-center mt-2">
+							<p class="text-muted small"><i class="bi bi-shield-check"></i> Secure payment & easy pick-up</p>
+						</div>
+					</div>
+				</div>
+			</div>
 		</main>
 	</div>
 	
@@ -163,8 +133,11 @@
 			<p>Author: Drill Group</p>
 		</footer>
 	</div>
-	<script src="../js/head-section.js" ></script>
-	<!-- Do not delete this script link -->
-<script src="../js/checkout.js"></script>
+	
+	<script src="../js/head-section.js"></script>
+	<!-- Load VendorData first so checkout.js can access vendor information -->
+	<script src="../js/data/VendorData.js"></script>
+	<script src="../js/CuisineModel.js"></script>
+	<script src="../js/checkout.js"></script>
 </body>
 </html>

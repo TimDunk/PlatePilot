@@ -408,7 +408,10 @@
       const itemsHtml = buildItemsHtml(order.items, order.extraItems || []);
       const statusBadge = getStatusBadge(order.status);
       
-      // Only show cancel button for orders that are not completed or cancelled
+      // Use the actual vendor name stored in the order
+      const vendorName = order.vendorName || "Restaurant";
+      
+      // Show cancel button only for orders that are not completed or cancelled
       const showCancelButton = (order.status === 'preparing');
       
       cardsHtml += `
@@ -417,8 +420,8 @@
             <div class="d-flex justify-content-between align-items-start flex-wrap">
               <div>
                 <div class="section-label">ORDER #${escapeHtml(order.id)} • ${orderDateFormatted}</div>
-                <div class="vendor-name-large">${escapeHtml(order.vendorName)}</div>
-                <div class="vendor-address">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                <div class="vendor-name-large">${escapeHtml(vendorName)}</div>
+                <div class="vendor-address">${escapeHtml(order.vendorAddress || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")}</div>
               </div>
               <div class="mt-1 mt-sm-0">
                 ${statusBadge}
