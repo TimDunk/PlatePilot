@@ -98,7 +98,7 @@ body {
 /* picture size */
 .bestItem .card-img-top {
   width: 100%;
-  height: 100%;
+  height: 380px;
   object-fit: cover; 
   object-position: center; 
   transition: transform 0.3s ease;
@@ -117,8 +117,40 @@ body {
 	color: white;
 	font-weight: 700 !important; 
 	opacity: 1 !important;       
-	text-shadow: 0 0 3px rgba(0,0,0,0.5);
+	text-shadow: 0 0 3px rgba(0,0,0,0.5); 
 }
+.bestResturant .card {
+  overflow: hidden;
+  border-radius: 8px !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+}
+
+.bestResturant .card-img-wrapper {
+  width: 100%;
+  aspect-ratio: 3 / 2; 
+  overflow: hidden;
+  background-color: #f8f9fa;
+}
+
+/* picture size */
+.bestResturant .card-img-top {
+  width: 100%;
+  height: 380px;
+  object-fit: cover; 
+  object-position: center; 
+  transition: transform 0.3s ease;
+}
+
+
+@media (max-width: 768px) {
+  .bestResturant .card-img-wrapper {
+    aspect-ratio: 4 / 3; 
+  }
+}
+
+
 
 
 
