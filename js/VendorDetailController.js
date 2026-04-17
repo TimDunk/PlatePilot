@@ -126,7 +126,7 @@ class VendorDetailController{
         const tabs = this.detailView.tabsContainer.querySelectorAll('li');
 
         let rootTop=document.querySelector(".head").offsetHeight+54;
-        let rootButtom=window.innerHeight - rootTop - 50;
+        let rootButtom=Math.abs(window.innerHeight - rootTop - 50);
         let rootM=`-${rootTop}px 0px -${rootButtom}px 0px`;
         const observerOptions = {
             root: null,             // use the viewport

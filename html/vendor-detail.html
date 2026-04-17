@@ -11,6 +11,7 @@
 	<link rel="preload" href="../css/frame.css" as="style" onload="this.onload=null;this.rel='stylesheet'"> <!-- should be the last css file included -->
 	<link rel="stylesheet" href="../css/vendor-detail.css">
 	<link rel="stylesheet" href="../css/purchase-modal.css">
+	<link rel="stylesheet" href="../css/all-carts.css">
 </head>
 
 <body>
@@ -62,6 +63,11 @@
 							<span class="fw-semibold">Add to Favourites</span>
 						</button>
 					</div>
+					<p class="pickup-address mt-3 text-secondary">
+						<span class="address">Address,D01,Mayor Upper Street</span>&ThickSpace;
+						<span class="distance"></span> KM away&ThickSpace;
+						<a href="" target="_blank">View on Google Maps</a>
+					</p>
 				</div>	
 			</div>	
 			<div class="menu-wrapper">
@@ -231,6 +237,7 @@
 		</footer>
 	</div>
 
+	<!-- This offcanvas is for showing cart view on mobile devices(small screen)  -->
 	<div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom">
 		<div class="offcanvas-header">
 			<p class="offcanvas-title fw-semibold fs-5" id="offcanvasBottomLabel">Cart</p>
@@ -457,6 +464,7 @@
 	<script src="../js/VendorDetailController.js" ></script>
 	<script src="../js/VendorDetailView.js"></script> 
 	<script src="../js/ManageCartModalView.js" defer></script>
+	<script src="../js/AllCarts.js" defer></script>
 </body>
 </html>
 

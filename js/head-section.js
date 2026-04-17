@@ -5,14 +5,14 @@ if(currentFile=="index.html"){
     var delivery_page="html/delivery.html";
     var order_page="html/order.html";
     var about_page="html/about.html";
-    var vouchers_page="html/voucher.html";
+    var favorite_page="html/delivery.html?favorite";
  }
  else{
     var home_page="../index.html";
     var delivery_page="delivery.html";
     var order_page="order.html";
     var about_page="about.html";
-    var vouchers_page="voucher.html";
+    var favorite_page="delivery.html?favorite";
  }
 
 let head_section=`
@@ -39,14 +39,14 @@ let head_section=`
 				</p>
 			</div>
 			<div class="col-1 col-sm-1  py-2 favourite">
-				<!-- <a href="#"> -->
+				<a href="${favorite_page}">
 					<svg aria-hidden="true" focusable="false" class="fl-interaction-primary" width="24" height="24" viewBox="0 0 16 16" data-testid="favorite-entry-not-active">
 						<path xmlns="http://www.w3.org/2000/svg" d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
 					</svg>
-				<!-- </a> -->
+				</a>
 			</div>
 			<div class="col-2 col-sm-1  cart">
-				<button type="button" class="btn py-2" aria-label="cart">
+				<button type="button" class="btn py-2" aria-label="all carts" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-bag-check" viewBox="0 0 16 16">
 					<path fill-rule="evenodd" d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0"/>
 					<path d="M8 1 a2.5 2.5 0 0 1 2.5 2.5 V4 h-5 v-.5 A2.5 2.5 0 0 1 8 1 m3.5 3 v-.5 a3.5 3.5 0 1 0-7 0 V4 H1 v10 a2 2 0 0 0 2 2 h10 a2 2 0 0 0 2-2 V4 z M2 5 h12 v9 a1 1 0 0 1-1 1 H3 a1 1 0 0 1-1-1 z"/>
@@ -110,7 +110,7 @@ if(currentFile=="delivery.html"){
     form.setAttribute("class","d-flex search d-block") //d-block class to let form element for search to dispaly
 }
 
-if(currentFile=="vendor-detail.html"){
+if(currentFile=="vendor-detail.html"){   // detail page does not need to show tabs
 	let menu=fragment.querySelector("div.menu");
 	menu.classList.add("d-none");
 }
@@ -127,4 +127,7 @@ links.forEach(link => {
         link.classList.add('active');
     }
 });
+
+
+
 

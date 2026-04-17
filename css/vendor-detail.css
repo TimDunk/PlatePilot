@@ -57,6 +57,10 @@ nav {
     justify-self: start;
 }
 
+.pickup-address{
+    grid-area: -1 / 1 / auto / -1;
+}
+
 .vendor-cuisine-list{
      &>:first-child .separator{
         display: none !important;
@@ -385,23 +389,6 @@ button.add-to-cart-btn-in-modal:active
 }
 
 /* all *********************************************************************************/
-ul {
-    list-style-type: none;
-    padding:0;
-}
-.absolute-fill-parent{
-    width: 100% !important;
-    height: 100% !important;
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    background-color: #00000000;
-    border-radius: 9px;
-}
-
-.border-color-light-gray{
-    border:1px solid var(--border-color);
-}
 
 .item-in-cart{
     border-bottom: 1px solid var(--border-color);

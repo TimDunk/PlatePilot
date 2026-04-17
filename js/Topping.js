@@ -27,7 +27,7 @@ class Variant{
     constructor(topping){
         this.id=topping.id;
         this.name=topping.name;
-        this.extraFee=topping.price;
+        this.extraFee=topping.extraFee;
         this.vendorId=topping.vendorId;
     }
 }

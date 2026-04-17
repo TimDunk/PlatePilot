@@ -46,6 +46,10 @@ class VendorDetailView{
         this.vendorInfoView.querySelector(".vendor-rated-level").children[1].innerText=this.vendor.ratedLevel;
         if(getFavoriteIds().includes(this.vendor.id))
             this.vendorInfoView.querySelector(".favourite-btn").classList.add("is-favourite-vendor");
+        this.vendorInfoView.querySelector(".pickup-address span.address").innerText=this.vendor.address.detailAddress;
+        this.vendorInfoView.querySelector(".pickup-address span.distance").innerText=this.vendor.distance;
+        const googleMapQuery=`https://www.google.com/maps/search/?api=1&query=${this.vendor.address.latitude},${this.vendor.address.longitude}`;
+        this.vendorInfoView.querySelector(".pickup-address a").setAttribute("href", googleMapQuery);
     }
 
     setCategoryTabs(menuCategoryArr){
@@ -427,7 +431,7 @@ class VendorDetailView{
                 if (number <= 0 ){
                     showTips("Please add dishes.");
                 }else if(subTotal < this.vendor.minDeliveryTotal){
-                    showTips("Restaurant require subtotal above € " + this.vendor.minDeliveryTotal);
+                    showTips("Restaurant requires subtotal above € " + this.vendor.minDeliveryTotal);
                 }
             }
         );

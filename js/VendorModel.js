@@ -93,8 +93,10 @@ class VendorModel {
         this.cuisineSet=new Set();
     }
 
-    loadVendors() {
-        const rawData =JSON.parse(allVendorsData);
+    loadVendors(isFavPage) {
+        let rawData =JSON.parse(allVendorsData);
+        if(isFavPage)
+            rawData=rawData.filter(i => getFavoriteIds().includes(i.id));
         let vendors = rawData.map(item => new Vendor(item));
         this.unFilteredVendors=[...vendors];
         this.vendors =[...vendors];
