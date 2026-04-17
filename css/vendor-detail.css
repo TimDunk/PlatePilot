@@ -57,6 +57,10 @@ nav {
     justify-self: start;
 }
 
+.pickup-address{
+    grid-area: -1 / 1 / auto / -1;
+}
+
 .vendor-cuisine-list{
      &>:first-child .separator{
         display: none !important;
