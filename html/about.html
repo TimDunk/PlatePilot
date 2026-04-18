@@ -18,6 +18,7 @@
 <body>
 	<div id="head-placeholder"></div>
 
+<!-- ========== About Us ====================================== -->
 	<div class="container-fluid top-wrapper">
 		<main class="row">
  		  	<div class="container about-container py-3">
@@ -30,35 +31,46 @@
 			      	</div>
 			    </div>
 
+<!-- ========== Join us ====================================== -->
 			    <div class="card about-card mb-4">
 			    	<div class="card-body">
 			       		<h2>Join Us</h2>
-			       		<form id="JoinUsForm" class="mt-3">
+	<!-- ========== Merchant Form ====================================== -->					
+			       		<form id="merchantForm" class="mt-3">
 			       		  	<div class="mb-2">
-			            		<input type="text" class="form-control" placeholder="Name" required>
+								
+			            		<label for="name" class="visually-hidden">Full Name</label>
+			            		<input type="text" class="form-control" id="name" placeholder="Name" required aria-required="true">
 			          		</div>
 			          		<div class="mb-2">
-			            		<input type="tel" class="form-control" placeholder="Phone" required>
+			            		<label for="phone" class="visually-hidden">Phone Number</label>
+			            		<input type="tel" class="form-control" id="phone" placeholder="Phone" required aria-required="true">
 			          		</div>
 			          		<div class="mb-2">
-			            		<input type="email" class="form-control" placeholder="Email" required>
+			            		<label for="email" class="visually-hidden">Email Address</label>
+			            		<input type="email" class="form-control" id="email" placeholder="Email" required aria-required="true">
 			          		</div>
 			          		<div class="mb-2">
-			            		<input type="text" class="form-control" placeholder="Restaurant Location" required>
+			            		<label for="location" class="visually-hidden">Restaurant Location</label>
+			            		<input type="text" class="form-control" id="location" placeholder="Restaurant Location" required aria-required="true">
 			          		</div>
 			          		<div class="mb-3">
-			            		<input type="text" class="form-control" placeholder="Restaurant Type" required>
+			            		<label for="type" class="visually-hidden">Restaurant Type</label>
+			            		<input type="text" class="form-control" id="type" placeholder="Restaurant Type" required aria-required="true">
 			          		</div>
-			          		<button type="submit" class="button submit-btn w-100">Submit Information</button>
+			     
+			          		<button type="submit" class="button submit-btn w-100" id="submit-btn">Submit Information</button>
 			       		</form>
 			    	</div>
 			    </div>
 
+<!-- ========== Contact Us ====================================== -->
 		    	<div class="card about-card mb-4">
 		      		<div class="card-body">
 		        		<h2>Contact Us</h2>
-		        		<p>Email: contact@platepilot.com</p>
-		        		<p>Phone: +353 089 0000 111</p>
+		        
+		        		<p><strong>Email:</strong> <a href="mailto:contact@platepilot.com">contact@platepilot.com</a></p>
+		        		<p><strong>Phone:</strong> <a href="tel:+3530890000111">+353 089 0000 111</a></p>
 		      		</div>
 		    	</div>
 		  	</div>
