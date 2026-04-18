@@ -2,7 +2,6 @@
 :root {
   --main-pink: #ff69b4;
   --light-pink: #fff5fa;
-  --dark-pink: #e05a9f;
 }
 
 /* ==================== Card  ==================== */
@@ -21,13 +20,10 @@ body {
   background-position: center; 
   background-repeat: no-repeat;
   background-attachment: fixed;
-  
-  background-color: rgba(255, 255, 255, 0.7); 
+  background-color: rgba(255, 255, 255, 0.5); 
   background-blend-mode: lighten;
-
-  font-size: 16px;
-  line-height: 1.5;
 }
+
 
 /* ==================== Main content ==================== */
 .about-container {
@@ -35,12 +31,11 @@ body {
 }
 
 .about-container h1 {
-  font-size: clamp(2rem, 5vw, 3rem) !important; 
+  font-size: 48px !important;
   font-weight: 700 !important;
-
-  color: var(--dark-pink) !important;
+  color: #fff !important;
   margin-bottom: 20px !important;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4) !important;
 }
 
 /* about card */
@@ -49,24 +44,19 @@ body {
   border-radius: 12px;
   background: var(--light-pink);  
   box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-
-  padding: 1.5rem;
 }
 .about-card h2,
 .about-card h5 {
-  color: var(--dark-pink);  
+  color: var(--main-pink);  
   font-weight: 700;
   margin-bottom: 1rem;
-
-  line-height: 1.2;
 }
 
 .about-card p {
-  font-size: 1rem;
+  font-size: 0.9rem; 
   font-weight: 400;
   line-height: 1.7;
-
-  color: #333;
+  color: #555;
 }
 
 /* submit button */
@@ -77,37 +67,8 @@ body {
   border: 1px solid #fff;
   font-weight: 500;
   transition: 0.3s;
-
-  outline: none;
 }
-.submit-btn:hover,
-.submit-btn:focus { 
-  background: var(--dark-pink); 
+.submit-btn:hover {
+  background: #e05a9f; 
   color: #fff;
-
-  box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.4);
-}
-
-/* new 1 */
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-}
-
-/* new 2 */
-a {
-  color: var(--dark-pink);
-  text-decoration: underline;
-}
-a:hover,
-a:focus {
-  color: #c04a88;
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(224, 90, 159, 0.3);
 }
