@@ -1,0 +1,183 @@
+<!-- Author： Xuquan Deng -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>PlatePilot</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<link rel="stylesheet" href="../css/delivery.css">
+	<link rel="stylesheet" href="../css/frame.css"> <!-- should be the last css file included -->
+	<link rel="stylesheet" href="../css/all-carts.css">   
+</head>
+
+<body>
+	
+	<!-- Do not delete div.head-placeholder -->
+	<div id="head-placeholder"></div>
+
+	<div class="container-fluid top-wrapper">
+		<main class="row">
+			<div class="col-sm-2 d-none d-sm-none d-md-none d-lg-block aside-column">
+				<aside id="filter-panel">
+					<div>
+						<h2>Filters</h2>
+					</div>
+					<fieldset class="sort-filter">
+						<legend>Sort by</legend>
+						<ul class="list-group">
+							<li class="list-group-item border-0">
+								<label class="form-check-label stretched-link" for="relevant-sort">
+									<input class="form-check-input me-1 pill" name="listGroupRadio" type="radio" value="relevant-sort" id="relevant-sort">
+									Relevance
+								</label>
+							</li>
+							<li class="list-group-item border-0">
+								<label class="form-check-label stretched-link" for="fastest-sort">
+									<input class="form-check-input me-1 pill" name="listGroupRadio" type="radio" value="fastest-sort" id="fastest-sort">
+									Fastest
+								</label>
+							</li>
+							<li class="list-group-item border-0">
+								<label class="form-check-label stretched-link" for="distance-sort">
+									<input class="form-check-input me-1 pill" name="listGroupRadio" type="radio" value="distance-sort" id="distance-sort">
+									Distance
+								</label>
+							</li>
+							<li class="list-group-item border-0">
+								<label class="form-check-label stretched-link" for="rated-level-sort">
+									<input class="form-check-input me-1 pill" name="listGroupRadio" type="radio" value="rated-level-sort" id="rated-level-sort">
+									Top rated
+								</label>
+							</li>
+						</ul>
+					</fieldset>
+					<div class="rating-cuisine-filter">
+					<fieldset class="rating-filter">
+						<legend>Rating</legend>
+						<ul class="list-group">
+							<li class="list-group-item border-0">
+								<div class="pill-container">
+									<input class="form-check-input me-1 pill-input" type="checkbox" value="4" id="rating_four_plus">
+									<div class="pill-content">
+										<label class="form-check-label" for="rating_four_plus">Rating 4+</label>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</fieldset>
+					<fieldset class="cuisine-filter">
+						<legend>Cuisine</legend>
+						<ul class="list-group">
+							<template id="cuisine-filter-template">
+								<li class="list-group-item border-0">
+									<label class="form-check-label stretched-link" for="cuisine-id-0">
+										<input class="form-check-input me-1 pill"  type="checkbox" value="0" id="cuisine-id-0">
+										<span></span>
+									</label>
+								</li>
+							</template>
+						</ul>
+					</fieldset>
+					</div>
+				</aside>
+			</div>
+			<div class="col-12 col-sm-10 vendor-list-container d-flex flex-column">
+				<template id="vendorTemplate">
+					<a href="" class="vendor-card border-0">
+						<div class="card border-0">
+							<div class="card-img-top vendor-title-wrapper position-relative">
+								<div class="vendor-img-container">
+									<img src="" class="card-img-top" alt="Vendor Picture">
+								</div>
+								<div class="vendor-title-elment position-absolute top-0 end-0 m-1">
+									<button type="button" class="btn rounded-circle favourite-btn" data-id="0" aria-label="Manage button">
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+											<path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/>
+										</svg>
+									</button>
+								</div>
+							</div>
+							<div class="card-body px-1 py-1">
+								<div class="vendor-title d-flex justify-content-between">
+									<div class="vendor-name card-text fs-5 fw-semibold">Vendor Name</div>
+									<div class="vendor-rating d-flex align-items-center column-gap-2">
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+											<path fill="gold" stroke="orange" d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+										</svg>
+										<span class="vendor-rating-label"></span>
+									</div>
+								</div>
+								<div class="vendor-info d-flex align-items-center">
+									<div class="delivey-duration card-text">
+										<span></span>-<span></span> min
+									</div>
+									<div class="vendor-info-separator card-text px-1">•</div>
+									<div class="vendor-minimum-total card-text">
+										&euro;<span></span> minimum
+									</div>
+									<div class="vendor-info-separator px-1 card-text">•</div>
+									<div class="vendor-cuisine card-text">						
+									</div>
+								</div>
+								<div class="vendor-delivery-fee card-text">
+									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 122.88 85.82">
+										<g transform="scale(-1, 1) translate(-120, 0)">
+											<path class="cls-1" d="M77.1.61h40.36a2.48,2.48,0,0,1,2.47,2.47V30.52h.24a2.72,2.72,0,0,1,2.71,2.72v3A2.77,2.77,0,0,1,120.12,39H101.05c14.17,1.26,22.27,14.44,21.39,31.58H109.83a15,15,0,0,1-29.95,0h-38c0-.27,0-.54,0-.8a40.85,40.85,0,0,1-.34,5.8l-7.91-3.73A15.29,15.29,0,1,1,7.61,59.63L0,56c6.34-7.21,14-10.24,23.25-8.16,3.31.84,6.41,1.59-.08,0A112.39,112.39,0,0,1,33.72,13.07L29,13h0c-1,0-2.05.25-2.72-.24a3.59,3.59,0,0,1-2.88-1.84,7.12,7.12,0,0,1-1-3.79,7.16,7.16,0,0,1,1-3.8,3.91,3.91,0,0,1,2-1.68,1,1,0,0,1,0-.3C26.51-.46,28.7.08,30.65.08l1.9.12a11.1,11.1,0,0,1,4,1.36l2.17,1.22h1.76L46.4,3.92c1.93.38,2.21.22,1.76,2.59a7.49,7.49,0,0,1-.24.9c-.58,1.73-1,1.09-2.84.72L39.55,7c.21,2.23-.5,5-1.49,8.15,3.17,2.69,4.61,6.52,2.43,11.58L35.21,43c8.86,6.28,14.18,12,14.49,21.29H60.93c7.22-5.47,6-15.21-1.9-21.43V39h0V33.16c0-1.86,1-2.7,2.85-2.64H74.63V3.08A2.48,2.48,0,0,1,77.1.61ZM24.36,67.53,16.81,64a6.72,6.72,0,1,0,7.55,3.56Zm1.1-64.26c.09,2.53.25,5.78.37,8a3.4,3.4,0,0,1-.61-.72,6.54,6.54,0,0,1-.89-3.46,6.5,6.5,0,0,1,.89-3.45c.08-.12.16-.24.24-.34ZM98.22,4.86a2.27,2.27,0,0,1,1.6.67,2.32,2.32,0,0,1,.35,2.8,13.12,13.12,0,0,1,3.41,1c5,2.5,7.74,6.41,7.74,12.22a.67.67,0,0,1-.62.67H85.77a.66.66,0,0,1-.66-.67A12.88,12.88,0,0,1,92.85,9.34a12.64,12.64,0,0,1,3.41-1,2.31,2.31,0,0,1,.35-2.8,2.28,2.28,0,0,1,1.61-.67ZM82.36,26.09V24.22a.19.19,0,0,1,.19-.2h31.24a.19.19,0,0,1,.19.2v1.87a.19.19,0,0,1-.19.19H82.55a.19.19,0,0,1-.19-.19ZM101.45,70.6a6.6,6.6,0,0,1-13.19,0Z"/>
+										</g>
+									</svg>
+									&nbsp;&euro;<span></span>
+								</div>
+							</div>
+						</div>
+					</a>
+				</template>
+				<div class="favourite-vendors mx-5 mb-3 fw-semibold fs-3 d-none">Your favorite restaurants</div>
+				<div id="vendor-list" class="grid_container">
+				</div>
+				<div id="load-more-anchor"></div>
+				<div id="the-end-hint" class="d-flex flex-column text-center justify-content-center mt-auto">
+					<article>
+					<h3>Discover tons of tastes in our app </h3>
+					<p>
+						You can discover to a wide-range of crave-whorthy cuisines. We offer you a yummy food trip. 
+					</p>
+					</article>
+					<article>
+					<h3>Looking for food delivery near you? PlatePilot can help you. </h3>
+					<p>
+						Fancying French restaurants in the city? Craving Cantonese? Enjoy good food from well-loved restaurants in just a few taps.
+					</p>
+					</article>
+				</div> 
+			</div>
+		</main>
+	</div>
+	
+	<div class="container-fluid footer top-wrapper">
+		<hr>
+		<footer class="row text-center">
+			<p>Author: Drill Group</p>
+		</footer>
+	</div>
+	
+	<script src="../js/commonfunctionality.js" ></script>
+	<script src="../js/head-section.js" ></script> <!-- Do not delete this script link -->
+	<script src="../js/data/VendorData.js" ></script> 
+	<script src="../js/CuisineModel.js" ></script>
+	<script src="../js/VendorModel.js" ></script> 
+	<script src="../js/VendorListView.js" ></script> 
+	<script src="../js/FilterView.js" ></script> 
+	<script src="../js/VendorController.js" ></script>
+
+	<script src="../js/data/VariantData.js" ></script>
+	<script src="../js/data/ToppingData.js" ></script>
+	<script src="../js/Topping.js" ></script>
+	<script src="../js/CartItem.js"></script>
+	<script src="../js/AllCarts.js" defer></script>
+</body>
+</html>
+

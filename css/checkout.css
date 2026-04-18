@@ -1,0 +1,296 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f7f7f9;
+  color: #1a1a2e;
+}
+
+/* Main container */
+.review-order-wrapper {
+  max-width: 100%;
+  margin: 1rem auto;
+  padding: 0 1.25rem;
+}
+
+
+.page-header {
+  padding-bottom: 1rem;
+}
+
+.page-header h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  background: linear-gradient(135deg, #1e1e2a 0%, #2d2d44 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 0.25rem;
+}
+
+
+.section-divider {
+  margin: 0 2rem;
+  border-top: 1px solid #f0eef2;
+}
+
+
+.card-container{
+  display: flex;
+  flex-direction:row;
+  flex:1 1;
+ gap: 1rem;
+}
+
+.container-item{
+  display: flex;
+  flex-direction: column;
+  gap:1rem;
+  flex:1 1;
+  gap: 1rem;
+}
+
+/* Pickup section */
+.card-content {
+  padding: 1.25rem 1.5rem;
+}
+
+.section-label {
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.75rem;
+}
+
+.option-card{
+  background: white;
+  border-radius: 40px;
+  padding: 0.5rem 1.2rem;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  border: 1px solid #e9e0e8;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+  cursor: pointer;
+}
+
+.option-card input{
+  
+}
+
+.option-card span{
+  font-weight: 700;
+  margin-left: .5rem;
+}
+
+.vendor-name-large {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.35rem;
+  color: #1e1e2a;
+}
+
+.vendor-address {
+  font-size: 0.85rem;
+  color: #5a5a70;
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
+}
+
+.company-text {
+  font-size: 0.75rem;
+  color: #8e8e9e;
+  border-top: 1px dashed #e9e9ef;
+  padding-top: 0.65rem;
+  margin-top: 0.5rem;
+}
+
+/* Pickup options */
+.pickup-options {
+  border-radius: 20px;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap:1rem;
+}
+
+.summary{
+  padding: 1rem 0;
+}
+
+.scheduled-link:hover {
+  text-decoration: underline;
+}
+
+/* Items table */
+.items-table {
+  width: 100%;
+}
+
+.items-table td {
+  padding: 0.65rem 0;
+  border-bottom: 1px solid #f3f1f5;
+  vertical-align: top;
+}
+
+.items-table tr:last-child td {
+  border-bottom: none;
+}
+
+.item-info {
+  color: #2a2a3a;
+  display: flex;
+  justify-items: center;
+  gap:5px;
+}
+
+.item-price {
+  font-weight: 600;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Add more items link */
+.add-more-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #000000;
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-top: 0.75rem;
+  transition: 0.2s;
+}
+
+.add-more-link:hover {
+  gap: 12px;
+  color: #4ff4;
+}
+
+/* Info rows */
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  padding:  0;
+  margin-bottom: 16px;
+}
+
+.field input{
+  width: 100%;
+  border-radius: 8px;
+  border:1px solid #f4f4f4;
+  padding: 8px;
+}
+
+.field label {
+  font-weight: 500;
+  color: #5a5a70;
+  font-size: 0.9rem;
+}
+
+.info-value {
+  font-weight: 500;
+  color: #1e1e2a;
+  word-break: break-word;
+  text-align: right;
+}
+
+.total-main {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #1e1e2a;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding:  0;
+  margin-bottom: 16px;
+}
+
+.fee-breakdown {
+  font-size: 0.75rem;
+  color: #7c7c8c;
+  margin-top: 4px;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: #a0a0b0;
+  font-weight: 400;
+  margin-left: 8px;
+}
+
+/* Place order button */
+.btn-place-order {
+  background: #f272b2;
+  border: none;
+  border-radius: 8px;
+  padding: 1rem 0;
+  font-weight: 700;
+  font-size: 1rem;
+  width: 100%;
+  transition: all 0.25s;
+  box-shadow: 0 6px 18px rgba(242, 114, 178, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.btn-place-order:hover {
+  background: #e05f9e;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 22px rgba(242, 114, 178, 0.35);
+}
+
+/* Date picker container */
+#dateTimePickerContainer .form-control-sm {
+  font-size: 0.85rem;
+}
+
+/* Responsive */
+@media (max-width: 560px) {
+  .review-order-wrapper {
+    padding: 0 .5rem;
+    margin: 1.2rem 0;
+  }
+  
+  .page-header h1 {
+    font-size: 1.6rem;
+  }
+  
+  .card-container{
+    flex-direction: column;
+  }
+  
+  .option-badge {
+    padding: 0.35rem 1rem;
+    font-size: 0.8rem;
+  }
+  
+  .card-content {
+    padding: 1rem 1.2rem;
+  }
+  
+  .total-main{
+    font-size: 2rem;
+  }
+  
+  .section-divider {
+    margin: 0 1.2rem;
+  }
+}

@@ -1,0 +1,29 @@
+.vendor-cart-container img {
+    max-width: 48px;
+    max-height: 48px;
+    object-fit: cover;
+    border-radius: 9px;
+    object-position: center;
+}
+.cart-detail .extra-image-quantity,
+.cart-detail .img{
+    position: absolute;
+    left:0;
+    color:white;
+}
+.cart-detail .extra-image-quantity{
+    background-color: #00000080;
+    border-radius: 9px;
+}
+
+.all-cart-view a{
+    &:active{
+        color:inherit;
+    }
+    &:visited{
+        color:inherit;
+    }
+    &:hover{
+        color:inherit;
+    }
+}
